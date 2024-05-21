@@ -48,7 +48,7 @@ if (!isset($_SESSION['id_usuario'])) {
     <footer>
         <div class="footer-content">
             <div class="footer-section about">
-                <h3>Acerca de Nosotros</h3>
+                <h3>Foto de la G</h3>
             </div>
         </div>
     </footer>
