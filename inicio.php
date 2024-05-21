@@ -50,10 +50,6 @@ if (!isset($_SESSION['id_usuario'])) {
             <div class="footer-section about">
                 <h3>Acerca de Nosotros</h3>
             </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            &copy; 2024 TuEmpresa. Todos los derechos reservados.
         </div>
     </footer>
 </body>
