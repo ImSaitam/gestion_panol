@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.container {
+    width: 90%;
+    max-width: 400px;
+}
+.back-button {
+    display: flex;
+    align-items: center;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+.back-button .icon {
+    margin-right: 10px;
+}
+.title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.input-group input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+.input-group .button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+.input-group .icon {
+    background-color: #28A745;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+}
+.send-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+.send-button .icon {
+    margin-right: 10px;
+}
