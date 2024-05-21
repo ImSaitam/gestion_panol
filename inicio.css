@@ -14,11 +14,7 @@ body {
     padding: 10px 20px;
 }
 
-.barra-superior .logo {
-    width: 50px;
-    height: 50px;
-}
-
+.barra-superior .logo,
 .barra-superior .foto-usuario {
     width: 50px;
     height: 50px;
@@ -31,7 +27,8 @@ body {
     padding: 20px;
 }
 
-.seccion-cabecera h1, .seccion-cabecera p {
+.seccion-cabecera h1,
+.seccion-cabecera p {
     margin: 0;
 }
 
@@ -50,11 +47,11 @@ body {
     border: 1px solid #3d3ae6;
     border-radius: 20px;
     font-size: 16px;
-    background-color: #3d3ae6; 
+    background-color: #3d3ae6;
 }
 
 .barra-busqueda input::placeholder {
-    color: white; /* Color blanco para el texto de marcador de posición */
+    color: white;
 }
 
 .navegacion {
@@ -83,7 +80,6 @@ body {
     flex: 1;
     text-align: center;
     max-width: 150px;
-    border-radius: 20px;
 }
 
 .seccion-contenido {
@@ -102,7 +98,6 @@ body {
     justify-content: center;
     gap: 10px;
     margin: 20px 0;
-    
 }
 
 .panolero {
@@ -114,5 +109,31 @@ body {
     flex: 1;
     text-align: center;
     max-width: 45%;
-    border-radius: 20px;
+}
+
+/* Media queries para ajustar los estilos en diferentes tamaños de pantalla */
+@media (max-width: 768px) {
+    .barra-superior, .seccion-cabecera, .barra-busqueda, .navegacion, .seccion-contenido {
+        padding: 10px; /* Reducir el padding en pantallas más pequeñas */
+    }
+
+    .barra-busqueda input, .categorias .subcategoria, .panoleros .panolero {
+        width: 100%; /* Hacer que los elementos ocupen todo el ancho disponible */
+    }
+
+    .categorias, .panoleros {
+        flex-direction: column; /* Cambiar la dirección de flex a columna */
+        gap: 5px; /* Reducir el espacio entre elementos */
+    }
+}
+
+@media (max-width: 480px) {
+    .barra-superior .logo, .barra-superior .foto-usuario {
+        width: 40px; /* Reducir el tamaño de los logos y fotos de usuario */
+        height: 40px;
+    }
+
+    .navegacion h2, .seccion-contenido h2 {
+        font-size: 18px; /* Reducir el tamaño de fuente para los títulos */
+    }
 }
