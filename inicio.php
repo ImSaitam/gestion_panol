@@ -45,5 +45,12 @@ if (!isset($_SESSION['id_usuario'])) {
             <div class="panolero">Pañolero/a 2</div>
         </div>
     </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3>Foto de la G</h3>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

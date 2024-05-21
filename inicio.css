@@ -115,26 +115,50 @@ body {
     text-align: center;
     max-width: 45%;
 }
+footer {
+    background-color: #9d9ca0;
+    color: #221661;
+    padding: 5px 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 5px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin: 10px;
+}
 
 /* Media queries para ajustar los estilos en diferentes tamaños de pantalla */
 @media (max-width: 768px) {
     .barra-superior, .seccion-cabecera, .barra-busqueda, .navegacion, .seccion-contenido {
-        padding: 10px; /* Reducir el padding en pantallas más pequeñas */
+        padding: 10px; 
     }
 
     .barra-busqueda input, .categorias .subcategoria, .panoleros .panolero {
-        width: 80%; /* Hacer que los elementos ocupen todo el ancho disponible */
+        width: 80%; 
     }
 
 }
 
 @media (max-width: 480px) {
     .barra-superior .logo, .barra-superior .foto-usuario {
-        width: 40px; /* Reducir el tamaño de los logos y fotos de usuario */
+        width: 40px; 
         height: 40px;
     }
 
     .navegacion h2, .seccion-contenido h2 {
-        font-size: 18px; /* Reducir el tamaño de fuente para los títulos */
+        font-size: 18px; 
     }
 }
