@@ -35,7 +35,6 @@ if (!isset($_SESSION['id_usuario'])) {
             <div class="subcategoria">Categoría 2</div>
             <div class="subcategoria">Categoría 3</div>
             <div class="subcategoria">Categoría 4</div>
-            <div class="subcategoria">Categoría 4</div>
         </div>
     </div>
     <div class="seccion-contenido">
@@ -45,6 +44,11 @@ if (!isset($_SESSION['id_usuario'])) {
             <div class="panolero">Pañolero/a 2</div>
         </div>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <footer>
         <div class="footer-content">
             <div class="footer-section about">
