@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Registro</title>
 </head>
 <body>
-    <form action="register.php" method="post">
+    <form action="./crearcuenta.php" method="post">
         <label for="username">Nombre de usuario:</label>
         <input type="text" name="username" id="username" required><br>
         <label for="password">Contraseña:</label>

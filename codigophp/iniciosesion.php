@@ -14,15 +14,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Buscar el usuario
-    $stmt = $mysqli->prepare("SELECT id_usuario, password FROM usuarios WHERE username = ?");
+    $stmt = $mysqli->prepare("SELECT id_usuario, contrasenia FROM usuario WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows == 1) {
+
+        
         $stmt->bind_result($id, $hashed_password);
         $stmt->fetch();
-
         if (password_verify($password, $hashed_password)) {
             // Iniciar sesión exitosa
             $_SESSION['id_usuario'] = $id;
@@ -30,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Contraseña correcta.";
             exit;
         } else {
-            echo "Contraseña incorrecta.";
+            echo "Contraseña incorrecta.",$hashed_password," ",$password;
         }
     } else {
         echo "Nombre de usuario no encontrado.";
@@ -48,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Iniciar sesión</title>
 </head>
 <body>
-    <form action="login.php" method="post">
+    <form action="./iniciosesion.php" method="post">
         <label for="username">Nombre de usuario:</label>
         <input type="text" name="username" id="username" required><br>
         <label for="password">Contraseña:</label>
