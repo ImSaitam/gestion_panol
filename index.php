@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
-    <div class="contenedor-login">
+    <form class="contenedor-login" action="codigophp/iniciosesion.php" method="post">
         <img src="logo.jpg" alt="Logo" class="logo">
         <img src="fotousuario.jpg" alt="Foto de Usuario" class="foto-usuario">
-        <input type="text" placeholder="Nombre de Usuario" required>
-        <input type="password" placeholder="Contraseña" required>
-        <button class="boton-iniciar">Iniciar Sesión</button>
+
+        <input type="text" name="username" id="username" required><br>
+     
+        <input type="password" class="boton-iniciar" name="password" id="password" required><br>
+        <input type="submit" value="Iniciar sesión">
         <button class="boton-olvidado">Me olvidé mi contraseña</button>
-    </div>
+    </form>
 </body>
 </html>

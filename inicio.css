@@ -66,8 +66,11 @@ body {
 }
 
 .categorias {
+
     display: flex;
-    justify-content: center;
+    overflow-x: auto;
+    display: flex;
+    
     gap: 10px;
     margin: 20px 0;
 }
@@ -79,6 +82,7 @@ body {
     padding: 20px;
     flex: 1;
     text-align: center;
+    height: 10vh;
     max-width: 150px;
 }
 
@@ -101,6 +105,7 @@ body {
 }
 
 .panolero {
+    height: 20vh;
     background-color: #f3f1fe;
     color: #3d3ae6;
     border: 2px solid #3d3ae6;
@@ -118,13 +123,9 @@ body {
     }
 
     .barra-busqueda input, .categorias .subcategoria, .panoleros .panolero {
-        width: 100%; /* Hacer que los elementos ocupen todo el ancho disponible */
+        width: 80%; /* Hacer que los elementos ocupen todo el ancho disponible */
     }
 
-    .categorias, .panoleros {
-        flex-direction: column; /* Cambiar la dirección de flex a columna */
-        gap: 5px; /* Reducir el espacio entre elementos */
-    }
 }
 
 @media (max-width: 480px) {

@@ -1,3 +1,13 @@
+<?php
+// dashboard.php
+session_start();
+
+if (!isset($_SESSION['id_usuario'])) {
+    header("Location: ./index.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,7 +22,7 @@
         <img src="fotousuario.jpg" alt="Foto de Usuario" class="foto-usuario">
     </div>
     <div class="seccion-cabecera">
-        <h1>Título</h1>
+        <h1>Bienvenido, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
         <p>Este es un texto de ejemplo que va debajo del título.</p>
     </div>
     <div class="barra-busqueda">
@@ -24,6 +34,7 @@
             <div class="subcategoria">Categoría 1</div>
             <div class="subcategoria">Categoría 2</div>
             <div class="subcategoria">Categoría 3</div>
+            <div class="subcategoria">Categoría 4</div>
             <div class="subcategoria">Categoría 4</div>
         </div>
     </div>
