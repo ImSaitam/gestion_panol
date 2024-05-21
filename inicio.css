@@ -129,7 +129,7 @@ footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding: 20px;
+    padding: 10px;
     max-width: 1200px;
     margin: auto;
 }
