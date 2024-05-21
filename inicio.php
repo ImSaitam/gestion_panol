@@ -34,5 +34,16 @@
             <div class="panolero">Pañolero/a 2</div>
         </div>
     </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3>Acerca de Nosotros</h3>
+            </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 TuEmpresa. Todos los derechos reservados.
+        </div>
+    </footer>
 </body>
 </html>
