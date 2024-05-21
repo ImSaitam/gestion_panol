@@ -29,9 +29,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['id_usuario'] = $id;
             $_SESSION['username'] = $username;
             echo "Contraseña correcta.";
+            header("Location: ../inicio.php");
             exit;
         } else {
-            echo "Contraseña incorrecta.",$hashed_password," ",$password;
+            echo "Contraseña incorrecta.";
         }
     } else {
         echo "Nombre de usuario no encontrado.";
@@ -42,19 +43,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Iniciar sesión</title>
-</head>
-<body>
-    <form action="./iniciosesion.php" method="post">
-        <label for="username">Nombre de usuario:</label>
-        <input type="text" name="username" id="username" required><br>
-        <label for="password">Contraseña:</label>
-        <input type="password" name="password" id="password" required><br>
-        <input type="submit" value="Iniciar sesión">
-    </form>
-</body>
-</html>
