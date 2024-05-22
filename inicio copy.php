@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Inicio</title>
-    <link rel="stylesheet" href="inicio2.css">
 </head>
 <body>
     <div id="pagina">
-        <div id="header"></div>
+        <div id="header">
+            <div class="logo"></div>
+            <div class="usuario"></div>
+        </div>
         <div id="subheader"></div>
         <div id="contenido"></div>
         <div id="footer"></div>
@@ -26,14 +28,20 @@
     width: 100%;
     display:grid;
     grid-template:
-    "HEA HEA HEA"4vh
+    "HEA HEA HEA"6vh
     "SHEA SHEA SHEA"20vh
     "CON CON CON"auto
-    "FOO FOO FOO"4vh/
+    "FOO FOO FOO"6vh/
     auto auto auto;
     background-color:#202427;
 }
 #header{
+    display: grid;
+    grid-template:
+    ". . ." auto
+    "LOGO . USUARIO"4vh
+    ". . ." auto/
+    4vh auto 4vh;
     grid-area: HEA;
     background-color:#202427;
     box-shadow: 1vh 0.5vh 3vh 0vh rgba(61, 58, 230, 0.1);
@@ -46,11 +54,15 @@
     grid-area: CON;
     background-color:white;
     box-shadow: 1vh -0.5vh 3vh 0vh rgba(61, 58, 230, 0.1);
+    border-radius:4vh 4vh 0vh 0vh;
 }
 #footer{
     grid-area: FOO;
     background-color:white;
     box-shadow: 1vh -0.5vh 3vh 0vh rgba(208, 207, 238, 1);
+}
+.logo{
+    background-image: URL(imagenes/);
 }
 </style>
 
