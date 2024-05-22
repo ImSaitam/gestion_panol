@@ -8,13 +8,13 @@
 <body>
     <div id="pagina">
         <div id="header">
-            <button class="logo"></button>
-            <button class="usuario"></button>
+            <button class="logo imagen"></button>
+            <button class="usuario imagen"></button>
         </div>
         <div id="subheader"></div>
         <div id="contenido"></div>
         <div id="footer">
-        <button class="usuario"></button>
+        <button class="logoboton imagen"></button>
         </div>
     </div>
     
@@ -50,6 +50,12 @@
     background-color:#202427;
     box-shadow: 1vh 0.5vh 3vh 0vh rgba(61, 58, 230, 0.1);
 }
+#header :nth-child(1){
+    grid-area:LOGO;
+}
+#header :nth-child(2){
+    grid-area:USUARIO;
+}
 #subheader{
     display: grid;
     grid-template:
@@ -69,7 +75,7 @@
     background-color:white;
     box-shadow: 1vh -0.5vh 3vh 0vh rgba(208, 207, 238, 1);
     display: grid;
-    grid-column: repeat(5vh);
+    grid-column: repeat(auto);
     gap: auto;
 }
 button{
@@ -78,21 +84,18 @@ button{
 }
 .logo{
     background-image: URL(imagenes/logo.png);
+}
+.imagen{
     background-size: contain;
     background-repeat:no-repeat;
-    grid-area: LOGO;
 }
+
 .usuario{
     background-image: URL(imagenes/user.png);
-    background-size: contain;
-    background-repeat:no-repeat;
-    grid-area: USUARIO;
 }
-.botonlogo{
+.logoboton{
     background-image: URL(imagenes/botonlogo.png);
-    background-size: contain;
-    background-repeat:no-repeat;
-    grid-area: USUARIO;
 }
+ 
 </style>
 
