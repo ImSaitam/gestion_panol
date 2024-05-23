@@ -7,54 +7,65 @@ if (!isset($_SESSION['id_usuario'])) {
     exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Inicio</title>
-    <link rel="stylesheet" href="inicio.css">
 </head>
 <body>
-    <div class="barra-superior">
-        <img src="logo.jpg" alt="Logo" class="logo">
-        <img src="fotousuario.jpg" alt="Foto de Usuario" class="foto-usuario">
-    </div>
-    <div class="seccion-cabecera">
-        <h1>Bienvenido, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
-        <p>Este es un texto de ejemplo que va debajo del título.</p>
-    </div>
-    <div class="barra-busqueda">
-        <input type="text" placeholder="Buscar...">
-    </div>
-    <div class="navegacion">
-        <h2>Categorías</h2>
-        <div class="categorias">
-            <div class="subcategoria">Categoría 1</div>
-            <div class="subcategoria">Categoría 2</div>
-            <div class="subcategoria">Categoría 3</div>
-            <div class="subcategoria">Categoría 4</div>
+    <div id="pagina">
+        <div id="header">
+            <button class="logo imagen"></button>
+            <button class="usuario imagen"></button>
         </div>
-    </div>
-    <div class="seccion-contenido">
-        <h2>Pañoleros/as</h2>
-        <div class="panoleros">
-            <div class="panolero">Pañolero/a 1</div>
-            <div class="panolero">Pañolero/a 2</div>
+        <div id="subheader">
+            <h1>Bienvenido <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section about">
-                <h3>Foto de la G</h3>
+        <div id="contenido">
+            <div class="barra">
+                <button class="equis"></button>
+                <input type="text" placeholder="Buscar..">
+                <div></div>
+            </div>
+            <div class="contenido2">
+                <div class="con3" id="inicio">
+                    <h1>TITULO</h1>
+                    <div class="scrollx">
+                        <div class="conscroll">
+                            <button class="cubo"></button>
+                            <button class="cubo"></button>
+                            <button class="cubo"></button>
+                            <button class="cubo"></button>
+                            <button class="cubo"></button>
+                            <button class="cubo"></button>
+                            
+                        </div>
+                    </div>
+                    <h1>PAÑOLEROS</h1>
+                    <div class="scrollx"style="height: 28vh;">
+                        <div class="conscroll2" > 
+                            <div class="cubo2"></div>     
+                            <div class="cubo2"></div>       
+                        </div>
+                    </div>
+                </div>
+                <div class="con3" id="pedidos" style="display:none">
+
+                </div>
+                <div class="con3" id="reportes" style="display:none">
+
+                </div>
             </div>
         </div>
-    </footer>
+        <div id="footer">
+            <button class="logoboton imagen izquierda"></button>
+            <button class="logoboton imagen centro"></button>
+            <button class="logoboton imagen derecha"></button>
+        </div>
+    </div>
+    
 </body>
 </html>

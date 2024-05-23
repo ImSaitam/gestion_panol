@@ -22,8 +22,32 @@
                 <div></div>
             </div>
             <div class="contenido2">
-                <div id="con3">
-                    <div class="cubo"></div>
+                <div class="con3" id="inicio">
+                    <h1>TITULO</h1>
+                    <div class="scrollx">
+                        <div class="conscroll">
+                            <button class="cubo"></button>
+                            <button class="cubo"></button>
+                            <button class="cubo"></button>
+                            <button class="cubo"></button>
+                            <button class="cubo"></button>
+                            <button class="cubo"></button>
+                            
+                        </div>
+                    </div>
+                    <h1>PAÑOLEROS</h1>
+                    <div class="scrollx"style="height: 28vh;">
+                        <div class="conscroll2" > 
+                            <div class="cubo2"></div>     
+                            <div class="cubo2"></div>       
+                        </div>
+                    </div>
+                </div>
+                <div class="con3" id="pedidos" style="display:none">
+
+                </div>
+                <div class="con3" id="reportes" style="display:none">
+
                 </div>
             </div>
         </div>
@@ -46,35 +70,41 @@
     background-repeat:no-repeat;
     background-position: center;
 }
-.caracteristicas{
-    height: 50vh;
-    width: 90%;
-    overflow: hidden;
-    display: grid;
-    grid-template:
-    ". TITULOO ."5vh
-    ". . ." 50vh/
-    auto auto auto;
-}
-.caracteristicas h1{
- grid-area: TITULOO;
- text-align: center;
- background-color: blue;
-}
+
 .scrollx{
-    background-color: red;
-    grid-area: SCROL;
+    position: relative;
     overflow-x: auto;
     overflow-y: none;
-    
+    height: 20vh;
+    width: 100%;
+    display: grid ;
+
 }
+
 .conscroll{
-    background-color: green;
+    overflow: hidden;
+    position: absolute;
+    width: auto;
+    height:100%;
+    left:0%;
+    top:0%;
+    gap:1vh;
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: flex-start;
-    grid-area: CONSCROLL;
+   
+}
+.conscroll2{
+    overflow: hidden;
+    position: absolute;
+    width: auto;
+    height:100%;
+    left:0%;
+    top:0%;
+    gap:1vh;
+    display: flex;
+    flex-direction: row;
+    
 }
 .barra{
     background-color:#4139E6;
@@ -89,29 +119,31 @@
     right:50%;
     transform: translate(-50%, -50%);
 }
+
 .cubo{
-    background-color: blue;
-    height: 50vh;
-    width: 90%;
-    
-}
-.cubo2{
-    background-color: red;
+    background-color:#4139E6;
     height: 20vh;
     width: 20vh;
+    border-radius: 2vh;
+}
+.cubo2{
+    background-color:#4139E6;
+    height: 28vh;
+    width: 20vh;
+    border-radius: 2vh;
 }
 #pagina{
     position: absolute;
     right:0%;
     top:0%;
-    height:99%;
+    height:100%;
     width: 100%;
     display:grid;
     grid-template:
     "HEA HEA HEA"7vh
     "SHEA SHEA SHEA"20vh
     "CON CON CON"auto
-    "FOO FOO FOO"7vh/
+    "FOO FOO FOO"8vh/
     auto auto auto;
     background-color:#202427;
 }
@@ -153,7 +185,6 @@ input{
     color: white;
     border:none;
     background: transparent;
-   
     border-radius:5vh;
 }
 input::placeholder {
@@ -162,7 +193,6 @@ input::placeholder {
 
 #subheader{
     padding-bottom:1vh;
-
     overflow: hidden;
     display: grid;
     grid-template:
@@ -186,22 +216,28 @@ input::placeholder {
     border-radius:4vh 4vh 0vh 0vh;
     display: grid;
     position:relative;
+    grid-template:
+    ". . ."4vh
+    ". CON2 ."60vh/
+    auto 90% auto;
   
 }
 .contenido2{
-    display:grid;
+    grid-area: CON2;
     overflow-y: auto;
-    position: absolute;
-    grid-area:CON2;
-   width: 100%;
-   height:100%;
+    display:grid;
+    grid-template:
+    ". CON3 ."auto/
+    auto 100% auto;
 }
 .con3{
-    grid-area:CON3;
-    display: flex;
+    grid-area: CON3;
+    display: flex ;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+}
+.con3 h1{
+    color:#4139E6;
 }
 #footer{
     grid-area: FOO;
@@ -209,11 +245,10 @@ input::placeholder {
     box-shadow: 1vh -0.5vh 3vh 0vh rgba(208, 207, 238, 1);
     display: grid;
     grid-template:
-    ". . ." auto
-    "IZ CEN DE"6vh
-    ". . ." auto/
-    auto auto auto
-    ;
+    ". . . . ." auto
+    ". IZ CEN DE ."7vh
+    ". . . . ." auto/
+    5vh auto auto auto 5vh
 }
 .izquierda{
     grid-area: IZ;          
