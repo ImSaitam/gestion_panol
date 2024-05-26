@@ -13,12 +13,13 @@ if (!isset($_SESSION['id_usuario'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Inicio</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="inicio.css">
+    <link rel="stylesheet" href="imagenes.css">
 </head>
 <body>
     <div id="pagina">
         <div id="header">
-            <button class="logo imagen"></button>
+            <a href="inicio.php" class="logo imagen" ></a>
             <button class="usuario imagen"></button>
         </div>
         <div id="subheader">
@@ -50,6 +51,7 @@ if (!isset($_SESSION['id_usuario'])) {
                         <div class="conscroll2" > 
                             <div class="cubo2"></div>     
                             <div class="cubo2"></div>       
+                            <div class="cubo2"></div>           
                         </div>
                     </div>
                 </div>
@@ -62,11 +64,12 @@ if (!isset($_SESSION['id_usuario'])) {
             </div>
         </div>
         <div id="footer">
-            <button class="logoboton imagen izquierda"></button>
-            <button class="logoboton imagen centro"></button>
-            <button class="logoboton imagen derecha"></button>
+            <a href="notificaciones.php" class="campana imagen izquierda">Notificaciones</a>
+            <a href="pedidos.php" class="logoboton imagen centro">Pedidos</a>
+            <a href="reportes.php" class="alerta imagen derecha">Reportes</a>
         </div>
     </div>
     
 </body>
 </html>
+

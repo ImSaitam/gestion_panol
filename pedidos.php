@@ -1,4 +1,80 @@
+<?php
+// dashboard.php
+session_start();
 
+if (!isset($_SESSION['id_usuario'])) {
+    header("Location: ./index.php");
+    exit;
+}
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Inicio</title>
+    <link rel="stylesheet" href="inicio.css">
+</head>
+<body>
+    <div id="pagina">
+        <div id="header">
+            <a href="inicio.php" class="logo imagen"></a>
+            <button class="usuario imagen"></button>
+        </div>
+        <div id="subheader">
+            <h1>Bienvenido <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+        <div id="contenido">
+            <div class="barra">
+                <button class="equis"></button>
+                <input type="text" placeholder="Buscar..">
+                <div></div>
+            </div>
+            <div class="contenido2">
+                <div class="con3" id="inicio">
+                    <h1>TITULO</h1>
+                    <div class="scrollx">
+                        <div class="conscroll">
+                            <button class="cubo"></button>
+                            <button class="cubo"></button>
+                            <button class="cubo"></button>
+                            <button class="cubo"></button>
+                            <button class="cubo"></button>
+                            <button class="cubo"></button>
+                            
+                        </div>
+                    </div>
+                    <h1>PAÑOLEROS</h1>
+                    <div class="scrollx"style="height: 28vh;">
+                        <div class="conscroll2" > 
+                            <div class="cubo2"></div>     
+                            <div class="cubo2"></div>       
+                            <div class="cubo2"></div>           
+                        </div>
+                    </div>
+                </div>
+                <div class="con3" id="pedidos" style="display:none">
+
+                </div>
+                <div class="con3" id="reportes" style="display:none">
+
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <a href="notificaciones.php" class="campana imagen izquierda">Notificaciones</a>
+            <a href="inicio.php" class="flecha imagen centro">Pedidos</a>
+            <a href="reportes.php" class="alerta imagen derecha">Reportes</a>
+        </div>
+    </div>
+    
+</body>
+</html>
+<style>
+    .flecha{
+    background-image: URL(imagenes/flecha.png);
+}
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Days+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 .equis{
@@ -14,35 +90,32 @@
     overflow-y: none;
     height: 20vh;
     width: 100%;
-    display: grid ;
-
 }
-
+a{
+    text-decoration: none;
+}
 .conscroll{
     overflow: hidden;
     position: absolute;
-    width: auto;
+    width: max-content;
     height:100%;
-    left:0%;
-    top:0%;
     gap:1vh;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
    
 }
-.conscroll2{
+.conscroll2 {
     overflow: hidden;
     position: absolute;
-    width: auto;
-    height:100%;
-    left:0%;
-    top:0%;
-    gap:1vh;
+    width: max-content;
+    height: 100%;
     display: flex;
-    flex-direction: row;
-    
+    justify-content: center;
+    align-items: center; 
+    gap: 1vh;
 }
+
 .barra{
     background-color:#4139E6;
     position: absolute;
@@ -62,12 +135,16 @@
     height: 20vh;
     width: 20vh;
     border-radius: 2vh;
+    box-shadow: 1vh 1vh 1vh 0vh rgba(208, 207, 238, 1);
+
 }
 .cubo2{
-    background-color:#4139E6;
+    background-color:white;
     height: 28vh;
     width: 20vh;
     border-radius: 2vh;
+    box-shadow: 1vh 1vh 1vh 0vh rgba(208, 207, 238, 1);
+
 }
 #pagina{
     position: absolute;
@@ -182,10 +259,24 @@ input::placeholder {
     box-shadow: 1vh -0.5vh 3vh 0vh rgba(208, 207, 238, 1);
     display: grid;
     grid-template:
-    ". . . . ." auto
-    ". IZ CEN DE ."7vh
-    ". . . . ." auto/
-    5vh auto auto auto 5vh
+    ". . . . . . ." auto
+    ". IZ . CEN . DE ."7vh
+    ". . . . . . ." auto/
+    auto 30vh auto 30vh auto 30vh auto;
+  
+}
+#footer a{
+    font-family: "Days One", sans-serif;
+    font-size: 2vh;
+    font-weight: 200;
+    color:white;
+    padding-top: 2vh;
+    padding-left:5vh;
+    overflow: hidden;
+    text-align: center;
+    background-color:#4139E6;
+    border-radius:25vh;
+    background-position: left;
 }
 .izquierda{
     grid-area: IZ;          
@@ -215,8 +306,32 @@ button{
 .logoboton{
     background-image: URL(imagenes/botonlogo.png);
 }
+.alerta{
+    background-image: URL(imagenes/alerta.png);
+}
+.campana{
+    background-image: URL(imagenes/campana.png);
+}
 @media (max-width: 768px) {
     .barra{
         width: 90%;
     }
+    #footer a{
+        font-size: 0vh;
+    background-color: transparent;
+    background-position: center;
+
+    }
+    #footer{
+    grid-area: FOO;
+    background-color:white;
+    box-shadow: 1vh -0.5vh 3vh 0vh rgba(208, 207, 238, 1);
+    display: grid;
+    grid-template:
+    ". . . . ." auto
+    ". IZ CEN DE ."7vh
+    ". . . . ." auto/
+    5vh auto auto auto 5vh
 }
+}
+</style>
