@@ -13,7 +13,7 @@ if (!isset($_SESSION['id_usuario'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Inicio</title>
-    <link rel="stylesheet" href="inicio.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="imagenes.css">
 </head>
 <body>
@@ -35,8 +35,8 @@ if (!isset($_SESSION['id_usuario'])) {
             <div class="contenido2">
                 <div class="con3" id="inicio">
                     <h1>TITULO</h1>
-                    <div class="scrollx">
-                        <div class="conscroll">
+                    <div class="scroll-x">
+                        <div class="conscroll-x">
                             <button class="cubo"></button>
                             <button class="cubo"></button>
                             <button class="cubo"></button>
@@ -47,8 +47,8 @@ if (!isset($_SESSION['id_usuario'])) {
                         </div>
                     </div>
                     <h1>PAÑOLEROS</h1>
-                    <div class="scrollx"style="height: 28vh;">
-                        <div class="conscroll2" > 
+                    <div class="scroll-x"style="height: 28vh;">
+                        <div class="conscroll-x" > 
                             <div class="cubo2"></div>     
                             <div class="cubo2"></div>       
                             <div class="cubo2"></div>           

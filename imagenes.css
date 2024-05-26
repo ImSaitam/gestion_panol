@@ -1,3 +1,4 @@
+/*IMAGENES*/
 .equis{
     background-image: URL(imagenes/x.png);
     background-size: 2vh;
@@ -17,7 +18,7 @@
     background-position: center;
 }
 .logo{
-    background-image: URL(imagenes/Sin-título-1.png);
+    background-image: URL(imagenes/logo.png);
 }
 .signomas{
     background-image: URL(imagenes/signomas.png);
