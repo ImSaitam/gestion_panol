@@ -13,6 +13,7 @@ h1{
     color: white;
 }
 p{
+    
     font-family: "Poppins", sans-serif;
     font-size: 2vh;
     font-weight: 200;
@@ -158,7 +159,7 @@ button{
     overflow-x: none;
     overflow-y: auto;
     height: 25vh;
-    width: 40vh;
+    width: 100%;
 }
 .scroll-x{
     position: relative;
@@ -168,17 +169,14 @@ button{
     width: 100%;
 }
 .conscroll-y{
-    overflow: hidden;
-    position: absolute;
+    overflow: auto; 
+    position: relative;
     width: 100%;
-    height:auto;
-    left:0%;
-    top:0%;
-    gap:1vh;
+    height: max-content;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-   
+    justify-content: center; 
+    flex-wrap: wrap; 
+    gap: 2vh;
 }
 .conscroll-x{
     overflow: hidden;
@@ -206,23 +204,99 @@ button{
     transform: translate(-50%, -50%);
 }
 
+.barra div:nth-child(1){
+    padding: 2.2vh;
+    font-family: "Poppins", sans-serif;
+    font-size: 2vh;
+    font-weight: 200;
+    color: white;
+}
+.barra div:nth-child(2){
+    padding: 1vh;
+    font-family: "Poppins", sans-serif;
+    font-size: 2vh;
+    font-weight: 200;
+    color: white;
+}
 .cubo{
     background-color:#4139E6;
     height: 20vh;
     width: 20vh;
     border-radius: 2vh;
     box-shadow: 1vh 1vh 1vh 0vh rgba(208, 207, 238, 1);
-
+    display: grid;
+    grid-template: 
+    "TITULO"1.1vh
+    "TEXTO" auto/
+    auto;
+    gap: 0.5vh;
 }
-.cubo2{
+.cubo h1{
+    color: white;
+    grid-area: TITULO;
+    
+}
+.cubo p{
+    color: white;
+    grid-area: TEXTO;
+    font-size: max-content;
+}
+.rectangulo{
     background-color:white;
     height: 28vh;
     width: 20vh;
     border-radius: 2vh;
-    box-shadow: 1vh 1vh 1vh 0vh rgba(208, 207, 238, 1);
+    grid-template:
+    ". . ."1vh
+    ". BOTON ."18vh
+    ". TITULO . " 2vh
+    ". TEXTO . " auto
+    ". . ."1vh/
+    1vh auto 1vh;
+    box-shadow: 0.1vh 0.5vh 1vh 0.2vh rgba(208, 207, 238, 1);
+    border: rgba(208, 207, 238, 1) solid 0.1vh;
+    display: grid;
+}
+.rectangulo h1{
+    grid-area: TITULO;
+}
+.rectangulo p{
+    color: #202427;
+    grid-area: TEXTO;
+    font-weight: 400;
 
 }
+.rectangulo button{
+    background-size: cover;
+    grid-area: BOTON;
+}
+.rectangulo2{
+    background-color:white;
+    height: 12vh;
+    width: 39vh;
+    border-radius: 2vh;
+    display: grid;
+    grid-template:
+    ". . . . ."1vh
+    ". TITULO . BOTON ."2vh
+    ". TEXTO . BOTON . " auto
+    ". . . . ."1vh/
+    2vh auto auto 8vh 2vh;
+    box-shadow: 0.1vh 0.5vh 1vh 0.2vh rgba(208, 207, 238, 1);
+    border: rgba(208, 207, 238, 1) solid 0.1vh;
+}
+.rectangulo2 h1{
+    grid-area: TITULO;
+}
+.rectangulo2 p{
+    color: #202427;
+    grid-area: TEXTO;
+    font-weight: 400;
 
+}
+.rectangulo2 button{
+    grid-area: BOTON;
+}
 /*RESPONSIVE*/
 @media (max-width: 768px) {
     .barra{

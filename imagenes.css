@@ -56,7 +56,12 @@
 .campana{
     background-image: URL(imagenes/campana.png);
 }
-
+.opciones{
+    background-image: URL(imagenes/opciones.png);
+}
+.pañolero{
+    background-image: URL(imagenes/panolero.jpg);
+}
 .imagen{
     background-size: contain;
     background-repeat:no-repeat;

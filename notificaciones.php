@@ -34,32 +34,13 @@ if (!isset($_SESSION['id_usuario'])) {
             </div>
             <div class="contenido2">
                 <div class="con3" id="inicio">
-                    <h1>TITULO</h1>
-                    <div class="scroll-x">
-                        <div class="conscroll-x">
-                            <button class="cubo"></button>
-                            <button class="cubo"></button>
-                            <button class="cubo"></button>
-                            <button class="cubo"></button>
-                            <button class="cubo"></button>
-                            <button class="cubo"></button>
-                            
+                <h1>NOTIFICACIONES</h1>
+                    <div class="scroll-y" style="height: 100%;">
+                        <div class="conscroll-y">
+                            <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>NOTIFICACION</p> <button class="imagen opciones"></button></div>         
+                                           
                         </div>
                     </div>
-                    <h1>PAÑOLEROS</h1>
-                    <div class="scroll-x"style="height: 28vh;">
-                        <div class="conscroll-x" > 
-                            <div class="cubo2"></div>     
-                            <div class="cubo2"></div>       
-                            <div class="cubo2"></div>           
-                        </div>
-                    </div>
-                </div>
-                <div class="con3" id="pedidos" style="display:none">
-
-                </div>
-                <div class="con3" id="reportes" style="display:none">
-
                 </div>
             </div>
         </div>

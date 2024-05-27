@@ -27,39 +27,22 @@ if (!isset($_SESSION['id_usuario'])) {
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
         <div id="contenido">
-            <div class="barra">
-                <button class="equis"></button>
-                <input type="text" placeholder="Buscar..">
-                <div></div>
-            </div>
+            <button class="barra">
+                <div class="mas"></div>
+                    <div>Escribir nuevo reporte</div>
+                    <div></div>
+            </button>
             <div class="contenido2">
                 <div class="con3" id="inicio">
-                    <h1>TITULO</h1>
-                    <div class="scroll-x">
-                        <div class="conscroll-x">
-                            <button class="cubo"></button>
-                            <button class="cubo"></button>
-                            <button class="cubo"></button>
-                            <button class="cubo"></button>
-                            <button class="cubo"></button>
-                            <button class="cubo"></button>
-                            
+                <h1>TUS REPORTES</h1>
+                    <div class="scroll-y" style="height: 100%;">
+                        <div class="conscroll-y">
+                            <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>REPORTE</p> <button class="imagen opciones"></button></div>     
+                            <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>REPORTE</p> <button class="imagen opciones"></button></div>     
+                            <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>REPORTE</p> <button class="imagen opciones"></button></div>     
+                                           
                         </div>
                     </div>
-                    <h1>PAÑOLEROS</h1>
-                    <div class="scroll-x"style="height: 28vh;">
-                        <div class="conscroll-x" > 
-                            <div class="cubo2"></div>     
-                            <div class="cubo2"></div>       
-                            <div class="cubo2"></div>           
-                        </div>
-                    </div>
-                </div>
-                <div class="con3" id="pedidos" style="display:none">
-
-                </div>
-                <div class="con3" id="reportes" style="display:none">
-
                 </div>
             </div>
         </div>

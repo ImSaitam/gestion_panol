@@ -1,5 +1,4 @@
 <?php
-// dashboard.php
 session_start();
 
 if (!isset($_SESSION['id_usuario'])) {
@@ -27,39 +26,31 @@ if (!isset($_SESSION['id_usuario'])) {
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
         <div id="contenido">
-            <div class="barra">
-                <button class="equis"></button>
+            <form class="barra" method="post">
+                <input type="submit" class="equis" value=""></button>
                 <input type="text" placeholder="Buscar..">
                 <div></div>
-            </div>
+            </form>
             <div class="contenido2">
                 <div class="con3" id="inicio">
                     <h1>TITULO</h1>
                     <div class="scroll-x">
                         <div class="conscroll-x">
-                            <button class="cubo"></button>
-                            <button class="cubo"></button>
-                            <button class="cubo"></button>
-                            <button class="cubo"></button>
-                            <button class="cubo"></button>
-                            <button class="cubo"></button>
+                            <button onclick="console.log('a')" class="cubo"> <h1>TITULO</h1> <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit Lorem, ipsum.</p></button>
+                            <button class="cubo"> <h1>TITULO</h1> <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit Lorem, ipsum.</p></button>
+                            <button class="cubo"> <h1>TITULO</h1> <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit Lorem, ipsum.</p></button>
+                            <button class="cubo"> <h1>TITULO</h1> <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit Lorem, ipsum.</p></button>
                             
                         </div>
                     </div>
                     <h1>PAÑOLEROS</h1>
                     <div class="scroll-x"style="height: 28vh;">
                         <div class="conscroll-x" > 
-                            <div class="cubo2"></div>     
-                            <div class="cubo2"></div>       
-                            <div class="cubo2"></div>           
+                            <div class="rectangulo"> <h1>NOMBRE</h1> <p>HORARIO</p> <button class="imagen pañolero"></button></div>          
+                            <div class="rectangulo"> <h1>NOMBRE</h1> <p>HORARIO</p> <button class="imagen pañolero"></button></div>          
+                                    
                         </div>
                     </div>
-                </div>
-                <div class="con3" id="pedidos" style="display:none">
-
-                </div>
-                <div class="con3" id="reportes" style="display:none">
-
                 </div>
             </div>
         </div>
@@ -69,7 +60,7 @@ if (!isset($_SESSION['id_usuario'])) {
             <a href="reportes.php" class="alerta imagen derecha">Reportes</a>
         </div>
     </div>
-    
+   
 </body>
 </html>
 

@@ -27,39 +27,22 @@ if (!isset($_SESSION['id_usuario'])) {
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
         <div id="contenido">
-            <div class="barra">
-                <button class="equis"></button>
-                <input type="text" placeholder="Buscar..">
-                <div></div>
-            </div>
+            <button class="barra">
+                <div class="mas"></div>
+                    <div>Crear nuevo pedido</div>
+                    <div></div>
+            </button>
             <div class="contenido2">
                 <div class="con3" id="inicio">
-                    <h1>TITULO</h1>
-                    <div class="scroll-x">
-                        <div class="conscroll-x">
-                            <button class="cubo"></button>
-                            <button class="cubo"></button>
-                            <button class="cubo"></button>
-                            <button class="cubo"></button>
-                            <button class="cubo"></button>
-                            <button class="cubo"></button>
-                            
+                    <h1>HISTORIAL DE PEDIDOS</h1>
+                    <div class="scroll-y" style="height: 100%;">
+                        <div class="conscroll-y">
+                            <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>AULA Y CURSO</p> <button class="imagen opciones"></button></div>     
+                            <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>AULA Y CURSO</p> <button class="imagen opciones"></button></div>     
+                            <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>AULA Y CURSO</p> <button class="imagen opciones"></button></div>     
+                                           
                         </div>
                     </div>
-                    <h1>PAÑOLEROS</h1>
-                    <div class="scroll-x"style="height: 28vh;">
-                        <div class="conscroll-x" > 
-                            <div class="cubo2"></div>     
-                            <div class="cubo2"></div>       
-                            <div class="cubo2"></div>           
-                        </div>
-                    </div>
-                </div>
-                <div class="con3" id="pedidos" style="display:none">
-
-                </div>
-                <div class="con3" id="reportes" style="display:none">
-
                 </div>
             </div>
         </div>
@@ -69,6 +52,21 @@ if (!isset($_SESSION['id_usuario'])) {
             <a href="reportes.php" class="alerta imagen derecha">Reportes</a>
         </div>
     </div>
-    
+    <div class="sombra">
+
+    </div>
+    <style>
+        .sombra{
+            background: linear-gradient(13deg,rgb(0,0,0,1), rgb(0,0,0,0.1));
+            backdrop-filter: blur(1vh);
+            position:absolute;
+            height:100%;
+            width: 100%;
+            left:0%;
+            top:0%;
+        }
+    </style>
 </body>
 </html>
+
+<script src="pedidos.js"></script>
