@@ -32,7 +32,7 @@ if (!isset($_SESSION['id_usuario'])) {
             </form>
             <div class="contenido2">
                 <div class="con3" id="inicio">
-                    <h1>INFORMACIÓN DEL PEDIDO</h1>
+                    <h1>TITULO</h1>
                     <?php
                     if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         if($_POST['busqueda']== null){
