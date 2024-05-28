@@ -52,6 +52,21 @@ button{
     auto auto auto;
     background-color:#202427;
 }
+#pagina2{
+    position: absolute;
+    right:0%;
+    top:0%;
+    height:100%;
+    width: 100%;
+    display:grid;
+    grid-template:
+    "HEA HEA HEA"7vh
+    ". . ."5vh
+    "CON CON CON"auto
+    "FOO FOO FOO"8vh/
+    auto auto auto;
+    background-color:#202427;
+}
 #header{
     padding-left:1vh;
     padding-right:1vh;
