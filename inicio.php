@@ -5,6 +5,8 @@ if (!isset($_SESSION['id_usuario'])) {
     header("Location: ./index.php");
     exit;
 }
+
+include './codigophp/conexionbs.php'
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -47,9 +49,16 @@ if (!isset($_SESSION['id_usuario'])) {
                     <h1>PAÑOLEROS</h1>
                     <div class="scroll-x"style="height: 28vh;">
                         <div class="conscroll-x" > 
-                            <div class="rectangulo"> <h1>NOMBRE</h1> <p>HORARIO</p> <button class="imagen pañolero"></button></div>          
-                            <div class="rectangulo"> <h1>NOMBRE</h1> <p>HORARIO</p> <button class="imagen pañolero"></button></div>          
-                                    
+                            <?php
+                            $sql = "SELECT nombre, apellido, horario FROM usuarios WHERE rol = 'panolero' ";
+                            $result = $conn->query($sql);
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    echo "<div class='rectangulo'><h1>".$row["nombre"]." ".$row["apellido"]
+                                ."</h1><p>".$row["horario"]."</p></div>";
+                            }
+                            }
+                            ?>            
                         </div>
                     </div>
                 </div>
