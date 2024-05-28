@@ -143,6 +143,22 @@ button{
     border-radius:25vh;
     background-position: left;
 }
+.conscroll-y .boton{
+    font-family: "Days One", sans-serif;
+    font-size: 2vh;
+    font-weight: 200;
+    color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-left: 2vh;
+    background-color:#4139E6;
+    border-radius:25vh;
+    background-position: left;
+    height: 7vh;
+    width: 35vh;
+}
 .izquierda{
     grid-area: IZ;          
 }
@@ -319,4 +335,31 @@ button{
     ". . . . ." auto/
     5vh auto auto auto 5vh
 }
+}
+
+#sombra{
+    background: linear-gradient(13deg,rgb(0,0,0,1), rgb(0,0,0,0.1));
+    backdrop-filter: blur(1vh);
+    position:absolute;
+    height:100%;
+    width: 100%;
+    left:0%;
+    top:0%;
+    grid-template:
+    ". . ."auto
+    "CON CON CON" 50vh/
+    auto auto auto;
+    display: none;
+}
+
+.contenidosombra{
+    background-color:#202427;
+    grid-area: CON;
+    border-radius:4vh 4vh 0vh 0vh;
+    display: grid;
+    position:relative;
+    grid-template:
+    ". . ."4vh
+    ". CON2 ."auto/
+    auto 90% auto;
 }

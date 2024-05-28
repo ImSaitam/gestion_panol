@@ -13,6 +13,7 @@ if (!isset($_SESSION['id_usuario'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Inicio</title>
+    <link rel="stylesheet" href="animaciones.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="imagenes.css">
 </head>
@@ -52,19 +53,26 @@ if (!isset($_SESSION['id_usuario'])) {
             <a href="reportes.php" class="alerta imagen derecha">Reportes</a>
         </div>
     </div>
-    <div class="sombra">
-
+    <div id="sombra">
+        <div class="contenidosombra">
+        <button class="barra">
+                <div class="equis"></div>
+                    <div>Volver</div>
+                    <div></div>
+            </button>
+            <div class="contenido2">
+                <div class="con3" id="inicio">
+                    <div class="scroll-y" style="height: 100%; padding-top:2vh;">
+                        <div class="conscroll-y">
+                                <a onclick="console.log('hola')" class="flecha imagen boton">Volver al inicio</a>                  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <style>
-        .sombra{
-            background: linear-gradient(13deg,rgb(0,0,0,1), rgb(0,0,0,0.1));
-            backdrop-filter: blur(1vh);
-            position:absolute;
-            height:100%;
-            width: 100%;
-            left:0%;
-            top:0%;
-        }
+      
     </style>
 </body>
 </html>
