@@ -39,11 +39,13 @@ if (!isset($_SESSION['id_usuario'])) {
                     <div class="scroll-y" style="height: 100%;">
                         <div class="conscroll-y">
                         <?php
-                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                            if($_POST['numerodepedido']== null){
+                        session_start();
 
+                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                            if($_POST['pedido'][0] == "C"){
+                                $_SESSION['pedido'] = $_POST['pedido'];
                             }else{
-                                
+                                $_SESSION['pedido'] += $_POST['pedido'];
                             }
                         }
                         ?>
