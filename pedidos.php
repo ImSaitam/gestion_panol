@@ -41,6 +41,21 @@ if (!isset($_SESSION['id_usuario'])) {
                     <h1>HISTORIAL DE PEDIDOS</h1>
                     <div class="scroll-y" style="height: 100%;">
                         <div class="conscroll-y">
+                            <?php
+                                include "codigophp/conexionbs.php";
+                                $sql = "SELECT *
+                                FROM pedido
+                                INNER JOIN ubicacion_herramienta ON pedido.ubicacion_pedido = ubicacion_herramienta.id_ubicacion_herramienta
+                                WHERE pedido.usuario_solicitante = ".$_SESSION['id_usuario'];
+                                $result = $conn->query($sql);
+                                if ($result->num_rows > 0) {
+                                    while($row = $result->fetch_assoc()) {
+                                        echo '<div class="rectangulo2"><h1>'.$row["fecha_pedido"].'</h1> <p>'.$row["ubicacion"].'</p> <button class="imagen opciones"></button></div>';
+                                    }
+                                } else {
+                                    echo "<h1>NO HAY PEDIDOS AUN</h1>";
+                                }
+                            ?>
                             <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>AULA Y CURSO</p> <button class="imagen opciones"></button></div>     
                             <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>AULA Y CURSO</p> <button class="imagen opciones"></button></div>     
                             <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>AULA Y CURSO</p> <button class="imagen opciones"></button></div>     

@@ -36,6 +36,7 @@ if (!isset($_SESSION['id_usuario'])) {
                     <h1>TITULO</h1>
                     <div class="scroll-x">
                         <div class="conscroll-x">
+                            
                             <button onclick="console.log('a')" class="cubo"> <h1>TITULO</h1> <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit Lorem, ipsum.</p></button>
                             <button class="cubo"> <h1>TITULO</h1> <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit Lorem, ipsum.</p></button>
                             <button class="cubo"> <h1>TITULO</h1> <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit Lorem, ipsum.</p></button>
