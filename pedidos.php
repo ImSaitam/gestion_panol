@@ -45,7 +45,6 @@ include "codigophp/conexionbs.php";
                         <div class="conscroll-y">
                             <?php
                                 $sql = "SELECT 
-                                SELECT 
                                 r.id AS reporte_id,
                                 DATE_FORMAT(r.fecha, '%Y-%m-%d') AS dia,
                                 DATE_FORMAT(r.fecha, '%H:%i:%s') AS hora,
@@ -64,21 +63,7 @@ include "codigophp/conexionbs.php";
                             INNER JOIN 
                                 aulas a ON uh.id = a.id_aulas
                             ORDER BY 
-                                r.fecha DESC;;
-                    
-                    $result = $conn->query($sql);
-                    
-                    if ($result->num_rows > 0) {
-                        // Salida de datos por cada fila
-                        while($row = $result->fetch_assoc()) {
-                            echo "ID Reporte: " . $row["reporte_id"]. " - Usuario: " . $row["usuario"]. " - Email: " . $row["email"]. " - Herramienta Observación: " . $row["herramienta_observacion"]. " - Categoría: " . $row["categoria"]. " - Aula: " . $row["aula"]. " - Ubicación: " . $row["ubicacion_herramienta"]. " - Observaciones: " . $row["reporte_observaciones"]. "<br>";
-                        }
-                    } else {
-                        echo "0 resultados";
-                    }
-                    
-                    $conn->close();
-                    ?>
+                                r.fecha DESC";
                             ?>
                             <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>AULA Y CURSO</p> <button class="imagen opciones"></button></div>     
                             <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>AULA Y CURSO</p> <button class="imagen opciones"></button></div>     
