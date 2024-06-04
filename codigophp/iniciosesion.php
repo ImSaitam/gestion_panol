@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Buscar el usuario
     // Preparar la consulta SQL
-$stmt = $mysqli->prepare("SELECT id_usuario, contrasenia FROM usuario WHERE username = ?");
+$stmt = $mysqli->prepare("SELECT id_usuario, contrasena FROM usuarios WHERE username = ?");
 $stmt->bind_param("s", $username);
 $stmt->execute();
 $stmt->store_result();

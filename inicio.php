@@ -50,12 +50,11 @@ include './codigophp/conexionbs.php'
                     <div class="scroll-x"style="height: 28vh;">
                         <div class="conscroll-x" > 
                             <?php
-                            $sql = "SELECT nombre, apellido, horario FROM usuario WHERE rol = 'panolero' ";
+                            $sql = "SELECT nombre_completo, horario FROM usuarios WHERE cargo = 'panolero' ";
                             $result = $conn->query($sql);
                             if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
-                                    echo "<div class='rectangulo'><h1>".$row["nombre"]." ".$row["apellido"]
-                                ."</h1><p>".$row["horario"]."</p></div>";
+                                    echo "<div class='rectangulo'><h1>".$row["nombre_completo"]."<p>".$row["horario"]."</p></div>";
                             }
                             }
                             ?>            
