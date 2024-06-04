@@ -45,25 +45,23 @@ include "codigophp/conexionbs.php";
                         <div class="conscroll-y">
                             <?php
                                 $sql = "SELECT 
-                                r.id AS reporte_id,
-                                DATE_FORMAT(r.fecha, '%Y-%m-%d') AS dia,
-                                DATE_FORMAT(r.fecha, '%H:%i:%s') AS hora,
+                                p.id_pedido AS pedido_id,
+                                DATE_FORMAT(p.fecha_pedido, '%Y-%m-%d') AS dia,
+                                DATE_FORMAT(p.fecha_pedido, '%H:%i:%s') AS hora,
                                 a.nombre AS aula,
                                 c.nombre AS curso
                             FROM 
-                                reportes r
+                                pedidos p
                             INNER JOIN 
-                                usuarios u ON r.id_usuario = u.id_usuario
+                                aulas a ON p.id_aula = a.id_aulas
+                            INNER JOIN 
+                                reportes r ON p.id_pedido = r.id_pedido
                             INNER JOIN 
                                 herramientaxunidad h ON r.id_herramienta = h.id
                             INNER JOIN 
                                 categoria c ON h.id_categoria = c.id
-                            INNER JOIN 
-                                ubicacion_herramienta uh ON h.id = uh.id
-                            INNER JOIN 
-                                aulas a ON uh.id = a.id_aulas
                             ORDER BY 
-                                r.fecha DESC";
+                                p.fecha_pedido DESC";
                             ?>
                             <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>AULA Y CURSO</p> <button class="imagen opciones"></button></div>     
                             <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>AULA Y CURSO</p> <button class="imagen opciones"></button></div>     
