@@ -89,7 +89,6 @@ include "codigophp/conexionbs.php";
                 <div class="con3" id="inicio">
                     <div class="scroll-y" style="height: 100%; padding-top:2vh;">
                         <div class="conscroll-y">
-                            
                                 <a onclick="console.log('hola')" class="basura imagen boton">Eliminar pedido</a>
                                 <a onclick="console.log('hola')" class="flecha imagen boton">Eliminar pedido</a>
                                 <a onclick="console.log('hola')" class="flecha imagen boton">Volver al inicio</a>                  
