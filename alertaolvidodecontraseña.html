@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario y Pedidos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">G</div>
+            <div class="profile-icon"></div>
+        </header>
+        <div class="titulo">
+            <h1>TITULO</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt</p>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar...">
+        </div>
+        <section class="inventory">
+            <h2>Inventario</h2>
+            <div class="item">
+                <h3>Martillos</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,</p>
+            </div>
+            <div class="item">
+                <h3>Destornillador</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,</p>
+            </div>
+        </section>
+        <section class="orders">
+            <h2>Pedidos</h2>
+            <div class="order">
+                <p>Hoy - 17:30</p>
+                <p>Profesora Balda</p>
+            </div>
+            <div class="order">
+                <p>Hoy - 17:32</p>
+                <p>Profesora Balda</p>
+            </div>
+        </section>
+        <footer>
+            <div class="icon bell-icon"></div>
+            <div class="icon g-icon"></div>
+            <div class="icon alert-icon"></div>
+        </footer>
+    </div>
+</body>
+</html>
+<style>
+    * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2c2c2c;
+    color: white;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #444;
+    border-radius: 50%;
+}
+
+.titulo {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.titulo h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.titulo p {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #cccccc;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.search-bar input {
+    width: 90%;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+}
+
+.inventory, .orders {
+    margin-top: 20px;
+}
+
+.inventory h2, .orders h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.item, .order {
+    background-color: #4b4bff;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.item h3, .order p {
+    font-size: 16px;
+}
+
+.order {
+    background-color: #a6ff6f;
+    color: #000;
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    background-color: #444;
+    border-radius: 50%;
+}
+
+.bell-icon {
+    background-color: #ffcc00;
+}
+
+.g-icon {
+    background-color: #4b4bff;
+}
+
+.alert-icon {
+    background-color: #ff3300;
+}
+
+</style>

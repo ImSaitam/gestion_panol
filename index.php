@@ -2,10 +2,10 @@
 // dashboard.php
 session_start();
 
-if (isset($_SESSION['id_usuario'])) {
+/*if (isset($_SESSION['id_usuario'])) {
     header("Location: ./inicio.php");
     exit;
-}
+}*/
 ?>
 <!DOCTYPE html>
 <html lang="es">

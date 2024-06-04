@@ -6,6 +6,8 @@ if (!isset($_SESSION['id_usuario'])) {
     header("Location: ./index.php");
     exit;
 }
+include "codigophp/conexionbs.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -42,15 +44,14 @@ if (!isset($_SESSION['id_usuario'])) {
                     <div class="scroll-y" style="height: 100%;">
                         <div class="conscroll-y">
                             <?php
-                                include "codigophp/conexionbs.php";
                                 $sql = "SELECT *
                                 FROM pedido
-                                INNER JOIN ubicacion_herramienta ON pedido.ubicacion_pedido = ubicacion_herramienta.id_ubicacion_herramienta
+                                INNER JOIN aulas ON pedido.ubicacion_pedido = aulas.id_aulas
                                 WHERE pedido.usuario_solicitante = ".$_SESSION['id_usuario'];
                                 $result = $conn->query($sql);
                                 if ($result->num_rows > 0) {
                                     while($row = $result->fetch_assoc()) {
-                                        echo '<div class="rectangulo2"><h1>'.$row["fecha_pedido"].'</h1> <p>'.$row["ubicacion"].'</p> <button class="imagen opciones"></button></div>';
+                                        echo '<div class="rectangulo2"><h1>'.$row["fecha_pedido"].'</h1> <p>'.$row["nombre"]." ".$row["piso"].'</p> <button class="imagen opciones"></button></div>';
                                     }
                                 } else {
                                     echo "<h1>NO HAY PEDIDOS AUN</h1>";

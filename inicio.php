@@ -50,7 +50,7 @@ include './codigophp/conexionbs.php'
                     <div class="scroll-x"style="height: 28vh;">
                         <div class="conscroll-x" > 
                             <?php
-                            $sql = "SELECT nombre, apellido, horario FROM usuarios WHERE rol = 'panolero' ";
+                            $sql = "SELECT nombre, apellido, horario FROM usuario WHERE rol = 'panolero' ";
                             $result = $conn->query($sql);
                             if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
