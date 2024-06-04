@@ -45,14 +45,12 @@ include "codigophp/conexionbs.php";
                         <div class="conscroll-y">
                             <?php
                                 $sql = "SELECT 
+                                SELECT 
                                 r.id AS reporte_id,
-                                u.nombre_completo AS usuario,
-                                u.correo AS email,
-                                h.observacion AS herramienta_observacion,
-                                c.nombre AS categoria,
+                                DATE_FORMAT(r.fecha, '%Y-%m-%d') AS dia,
+                                DATE_FORMAT(r.fecha, '%H:%i:%s') AS hora,
                                 a.nombre AS aula,
-                                uh.ubicacion AS ubicacion_herramienta,
-                                r.observaciones AS reporte_observaciones
+                                c.nombre AS curso
                             FROM 
                                 reportes r
                             INNER JOIN 
@@ -66,7 +64,7 @@ include "codigophp/conexionbs.php";
                             INNER JOIN 
                                 aulas a ON uh.id = a.id_aulas
                             ORDER BY 
-                                r.id DESC";
+                                r.fecha DESC;;
                     
                     $result = $conn->query($sql);
                     
