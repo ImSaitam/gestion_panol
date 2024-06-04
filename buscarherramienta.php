@@ -61,7 +61,6 @@ if (!isset($_SESSION['id_usuario'])) {
         <button class="barra">
                 <div class="equis"></div>
                     <div>Volver</div>
-                    
                     <div></div>
             </button>
             <div class="contenido2">

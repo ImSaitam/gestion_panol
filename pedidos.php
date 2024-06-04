@@ -44,18 +44,43 @@ include "codigophp/conexionbs.php";
                     <div class="scroll-y" style="height: 100%;">
                         <div class="conscroll-y">
                             <?php
-                                $sql = "SELECT *
-                                FROM pedido
-                                INNER JOIN aulas ON pedido.ubicacion_pedido = aulas.id_aulas
-                                WHERE pedido.usuario_solicitante = ".$_SESSION['id_usuario'];
-                                $result = $conn->query($sql);
-                                if ($result->num_rows > 0) {
-                                    while($row = $result->fetch_assoc()) {
-                                        echo '<div class="rectangulo2"><h1>'.$row["fecha_pedido"].'</h1> <p>'.$row["nombre"]." ".$row["piso"].'</p> <button class="imagen opciones"></button></div>';
-                                    }
-                                } else {
-                                    echo "<h1>NO HAY PEDIDOS AUN</h1>";
-                                }
+                                $sql = "SELECT 
+                                r.id AS reporte_id,
+                                u.nombre_completo AS usuario,
+                                u.correo AS email,
+                                h.observacion AS herramienta_observacion,
+                                c.nombre AS categoria,
+                                a.nombre AS aula,
+                                uh.ubicacion AS ubicacion_herramienta,
+                                r.observaciones AS reporte_observaciones
+                            FROM 
+                                reportes r
+                            INNER JOIN 
+                                usuarios u ON r.id_usuario = u.id_usuario
+                            INNER JOIN 
+                                herramientaxunidad h ON r.id_herramienta = h.id
+                            INNER JOIN 
+                                categoria c ON h.id_categoria = c.id
+                            INNER JOIN 
+                                ubicacion_herramienta uh ON h.id = uh.id
+                            INNER JOIN 
+                                aulas a ON uh.id = a.id_aulas
+                            ORDER BY 
+                                r.id DESC";
+                    
+                    $result = $conn->query($sql);
+                    
+                    if ($result->num_rows > 0) {
+                        // Salida de datos por cada fila
+                        while($row = $result->fetch_assoc()) {
+                            echo "ID Reporte: " . $row["reporte_id"]. " - Usuario: " . $row["usuario"]. " - Email: " . $row["email"]. " - Herramienta Observación: " . $row["herramienta_observacion"]. " - Categoría: " . $row["categoria"]. " - Aula: " . $row["aula"]. " - Ubicación: " . $row["ubicacion_herramienta"]. " - Observaciones: " . $row["reporte_observaciones"]. "<br>";
+                        }
+                    } else {
+                        echo "0 resultados";
+                    }
+                    
+                    $conn->close();
+                    ?>
                             ?>
                             <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>AULA Y CURSO</p> <button class="imagen opciones"></button></div>     
                             <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>AULA Y CURSO</p> <button class="imagen opciones"></button></div>     
