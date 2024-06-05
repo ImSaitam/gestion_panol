@@ -89,7 +89,10 @@ include "codigophp/conexionbs.php";
                 <div class="con3" id="inicio">
                     <div class="scroll-y" style="height: 100%; padding-top:2vh;">
                         <div class="conscroll-y">
-                                <a onclick="console.log('hola')" class="basura imagen boton">Eliminar pedido</a>
+                            <form action = "./codigophp/borrarpedido.php" method = "post">
+                            <input type="text" style="display:none;" name="pedido" value="2">
+                                <input type = "submit" class="basura imagen boton">
+                </form>
                                 <a onclick="console.log('hola')" class="flecha imagen boton">Eliminar pedido</a>
                                 <a onclick="console.log('hola')" class="flecha imagen boton">Volver al inicio</a>                  
                         </div>
@@ -105,4 +108,3 @@ include "codigophp/conexionbs.php";
 </html>
 
 <script src="codigojs/sombra.js"></script>
-<script src="codigojs/nuevopedido.js"></script>
