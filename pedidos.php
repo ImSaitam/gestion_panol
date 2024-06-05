@@ -45,28 +45,28 @@ include "codigophp/conexionbs.php";
                         <div class="conscroll-y">
                             <?php
                                 $sql = "SELECT 
-                                p.id_pedido AS pedido_id,
-                                DATE_FORMAT(p.fecha_pedido, '%Y-%m-%d') AS dia,
-                                DATE_FORMAT(p.fecha_pedido, '%H:%i:%s') AS hora,
-                                a.nombre AS aula,
-                                c.nombre AS curso
+                                *
                             FROM 
-                                pedidos p
-                            INNER JOIN 
-                                aulas a ON p.id_aula = a.id_aulas
-                            INNER JOIN 
-                                reportes r ON p.id_pedido = r.id_pedido
-                            INNER JOIN 
-                                herramientaxunidad h ON r.id_herramienta = h.id
-                            INNER JOIN 
-                                categoria c ON h.id_categoria = c.id
-                            ORDER BY 
-                                p.fecha_pedido DESC";
-                            ?>
-                            <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>AULA Y CURSO</p> <button class="imagen opciones"></button></div>     
-                            <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>AULA Y CURSO</p> <button class="imagen opciones"></button></div>     
-                            <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>AULA Y CURSO</p> <button class="imagen opciones"></button></div>     
-                                           
+                                pedidos WHERE 
+                                pedidos.usuario_solicitante = ?
+                            ";
+                    
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("s", $_SESSION['id_usuario']); 
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            echo '<div class="rectangulo2"><h1>'.$row["fecha_pedido"].'</h1> <p>'.$row["id_aula"].' '.$row["curso"].'</p> <button class="imagen opciones"></button></div>';
+                        }
+                    } else {
+                        echo "<h1>NO HAY PEDIDOS AUN</h1>";
+                    }
+                    
+                    $stmt->close();
+                    $conn->close();
+                    ?>            
                         </div>
                     </div>
                 </div>
