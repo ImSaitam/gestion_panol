@@ -35,7 +35,7 @@ include "codigophp/conexionbs.php";
                     <div class="mas"></div>
                         <div>Crear nuevo pedido</div>
                         <div></div>
-                        <input type="text" value="" name="numeropedido" style="display:none;">
+                        <input type="text" value="nuevopedido" name="estado" style="display:none;">
                 </button>
             </form>
             <div class="contenido2">
@@ -57,7 +57,7 @@ include "codigophp/conexionbs.php";
                                     echo "<h1>NO HAY PEDIDOS AUN</h1>";
                                 }
                             ?>
-                            <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>AULA Y CURSO</p> <button class="imagen opciones"></button></div>     
+                            <div class="rectangulo2"><input name="diahora" value="DIA Y HORA"><input name="aulacurso" value="AULA Y CURSO"> <button class="imagen opciones"></button></div>     
                             <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>AULA Y CURSO</p> <button class="imagen opciones"></button></div>     
                             <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>AULA Y CURSO</p> <button class="imagen opciones"></button></div>     
                                            
