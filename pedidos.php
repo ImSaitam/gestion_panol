@@ -44,23 +44,29 @@ include "codigophp/conexionbs.php";
                     <div class="scroll-y" style="height: 100%;">
                         <div class="conscroll-y">
                             <?php
-                                $sql = "SELECT *
-                                FROM pedido
-                                INNER JOIN aulas ON pedido.ubicacion_pedido = aulas.id_aulas
-                                WHERE pedido.usuario_solicitante = ".$_SESSION['id_usuario'];
-                                $result = $conn->query($sql);
-                                if ($result->num_rows > 0) {
-                                    while($row = $result->fetch_assoc()) {
-                                        echo '<div class="rectangulo2"><h1>'.$row["fecha_pedido"].'</h1> <p>'.$row["nombre"]." ".$row["piso"].'</p> <button class="imagen opciones"></button></div>';
-                                    }
-                                } else {
-                                    echo "<h1>NO HAY PEDIDOS AUN</h1>";
-                                }
-                            ?>
-                            <div class="rectangulo2"><input name="diahora" value="DIA Y HORA"><input name="aulacurso" value="AULA Y CURSO"> <button class="imagen opciones"></button></div>     
-                            <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>AULA Y CURSO</p> <button class="imagen opciones"></button></div>     
-                            <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>AULA Y CURSO</p> <button class="imagen opciones"></button></div>     
-                                           
+                                $sql = "SELECT 
+                                *
+                            FROM 
+                                pedidos WHERE 
+                                pedidos.usuario_solicitante = ?
+                            ";
+                    
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("s", $_SESSION['id_usuario']); 
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            echo '<div class="rectangulo2"><h1>'.$row["fecha_pedido"].'</h1> <p>'.$row["id_aula"].' '.$row["curso"].'</p> <button class="imagen opciones"></button></div>';
+                        }
+                    } else {
+                        echo "<h1>NO HAY PEDIDOS AUN</h1>";
+                    }
+                    
+                    $stmt->close();
+                    $conn->close();
+                    ?>            
                         </div>
                     </div>
                 </div>
@@ -83,7 +89,10 @@ include "codigophp/conexionbs.php";
                 <div class="con3" id="inicio">
                     <div class="scroll-y" style="height: 100%; padding-top:2vh;">
                         <div class="conscroll-y">
-                                <a onclick="console.log('hola')" class="basura imagen boton">Eliminar pedido</a>
+                            <form action = "./codigophp/borrarpedido.php" method = "post">
+                            <input type="text" style="display:none;" name="pedido" value="2">
+                                <input type = "submit" class="basura imagen boton">
+                </form>
                                 <a onclick="console.log('hola')" class="flecha imagen boton">Eliminar pedido</a>
                                 <a onclick="console.log('hola')" class="flecha imagen boton">Volver al inicio</a>                  
                         </div>
@@ -99,4 +108,3 @@ include "codigophp/conexionbs.php";
 </html>
 
 <script src="codigojs/sombra.js"></script>
-<script src="codigojs/nuevopedido.js"></script>

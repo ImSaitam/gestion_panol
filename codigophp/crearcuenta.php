@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contrasena = trim($_POST['contrasena']);
 
     // Validar la entrada
-    if (empty($nombre_completo) || empty($username) || empty($correo) || empty($contrasena)) {
+    if (empty($nombre_completo)|| empty($username) || empty($correo) || empty($contrasena)) {
         die('Por favor, complete todos los campos.');
     }
 
@@ -45,8 +45,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <form action="./crearcuenta.php" method="post">
+<<<<<<< HEAD
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre_completo" id="nombre" required><br>
+=======
         <label for="nombre_completo">Nombre:</label>
         <input type="text" name="nombre_completo" id="nombre_completo" required><br>
+>>>>>>> ca698685cbd43db82752a7542d4c3a67f3449405
         <label for="username">Nombre de usuario:</label>
         <input type="text" name="username" id="username" required><br>
         <label for="correo">Correo electronico:</label>
