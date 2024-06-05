@@ -4,15 +4,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre_completo = trim($_POST['nombre_completo']);
     $username = trim($_POST['username']);
     $correo = trim($_POST['correo']);
-    $password = trim($_POST['password']);
+    $contrasena = trim($_POST['contrasena']);
 
     // Validar la entrada
-    if (empty($nombre_completo)|| empty($username) || empty($correo) || empty($password)) {
+    if (empty($nombre_completo)|| empty($username) || empty($correo) || empty($contrasena)) {
         die('Por favor, complete todos los campos.');
     }
 
     // Hashear la contraseña
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $hashed_password = password_hash($contrasena, PASSWORD_DEFAULT);
 
     // Conectar a la base de datos
     $mysqli = new mysqli("localhost", "root", "", "panol");
@@ -45,14 +45,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <form action="./crearcuenta.php" method="post">
+<<<<<<< HEAD
         <label for="nombre">Nombre:</label>
         <input type="text" name="nombre_completo" id="nombre" required><br>
+=======
+        <label for="nombre_completo">Nombre:</label>
+        <input type="text" name="nombre_completo" id="nombre_completo" required><br>
+>>>>>>> ca698685cbd43db82752a7542d4c3a67f3449405
         <label for="username">Nombre de usuario:</label>
         <input type="text" name="username" id="username" required><br>
         <label for="correo">Correo electronico:</label>
         <input type="text" name="correo" id="correo" required><br>
-        <label for="password">Contraseña:</label>
-        <input type="password" name="password" id="password" required><br>
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" name="contrasena" id="contrasena" required><br>
         <input type="submit" value="Registrarse">
     </form>
 </body>
