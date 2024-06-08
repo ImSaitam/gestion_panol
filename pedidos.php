@@ -30,6 +30,7 @@ include "codigophp/conexionbs.php";
                         <div>Crear nuevo pedido</div>
                         <div></div>
                         <input type="text" value="nuevopedido" name="estado" style="display:none;">
+                        <input type="text" value="" name="pedido" style="display:none;">
                 </button>
             </form>
             <div class="contenido2">

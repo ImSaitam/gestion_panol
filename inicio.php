@@ -2,7 +2,10 @@
 include "./codigophp/sesion.php";
 
 include './codigophp/conexionbs.php'
+
+
 ?>
+<?php echo htmlspecialchars($_SESSION['cargo']); ?>
 <!DOCTYPE html>
 <html lang="es"> 
 <head>
