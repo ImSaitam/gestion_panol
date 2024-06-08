@@ -1,11 +1,11 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "panol";
+$servernamebd = "localhost";
+$usernamebd = "root";
+$passwordbd = "";
+$dbnamebd = "panol";
 
 // Crear la conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servernamebd, $usernamebd, $passwordbd, $dbnamebd);
 
 // Verificar la conexión
 if ($conn->connect_error) {

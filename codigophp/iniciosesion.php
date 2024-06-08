@@ -1,21 +1,15 @@
 <?php
 // login.php
-session_start();
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
 
     // Conectar a la base de datos
-    $mysqli = new mysqli("localhost", "root", "", "panol");
+    include "./conexionbs.php";
 
-    if ($mysqli->connect_error) {
-        die("Conexión fallida: " . $mysqli->connect_error);
-    }
-
-    // Buscar el usuario
-    // Preparar la consulta SQL
-$stmt = $mysqli->prepare("SELECT id_usuario, contrasena FROM usuarios WHERE username = ?");
+$stmt = $conn->prepare("SELECT id_usuario, contrasena FROM usuarios WHERE username = ?");
 $stmt->bind_param("s", $username);
 $stmt->execute();
 $stmt->store_result();
@@ -51,7 +45,7 @@ if ($stmt->num_rows > 0) {
 
 
     $stmt->close();
-    $mysqli->close();
+    $conn->close();
 }
 ?>
 
