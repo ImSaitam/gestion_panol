@@ -25,6 +25,7 @@ session_start();
         <input type="password" class="boton-iniciar" name="password" id="password" required><br>
         <input type="submit" value="Iniciar sesión">
         <button class="boton-olvidado">Me olvidé mi contraseña</button>
+        
     </form>
 </body>
 </html>
