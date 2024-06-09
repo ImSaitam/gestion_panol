@@ -39,12 +39,7 @@ include "codigophp/conexionbs.php";
                     <div class="scroll-y" style="height: 100%;">
                         <div class="conscroll-y">
                             <?php
-                                $sql = "SELECT 
-                                *
-                            FROM 
-                                pedidos WHERE 
-                                pedidos.usuario_solicitante = ?
-                            ";
+                                $sql = "SELECT * FROM pedidos WHERE pedidos.usuario_solicitante = ?";
                     
                     $stmt = $conn->prepare($sql);
                     $stmt->bind_param("s", $_SESSION['id_usuario']); 
@@ -53,7 +48,7 @@ include "codigophp/conexionbs.php";
                     
                     if ($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
-                            echo '<div class="rectangulo2"><h1>'.$row["fecha_pedido"].'</h1> <p>'.$row["id_aula"].' '.$row["estado"].'</p> <button class="imagen opciones"></button></div>';
+                            echo '<div class="rectangulo2"><h1>'.$row["fecha_pedido"].'</h1> <p>'.$row["id_aula"].' '.$row["estado"].'</p> <form action="./codigophp/borrarpedido.php" method="post"><input type="hidden" name="pedido" value="'.$row["id_pedido"].'"><input type="submit" class="imagen opciones" value="Eliminar"></form></div>';
                         }
                     } else {
                         echo "<h1>NO HAY PEDIDOS AUN</h1>";
@@ -99,7 +94,6 @@ include "codigophp/conexionbs.php";
     <style>
       
     </style>
+    <script src="codigojs/sombra.js"></script>
 </body>
 </html>
-
-<script src="codigojs/sombra.js"></script>

@@ -35,3 +35,9 @@ opciones.forEach(element => {
 opcionesx.forEach(element => {
     element.parentNode.addEventListener('click', sacarblur);
 });
+/*funcion borrar pedido*/
+function setEliminarPedido(id) {
+    document.getElementById('pedido').value = id;
+    document.getElementById('formborrarPedido').submit();
+}
+
