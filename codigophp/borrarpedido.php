@@ -1,5 +1,4 @@
 <?php
-
 include "./sesion.php";
 include "./conexionbs.php";
 
