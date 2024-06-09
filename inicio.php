@@ -1,21 +1,19 @@
 <?php
-session_start();
-
-if (!isset($_SESSION['id_usuario'])) {
-    header("Location: ./index.php");
-    exit;
-}
+include "./codigophp/sesion.php";
 
 include './codigophp/conexionbs.php'
+
+
 ?>
+<?php echo htmlspecialchars($_SESSION['cargo']); ?>
 <!DOCTYPE html>
 <html lang="es"> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Inicio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="imagenes.css">
+    <link rel="stylesheet" href="estiloscss/styles.css">
+    <link rel="stylesheet" href="estiloscss/imagenes.css">
 </head>
 <body>
     <div id="pagina">

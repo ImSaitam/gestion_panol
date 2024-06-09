@@ -1,11 +1,6 @@
 <?php
-// dashboard.php
-session_start();
+include "./codigophp/sesion.php";
 
-if (!isset($_SESSION['id_usuario'])) {
-    header("Location: ./index.php");
-    exit;
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -13,9 +8,9 @@ if (!isset($_SESSION['id_usuario'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Inicio</title>
-    <link rel="stylesheet" href="animaciones.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="imagenes.css">
+    <link rel="stylesheet" href="estiloscss/animaciones.css">
+    <link rel="stylesheet" href="estiloscss/styles.css">
+    <link rel="stylesheet" href="estiloscss/imagenes.css">
 </head>
 <body>
     <div id="pagina2">
@@ -41,27 +36,40 @@ if (!isset($_SESSION['id_usuario'])) {
                         <?php
 
                         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                            $tipo = trim($_POST['tipo']);
-                            $pedido =  $_POST['pedido'];
-                            if($tipo == "nuevopedido"){
-                                echo '<div class="rectangulo2"><h1>NOMBRE</h1> <p>ROL CURSO</p> <button class="imagen opciones"></button></div>'
-                                echo '<div class="rectangulo2"><h1>AULA</h1> <p>HORARIO</p> <button class="imagen opciones"></button></div>'
-                                if($pedido != null){
-                                    $sql = "SELECT * FROM pedido INNER JOIN aulas ON pedido.ubicacion_pedido = aulas.id_aulas WHERE pedido.usuario_solicitante = ".$_SESSION['id_usuario'];
-                                    $result = $conn->query($sql);
-                                    if ($result->num_rows > 0) {
-                                        while($row = $result->fetch_assoc()) {
-                                            echo '<div class="rectangulo2"><h1>'.$row["fecha_pedido"].'</h1> <p>'.$row["nombre"]." ".$row["piso"].'</p> <button class="imagen opciones"></button></div>';
-                                        }
-                                    } else {
-                                        echo "<h1>NO HAY PEDIDOS AUN</h1>";
-                                    }
+                            $estado = trim($_POST['estado']);
+                            $_SESSION['pedido'] = $_POST['pedido'];
+                            if($estado == "nuevopedido"){
+                                $fechaHoraActual = date('Y-m-d H:i:s');
+                                echo '<input type="text" name="nombre" value="'.$_SESSION['nombrecompleto'].'" readonly>';
+                                echo '<input type="text" name="rol" value="' . $_SESSION['cargo'] . '" readonly>';
+                                echo '<input type="text" name="curso" value="" placeholder="Ingrese el curso">';
+                                echo '<input type="text" name="aula" value="" placeholder="Ingrese el aula">';
+                                echo '<input type="text" name="horario" value="' . $fechaHoraActual . '" readonly>';
+                                if($_SESSION['pedido'] == null){
+                                    echo "<h1>NO HAY HERRAMIENTAS AUN</h1>";
                                 }
                             }else{
-                                $_SESSION['pedido'] += $_POST['pedido'];
+                                echo '<h1>HERRAMIENTAS</h1>';
+                                $stmt = $conn->prepare($sql);
+                                $stmt->bind_param("s", $_SESSION['id_usuario']); 
+                                $stmt->execute();
+                                $result = $stmt->get_result();
+                                
+                                if ($result->num_rows > 0) {
+                                    while($row = $result->fetch_assoc()) {
+                                        echo '<div class="rectangulo2"><h1>'.$row["fecha_pedido"].'</h1> <p>'.$row["id_aula"].' '.$row["curso"].'</p> <button class="imagen opciones"></button></div>';
+                                    }
+                                } else {
+                                    echo "<h1>NO HAY PEDIDOS AUN</h1>";
+                                }
+                                
+                                $stmt->close();
+                                $conn->close();
                             }
+                            
                         }
                         ?>
+                        
                         </form>
                     </div>
                 </div>

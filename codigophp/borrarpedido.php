@@ -1,5 +1,6 @@
 <?php
-session_start(); // Asegúrate de iniciar la sesión
+
+include "./sesion.php";
 include "./conexionbs.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

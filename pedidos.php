@@ -1,11 +1,5 @@
 <?php
-// dashboard.php
-session_start();
-
-if (!isset($_SESSION['id_usuario'])) {
-    header("Location: ./index.php");
-    exit;
-}
+include "./codigophp/sesion.php";
 include "codigophp/conexionbs.php";
 
 ?>
@@ -15,9 +9,9 @@ include "codigophp/conexionbs.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Inicio</title>
-    <link rel="stylesheet" href="animaciones.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="imagenes.css">
+    <link rel="stylesheet" href="estiloscss/animaciones.css">
+    <link rel="stylesheet" href="estiloscss/styles.css">
+    <link rel="stylesheet" href="estiloscss/imagenes.css">
 </head>
 <body>
     <div id="pagina">
@@ -36,6 +30,7 @@ include "codigophp/conexionbs.php";
                         <div>Crear nuevo pedido</div>
                         <div></div>
                         <input type="text" value="nuevopedido" name="estado" style="display:none;">
+                        <input type="text" value="" name="pedido" style="display:none;">
                 </button>
             </form>
             <div class="contenido2">

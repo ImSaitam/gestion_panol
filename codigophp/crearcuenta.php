@@ -1,5 +1,6 @@
 <?php
-// register.php
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre_completo = trim($_POST['nombre_completo']);
     $username = trim($_POST['username']);
@@ -15,14 +16,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hashed_password = password_hash($contrasena, PASSWORD_DEFAULT);
 
     // Conectar a la base de datos
-    $mysqli = new mysqli("localhost", "root", "", "panol");
-
-    if ($mysqli->connect_error) {
-        die("Conexión fallida: " . $mysqli->connect_error);
-    }
+    include "./conexionbs.php";
 
     // Insertar el nuevo usuario
-    $stmt = $mysqli->prepare("INSERT INTO usuarios (nombre_completo, username, correo, contrasena) VALUES (?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO usuarios (nombre_completo, username, correo, contrasena) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("ssss", $nombre_completo, $username, $correo, $hashed_password);
     $stmt->execute();
 
@@ -33,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $stmt->close();
-    $mysqli->close();
+    $conn->close();
 }
 ?>
 
@@ -45,13 +42,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <form action="./crearcuenta.php" method="post">
-<<<<<<< HEAD
-        <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre_completo" id="nombre" required><br>
-=======
         <label for="nombre_completo">Nombre:</label>
         <input type="text" name="nombre_completo" id="nombre_completo" required><br>
->>>>>>> ca698685cbd43db82752a7542d4c3a67f3449405
         <label for="username">Nombre de usuario:</label>
         <input type="text" name="username" id="username" required><br>
         <label for="correo">Correo electronico:</label>
