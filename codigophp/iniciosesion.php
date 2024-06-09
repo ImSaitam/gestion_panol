@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = trim($_POST['password']);
 
     // Conectar a la base de datos
-    $mysqli = new mysqli("localhost", "root", "", "panol");
+    $mysqli = new mysqli("localhost", "root", "", "panol_definitivo");
 
     if ($mysqli->connect_error) {
         die("Conexión fallida: " . $mysqli->connect_error);
