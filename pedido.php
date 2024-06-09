@@ -43,7 +43,7 @@ include "./codigophp/conexionbs.php";
                                 "cantidad" => array(1, 2, 3)
                             );*/
 
-                            if($estado == "nuevopedido"){
+    
                                 $fechaHoraActual = date('Y-m-d H:i:s');
                                 echo '<div class="signomas imagen boton"><select name="curso"><option value="nada">Elija un curso</option>';
                                 $sql = "SELECT * FROM cursos";
@@ -65,7 +65,7 @@ include "./codigophp/conexionbs.php";
                                 echo'</select></div>';
                                 echo '<div class="signomas imagen boton"><input type="text" name="horario" value="' . $fechaHoraActual . '" readonly></div>';
                                 
-                            }
+                            
                             if($_SESSION['pedido'] == null){
                                 echo "<h1>NO HAY HERRAMIENTAS AUN</h1>";
                             }else{
@@ -101,9 +101,9 @@ include "./codigophp/conexionbs.php";
             </div>
         </div>
         <div id="footer">
-            <a href="notificaciones.php" class="campana imagen izquierda">Notificaciones</a>
+            <a href="notificaciones.php" class="basura imagen izquierda ">Eliminar pedido</a>
             <a onclick="goBack()" class="flecha imagen centro">Volver al inicio</a>
-            <a href="reportes.php" class="alerta imagen derecha">Reportes</a>
+            <a href="reportes.php" class="avion imagen derecha borde2">Enviar pedido</a>
         </div>
     </div>
     <div id="sombra" class="sombra">
