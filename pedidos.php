@@ -85,9 +85,9 @@ include "codigophp/conexionbs.php";
                     <div class="scroll-y" style="height: 100%; padding-top:2vh;">
                         <div class="conscroll-y">
                             <form action = "./codigophp/borrarpedido.php" method = "post">
-                            <input type="text" style="display:none;" name="pedido" value="2">
+                                <input type="text" style="display:none;" name="pedido" value="2">
                                 <input type = "submit" class="basura imagen boton">
-                </form>
+                            </form>
                                 <a onclick="console.log('hola')" class="flecha imagen boton">Eliminar pedido</a>
                                 <a onclick="console.log('hola')" class="flecha imagen boton">Volver al inicio</a>                  
                         </div>
