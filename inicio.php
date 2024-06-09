@@ -1,11 +1,10 @@
 <?php
 include "./codigophp/sesion.php";
-
-include './codigophp/conexionbs.php'
+include './codigophp/conexionbs.php';
 
 
 ?>
-<?php echo htmlspecialchars($_SESSION['cargo']); ?>
+
 <!DOCTYPE html>
 <html lang="es"> 
 <head>
@@ -14,12 +13,18 @@ include './codigophp/conexionbs.php'
     <title>Página de Inicio</title>
     <link rel="stylesheet" href="estiloscss/styles.css">
     <link rel="stylesheet" href="estiloscss/imagenes.css">
+    <link rel="stylesheet" href="estiloscss/animaciones.css">
+
 </head>
 <body>
+    
     <div id="pagina">
         <div id="header">
             <a href="inicio.php" class="logo imagen" ></a>
-            <button class="usuario imagen"></button>
+
+            <button  class="usuario imagen" id="user"></button>
+
+
         </div>
         <div id="subheader">
             <h1>Bienvenido <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
@@ -33,14 +38,19 @@ include './codigophp/conexionbs.php'
             </form>
             <div class="contenido2">
                 <div class="con3" id="inicio">
-                    <h1>TITULO</h1>
+                    <h1>HERRAMIENTAS</h1>
                     <div class="scroll-x">
                         <div class="conscroll-x">
-                            
-                            <button onclick="console.log('a')" class="cubo"> <h1>TITULO</h1> <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit Lorem, ipsum.</p></button>
-                            <button class="cubo"> <h1>TITULO</h1> <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit Lorem, ipsum.</p></button>
-                            <button class="cubo"> <h1>TITULO</h1> <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit Lorem, ipsum.</p></button>
-                            <button class="cubo"> <h1>TITULO</h1> <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit Lorem, ipsum.</p></button>
+                            <?php
+                                $sql = "SELECT nombre, descripcion FROM categoria";
+                                $result = $conn->query($sql);
+                                if ($result->num_rows > 0) {
+                                    while($row = $result->fetch_assoc()) {
+                                        echo '<button class="cubo"> <h1>'.$row["nombre"].'</h1> <p>Descripción: '.$row["descripcion"].'</p></button>';
+                                    }
+                                }
+                            ?> 
+                           
                             
                         </div>
                     </div>
@@ -66,8 +76,27 @@ include './codigophp/conexionbs.php'
             <a href="pedidos.php" class="logoboton imagen centro">Pedidos</a>
             <a href="reportes.php" class="alerta imagen derecha">Reportes</a>
         </div>
+        <div id="sombra2" class="sombra">
+        <div class="contenidosombra">
+        <button class="barra" id="opcionequis2">
+                <div class="equis" ></div>
+                    <div>Volver</div>
+                    <div></div>
+            </button>
+            <div class="contenido2">
+                <div class="con3" id="inicio">
+                    <div class="scroll-y" style="height: 100%; padding-top:2vh;">
+                        <div class="conscroll-y">
+                                <a href="codigophp/cerrarsesion.php" class="flecha imagen boton">Cerrar sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
    
 </body>
 </html>
-
+<?php $conn->close();?>
+<script src="./codigojs/sombra2.js"></script>

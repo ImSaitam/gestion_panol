@@ -14,7 +14,7 @@ include "./codigophp/sesion.php";
     <div id="pagina">
         <div id="header">
             <a href="inicio.php" class="logo imagen"></a>
-            <button class="usuario imagen"></button>
+            <button  class="usuario imagen" id="user"></button>
         </div>
         <div id="subheader">
             <h1>Notificaciones de <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
@@ -43,7 +43,26 @@ include "./codigophp/sesion.php";
             <a href="pedidos.php" class="logoboton imagen centro">Pedidos</a>
             <a href="reportes.php" class="alerta imagen derecha">Reportes</a>
         </div>
+
+        <div id="sombra2" class="sombra">
+        <div class="contenidosombra">
+        <button class="barra" id="opcionequis2">
+                <div class="equis" ></div>
+                    <div>Volver</div>
+                    <div></div>
+            </button>
+            <div class="contenido2">
+                <div class="con3" id="inicio">
+                    <div class="scroll-y" style="height: 100%; padding-top:2vh;">
+                        <div class="conscroll-y">
+                                <a href="codigophp/cerrarsesion.php" class="flecha imagen boton">Cerrar sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
     </div>
     
 </body>
 </html>
+<script src="codigojs/sombra2.js"></script>

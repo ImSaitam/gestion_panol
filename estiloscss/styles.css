@@ -220,8 +220,11 @@ button{
     font-weight: 200;
     color: white;
     border:none;
+    background-color: transparent;
     text-align: center;
-    padding-left: 20vh;
+    padding-left: 2vh;
+    width: 25vh;
+
 }
 .conscroll-y select{
     font-family: "Poppins", sans-serif;
@@ -230,7 +233,12 @@ button{
     color: white;
     border:none;
     text-align: center;
+    background-color: transparent;
+    width: 25vh;
     padding-left: 2vh;
+}
+option{
+    background-color: #4139E6;
 }
 .izquierda{
     grid-area: IZ;          
@@ -312,13 +320,14 @@ button{
     height: 20vh;
     width: 20vh;
     border-radius: 2vh;
+    overflow: hidden;
     box-shadow: 1vh 1vh 1vh 0vh rgba(208, 207, 238, 1);
     display: grid;
     grid-template: 
     "TITULO"1.1vh
     "TEXTO" auto/
     auto;
-    gap: 0.5vh;
+    gap: 2vh;
 }
 .cubo h1{
     color: white;
@@ -374,16 +383,51 @@ button{
     box-shadow: 0.1vh 0.5vh 1vh 0.2vh rgba(208, 207, 238, 1);
     border: rgba(208, 207, 238, 1) solid 0.1vh;
 }
+.rectangulo3{
+    background-color:white;
+    height: 12vh;
+    width: 39vh;
+    border-radius: 2vh;
+    display: grid;
+    grid-template:
+    ". . . . ."1vh
+    ". TITULO . BOTON ."auto
+    ". TEXTO . BOTON . " auto
+    ". . . . ."1vh/
+    2vh auto auto 8vh 2vh;
+    box-shadow: 0.1vh 0.5vh 1vh 0.2vh rgba(208, 207, 238, 1);
+    border: rgba(208, 207, 238, 1) solid 0.1vh;
+}
 .rectangulo2 h1{
+    grid-area: TITULO;
+}
+.rectangulo3 h1{
     grid-area: TITULO;
 }
 .rectangulo2 p{
     color: #202427;
     grid-area: TEXTO;
     font-weight: 400;
+    
 
 }
+.rectangulo3 input{
+    color: white;
+    grid-area: TEXTO;
+    font-weight: 400;
+    background-color: #4139E6;
+    width: 20vh;
+}
+.rectangulo3 input::placeholder {
+    color: red;
+}
 .rectangulo2 button{
+    grid-area: BOTON;
+}
+.rectangulo2 a{
+    grid-area: BOTON;
+}
+.rectangulo3 a{
     grid-area: BOTON;
 }
 /*RESPONSIVE*/
@@ -410,7 +454,7 @@ button{
 }
 }
 
-#sombra{
+.sombra{
     background: linear-gradient(13deg,rgb(0,0,0,1), rgb(0,0,0,0.1));
     backdrop-filter: blur(1vh);
     position:absolute;
@@ -424,6 +468,7 @@ button{
     auto auto auto;
     display: none;
 }
+
 
 .contenidosombra{
     background-color:#202427;

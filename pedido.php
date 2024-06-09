@@ -17,7 +17,7 @@ include "./codigophp/conexionbs.php";
     <div id="pagina2">
         <div id="header">
             <a href="inicio.php" class="logo imagen"></a>
-            <button class="usuario imagen"></button>
+            <button  class="usuario imagen" id="user"></button>
         </div>
         
         <div id="contenidob">
@@ -38,14 +38,14 @@ include "./codigophp/conexionbs.php";
 
                         if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $estado = trim($_POST['estado']);
-                            $_SESSION['pedido'] = json_decode($_POST['pedido']);/*array(
+                            $_SESSION['pedido'] = json_decode($_POST['pedido'], true);/*array(
                                 "herramientas" => array(1, 2, 3),
                                 "cantidad" => array(1, 2, 3)
                             );*/
 
                             if($estado == "nuevopedido"){
                                 $fechaHoraActual = date('Y-m-d H:i:s');
-                                echo '<button class="signomas imagen boton"><select name="curso"><option value="nada">Elija un curso</option>';
+                                echo '<div class="signomas imagen boton"><select name="curso"><option value="nada">Elija un curso</option>';
                                 $sql = "SELECT * FROM cursos";
                                 $result = mysqli_query($conn, $sql);
                                 if ($result->num_rows > 0) {
@@ -53,8 +53,8 @@ include "./codigophp/conexionbs.php";
                                         echo '<option value="'.$row["id"].'">'.$row["curso"].'</option>';
                                     }
                                 }
-                                echo'</select></button>';
-                                echo '<button class="mapa imagen boton"><select name="aula"><option value="nada">Elija un aula</option>';
+                                echo'</select></div>';
+                                echo '<div class="mapa imagen boton"><select name="aula"><option value="nada">Elija un aula</option>';
                                 $sql = "SELECT * FROM aulas";
                                 $result = mysqli_query($conn, $sql);
                                 if ($result->num_rows > 0) {
@@ -62,52 +62,39 @@ include "./codigophp/conexionbs.php";
                                         echo '<option value="'.$row["id_aulas"].'">'.$row["nombre"].'</option>';
                                     }
                                 }
-                                echo'</select></button>';
-                                echo '<input type="text" name="horario" value="' . $fechaHoraActual . '" readonly>';
-                                if($_SESSION['pedido'] == null){
-                                    echo "<h1>NO HAY HERRAMIENTAS AUN</h1>";
-                                }else{
-                                    
-                                    $sql = "SELECT * FROM categoria WHERE categoria.id IN (" . implode(",", $_SESSION['pedido']['herramientas']) . ")";
-  
-                                    $result = mysqli_query($conn, $sql);
-                                    
-                                    if ($result->num_rows > 0) {
-                                        echo '<h1>HERRAMIENTAS</h1>';
-                                        $cont = 0;
-                                        while($row = $result->fetch_assoc()) {
-                                            echo '<div class="rectangulo2"><h1>'.$row["nombre"].'</h1> <p>Cantidad: '.$_SESSION['pedido']['cantidad'][$cont].'</p> <button class="imagen opciones"></button></div>';
-                                            $cont++;
-                                        }
-                                    } else {
-                                        echo "<h1>NO HAY HERRAMIENTAS AUN</h1>";
-                                    }
+                                echo'</select></div>';
+                                echo '<div class="signomas imagen boton"><input type="text" name="horario" value="' . $fechaHoraActual . '" readonly></div>';
                                 
-                                    $conn->close();
-                                }
+                            }
+                            if($_SESSION['pedido'] == null){
+                                echo "<h1>NO HAY HERRAMIENTAS AUN</h1>";
                             }else{
-                                echo '<h1>HERRAMIENTAS</h1>';
-                                $sql = "SELECT * FROM categoria WHERE categoria.id IN (?)";
-                                $stmt = $conn->prepare($sql);
-                                $stmt->bind_param("s", $_SESSION['pedido']); 
-                                $stmt->execute();
-                                $result = $stmt->get_result();
+                                
+                                $sql = "SELECT * FROM categoria WHERE categoria.id IN (" . implode(",", $_SESSION['pedido']['herramientas']) . ")";
+
+                                $result = mysqli_query($conn, $sql);
                                 
                                 if ($result->num_rows > 0) {
+                                    echo '<h1>HERRAMIENTAS</h1>';
+                                    $cont = 0;
                                     while($row = $result->fetch_assoc()) {
-                                        echo '<h1>'.$row["nombre"].'</h1>';
+                                        if($_SESSION['pedido']['cantidad'][$cont] >= $row["cantidad"]){
+                                            echo '<div class="rectangulo3"><h1>'.$row["nombre"].'</h1> <input type="number" value="" placeHolder="Cantidad: '.$_SESSION['pedido']['cantidad'][$cont].'/'.$row["cantidad"].'"> <a class="imagen basura"></a></div>';
+                                        }else{
+                                            echo '<div class="rectangulo3"><h1>'.$row["nombre"].'</h1> <input type="number" value="'.$_SESSION['pedido']['cantidad'][$cont].'" placeHolder="Cantidad: '.$_SESSION['pedido']['cantidad'][$cont].'/'.$row["cantidad"].'"> <a onclick="console.log("a")" class="imagen basura"></a></div>';
+                                        }
+                                        
+                                        $cont++;
                                     }
                                 } else {
-                                    echo "<h1>NO HAY PEDIDOS AUN</h1>";
+                                    echo "<h1>NO HAY HERRAMIENTAS AUN</h1>";
                                 }
-                                
-                                $stmt->close();
+                            
                                 $conn->close();
                             }
                             
                         }
                         ?>
-                        
                         </form>
                     </div>
                 </div>
@@ -119,29 +106,28 @@ include "./codigophp/conexionbs.php";
             <a href="reportes.php" class="alerta imagen derecha">Reportes</a>
         </div>
     </div>
-    <div id="sombra">
+
+    <div id="sombra2" class="sombra">
         <div class="contenidosombra">
-        <button class="barra">
-                <div class="equis"></div>
-                    <div>Volver</div>
-                    <div></div>
+            <button class="barra" id="opcionequis2">
+                    <div class="equis" ></div>
+                        <div>Volver</div>
+                        <div></div>
             </button>
             <div class="contenido2">
                 <div class="con3" id="inicio">
                     <div class="scroll-y" style="height: 100%; padding-top:2vh;">
                         <div class="conscroll-y">
-                                <a onclick="console.log('hola')" class="flecha imagen boton">Volver al inicio</a>                  
+                                <a href="codigophp/cerrarsesion.php" class="flecha imagen boton">Cerrar sesión</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <style>
-      
-    </style>
 </body>
 </html>
 
-<script src="codigojs/sombra.js"></script>
+
+<script src="codigojs/sombra2.js"></script>
 <script src="codigojs/volveratras.js"></script>

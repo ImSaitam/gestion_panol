@@ -1,5 +1,5 @@
 opciones = document.querySelectorAll('.opciones');
-opcionesx = document.querySelectorAll('.equis');
+opcionequis = document.getElementById("opcionequis")
 sombra = document.getElementById("sombra")
 var click = true
 var som = false
@@ -32,9 +32,8 @@ function sacarblur() {
 opciones.forEach(element => {
     element.addEventListener('click', blur);
 });
-opcionesx.forEach(element => {
-    element.parentNode.addEventListener('click', sacarblur);
-});
+
+opcionequis.addEventListener('click', sacarblur);
 /*funcion borrar pedido*/
 function setEliminarPedido(id) {
     document.getElementById('pedido').value = id;

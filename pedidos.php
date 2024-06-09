@@ -17,7 +17,7 @@ include "codigophp/conexionbs.php";
     <div id="pagina">
         <div id="header">
             <a href="inicio.php" class="logo imagen"></a>
-            <button class="usuario imagen"></button>
+            <button  class="usuario imagen" id="user"></button>
         </div>
         <div id="subheader">
             <h1>Historial de pedidos de <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
@@ -56,7 +56,8 @@ include "codigophp/conexionbs.php";
                     
                     $stmt->close();
                     $conn->close();
-                    ?>            
+                    ?>         
+                    <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>NOTIFICACION</p> <button class="imagen opciones"></button></div>     
                         </div>
                     </div>
                 </div>
@@ -68,9 +69,9 @@ include "codigophp/conexionbs.php";
             <a href="reportes.php" class="alerta imagen derecha">Reportes</a>
         </div>
     </div>
-    <div id="sombra">
+    <div id="sombra" class="sombra">
         <div class="contenidosombra">
-        <button class="barra">
+        <button class="barra" id="opcionequis">
                 <div class="equis"></div>
                     <div>Volver</div>
                     <div></div>
@@ -81,19 +82,38 @@ include "codigophp/conexionbs.php";
                         <div class="conscroll-y">
                             <form action = "./codigophp/borrarpedido.php" method = "post">
                                 <input type="text" style="display:none;" name="pedido" value="2">
-                                <input type = "submit" class="basura imagen boton">
+                                <input type = "submit" class="basura imagen boton" style=" padding-left: 5vh;" value="Eliminar pedido">
                             </form>
-                                <a onclick="console.log('hola')" class="flecha imagen boton">Eliminar pedido</a>
-                                <a onclick="console.log('hola')" class="flecha imagen boton">Volver al inicio</a>                  
+                            <form action = "./pedido.php" method = "post">
+                                <input type="text" style="display:none;" name="estado" value="2">
+                                <input type="text" style="display:none;" name="pedido" value='{"herramientas": [1,2],"cantidad": [10,2]}'>
+                                <input type = "submit" class="ojo imagen boton" style=" padding-left: 5vh;" value="Ver pedido">
+                            </form>
+                    
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <style>
-      
-    </style>
-    <script src="codigojs/sombra.js"></script>
+    <div id="sombra2" class="sombra">
+        <div class="contenidosombra">
+        <button class="barra" id="opcionequis2">
+                <div class="equis" ></div>
+                    <div>Volver</div>
+                    <div></div>
+            </button>
+            <div class="contenido2">
+                <div class="con3" id="inicio">
+                    <div class="scroll-y" style="height: 100%; padding-top:2vh;">
+                        <div class="conscroll-y">
+                                <a href="codigophp/cerrarsesion.php" class="flecha imagen boton">Cerrar sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<script src="codigojs/sombra2.js"></script>
+<script src="codigojs/sombra.js"></script>
 </body>
 </html>
