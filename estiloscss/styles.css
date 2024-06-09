@@ -117,6 +117,19 @@ button{
     auto 90% auto;
   
 }
+#contenidob{
+    grid-area: CON;
+    background-color:white;
+    box-shadow: 1vh -0.5vh 3vh 0vh rgba(61, 58, 230, 0.1);
+    border-radius:4vh 4vh 0vh 0vh;
+    display: grid;
+    position:relative;
+    grid-template:
+    ". . ."4vh
+    ". CON2 ."70vh/
+    auto 90% auto;
+  
+}
 .contenido2{
     grid-area: CON2;
     overflow-y: auto;
@@ -175,6 +188,19 @@ button{
     width: 35vh;
 }
 .conscroll-y input{
+    font-family: "Poppins", sans-serif;
+    font-size: 2vh;
+    font-weight: 200;
+    color: white;
+    border:none;
+    background: #4139E6;
+    border-radius:25vh;
+    border-radius:5vh;
+    text-align: center;
+    height: 5vh;
+    width: 30vh;
+}
+.conscroll-y select{
     font-family: "Poppins", sans-serif;
     font-size: 2vh;
     font-weight: 200;

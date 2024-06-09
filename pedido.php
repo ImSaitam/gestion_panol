@@ -1,5 +1,6 @@
 <?php
 include "./codigophp/sesion.php";
+include "./codigophp/conexionbs.php";
 
 ?>
 <!DOCTYPE html>
@@ -19,7 +20,7 @@ include "./codigophp/sesion.php";
             <button class="usuario imagen"></button>
         </div>
         
-        <div id="contenido">
+        <div id="contenidob">
             <form action="buscarherramienta.php" method="post">
                 <button class="barra" type="submit">
                     <div class="mas"></div>
@@ -31,33 +32,70 @@ include "./codigophp/sesion.php";
             <div class="contenido2">
                 <div class="con3" id="inicio">
                     <h1>INFORMACIÓN DEL PEDIDO</h1>
-                    <div class="scroll-y" style="height: 100%;">
+                    <div class="scroll-y" style="height: 100%; width:40vh;">
                         <form class="conscroll-y" method="post" action="./codigophp/crearpedido.php">
                         <?php
 
                         if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $estado = trim($_POST['estado']);
-                            $_SESSION['pedido'] = $_POST['pedido'];
+                            $_SESSION['pedido'] = json_decode($_POST['pedido']);/*array(
+                                "herramientas" => array(1, 2, 3),
+                                "cantidad" => array(1, 2, 3)
+                            );*/
+
                             if($estado == "nuevopedido"){
                                 $fechaHoraActual = date('Y-m-d H:i:s');
-                                echo '<input type="text" name="nombre" value="'.$_SESSION['nombrecompleto'].'" readonly>';
-                                echo '<input type="text" name="rol" value="' . $_SESSION['cargo'] . '" readonly>';
-                                echo '<input type="text" name="curso" value="" placeholder="Ingrese el curso">';
-                                echo '<input type="text" name="aula" value="" placeholder="Ingrese el aula">';
+                                echo '<select name="curso"><option value="nada">Elija un curso</option>';
+                                $sql = "SELECT * FROM cursos";
+                                $result = mysqli_query($conn, $sql);
+                                if ($result->num_rows > 0) {
+                                    while($row = $result->fetch_assoc()) {
+                                        echo '<option value="'.$row["id"].'">'.$row["curso"].'</option>';
+                                    }
+                                }
+                                echo'</select>';
+                                echo '<select name="aula"><option value="nada">Elija un aula</option>';
+                                $sql = "SELECT * FROM aulas";
+                                $result = mysqli_query($conn, $sql);
+                                if ($result->num_rows > 0) {
+                                    while($row = $result->fetch_assoc()) {
+                                        echo '<option value="'.$row["id_aulas"].'">'.$row["nombre"].'</option>';
+                                    }
+                                }
+                                echo'</select>';
                                 echo '<input type="text" name="horario" value="' . $fechaHoraActual . '" readonly>';
                                 if($_SESSION['pedido'] == null){
                                     echo "<h1>NO HAY HERRAMIENTAS AUN</h1>";
+                                }else{
+                                    
+                                    $sql = "SELECT * FROM categoria WHERE categoria.id IN (" . implode(",", $_SESSION['pedido']['herramientas']) . ")";
+  
+                                    $result = mysqli_query($conn, $sql);
+                                    
+                                    if ($result->num_rows > 0) {
+                                        echo '<h1>HERRAMIENTAS</h1>';
+                                        $cont = 0;
+                                        while($row = $result->fetch_assoc()) {
+                                            echo '<div class="rectangulo2"><h1>'.$row["nombre"].'</h1> <p>Cantidad: '.$_SESSION['pedido']['cantidad'][$cont].'</p> <button class="imagen opciones"></button></div>';
+                                            $cont++;
+                                        }
+                                    } else {
+                                        echo "<h1>NO HAY HERRAMIENTAS AUN</h1>";
+                                    }
+                                
+                                    $conn->close();
                                 }
                             }else{
                                 echo '<h1>HERRAMIENTAS</h1>';
+                                $sql = "SELECT * FROM categoria WHERE categoria.id IN (?)";
                                 $stmt = $conn->prepare($sql);
-                                $stmt->bind_param("s", $_SESSION['id_usuario']); 
+                                $stmt->bind_param("s", $_SESSION['pedido']); 
                                 $stmt->execute();
                                 $result = $stmt->get_result();
                                 
                                 if ($result->num_rows > 0) {
                                     while($row = $result->fetch_assoc()) {
-                                        echo '<div class="rectangulo2"><h1>'.$row["fecha_pedido"].'</h1> <p>'.$row["id_aula"].' '.$row["curso"].'</p> <button class="imagen opciones"></button></div>';
+                                        echo '<h1>'.$row["nombre"].'</h1>';
                                     }
                                 } else {
                                     echo "<h1>NO HAY PEDIDOS AUN</h1>";
