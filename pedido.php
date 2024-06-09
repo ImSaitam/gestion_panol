@@ -45,7 +45,7 @@ include "./codigophp/conexionbs.php";
 
                             if($estado == "nuevopedido"){
                                 $fechaHoraActual = date('Y-m-d H:i:s');
-                                echo '<select name="curso"><option value="nada">Elija un curso</option>';
+                                echo '<button class="signomas imagen boton"><select name="curso"><option value="nada">Elija un curso</option>';
                                 $sql = "SELECT * FROM cursos";
                                 $result = mysqli_query($conn, $sql);
                                 if ($result->num_rows > 0) {
@@ -53,8 +53,8 @@ include "./codigophp/conexionbs.php";
                                         echo '<option value="'.$row["id"].'">'.$row["curso"].'</option>';
                                     }
                                 }
-                                echo'</select>';
-                                echo '<select name="aula"><option value="nada">Elija un aula</option>';
+                                echo'</select></button>';
+                                echo '<button class="mapa imagen boton"><select name="aula"><option value="nada">Elija un aula</option>';
                                 $sql = "SELECT * FROM aulas";
                                 $result = mysqli_query($conn, $sql);
                                 if ($result->num_rows > 0) {
@@ -62,7 +62,7 @@ include "./codigophp/conexionbs.php";
                                         echo '<option value="'.$row["id_aulas"].'">'.$row["nombre"].'</option>';
                                     }
                                 }
-                                echo'</select>';
+                                echo'</select></button>';
                                 echo '<input type="text" name="horario" value="' . $fechaHoraActual . '" readonly>';
                                 if($_SESSION['pedido'] == null){
                                     echo "<h1>NO HAY HERRAMIENTAS AUN</h1>";

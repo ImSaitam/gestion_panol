@@ -70,3 +70,9 @@
     background-repeat:no-repeat;
     background-position: center;
 }
+.botonimagen{
+    background-size: contain;
+    background-repeat:no-repeat;
+    background-position: left;
+    padding-left: 2vh;
+}
