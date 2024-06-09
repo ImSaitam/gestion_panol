@@ -67,6 +67,20 @@ button{
     auto auto auto;
     background-color:#202427;
 }
+#pagina3{
+    position: absolute;
+    right:0%;
+    top:0%;
+    height:100%;
+    width: 100%;
+    display:grid;
+    grid-template:
+    "HEA HEA HEA"7vh
+    "SHEA SHEA SHEA"25vh
+    "CON CON CON"auto/
+    auto auto auto;
+    background-color:#202427;
+}
 #header{
     padding-left:1vh;
     padding-right:1vh;
@@ -95,6 +109,12 @@ button{
     ". TEXTO ."1fr/
     5vh auto 5vh;
     gap: 1vh;
+    grid-area: SHEA;
+    background-color:transparent;
+}
+#subheader2{
+    overflow: hidden;
+    display: grid;
     grid-area: SHEA;
     background-color:transparent;
 }
@@ -159,6 +179,7 @@ button{
     auto 30vh auto 30vh auto 30vh auto;
   
 }
+
 #footer a{
     font-family: "Days One", sans-serif;
     font-size: 2vh;
