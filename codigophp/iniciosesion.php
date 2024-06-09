@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = trim($_POST['password']);
 
     // Conectar a la base de datos
-    include "./conexionbs.php";
+    $mysqli = new mysqli("localhost", "root", "", "panol_definitivo");
 
 $stmt = $conn->prepare("SELECT id_usuario, contrasena, nombre_completo, cargo FROM usuarios WHERE username = ?");
 $stmt->bind_param("s", $username);
