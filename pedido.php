@@ -33,38 +33,59 @@ include "./codigophp/conexionbs.php";
                 <div class="con3" id="inicio">
                     <h1>INFORMACIÓN DEL PEDIDO</h1>
                     <div class="scroll-y" style="height: 100%; width:40vh;">
-                        <form class="conscroll-y" method="post" action="./codigophp/crearpedido.php">
+                        <form class="conscroll-y" method="post" action="./codigophp/crearpedido.php" id="formulario">
                         <?php
 
                         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                            $estado = trim($_POST['estado']);
-                            $_SESSION['pedido'] = json_decode($_POST['pedido'], true);/*array(
-                                "herramientas" => array(1, 2, 3),
-                                "cantidad" => array(1, 2, 3)
-                            );*/
-
+                            
+                            if($_POST["codigo"] == 1){
+                                $estado = trim($_POST['estado']);
+                                $id = intval($_POST['id']);
+                                $cantidad = intval($_POST['cantidad']);
+                                if(isset($_SESSION['pedido'])) {
+                                    $pedido = $_SESSION['pedido'];
+                                    $index = array_search($id, $pedido['herramientas']);
+                                    
+                                    if($index !== false) {
+                                        $pedido['cantidad'][$index] = $cantidad;
+                                    } else {
+                                        $pedido['herramientas'][] = $id;
+                                        $pedido['cantidad'][] = $cantidad;
+                                    }
+                                } else {
+                                    $pedido = array(
+                                        'herramientas' => array($id),
+                                        'cantidad' => array($cantidad)
+                                    );
+                                }
+                                $_SESSION['pedido'] = $pedido;
+                    
+                            }else{
+                                $estado = trim($_POST['estado']);
+                                $_SESSION['pedido'] = json_decode($_POST['pedido'], true);
+                            }
     
-                                $fechaHoraActual = date('Y-m-d H:i:s');
-                                echo '<div class="signomas imagen boton"><select name="curso"><option value="nada">Elija un curso</option>';
-                                $sql = "SELECT * FROM cursos";
-                                $result = mysqli_query($conn, $sql);
-                                if ($result->num_rows > 0) {
-                                    while($row = $result->fetch_assoc()) {
-                                        echo '<option value="'.$row["id"].'">'.$row["curso"].'</option>';
-                                    }
+                            $fechaHoraActual = date('Y-m-d H:i:s');
+                            echo '<div class="signomas imagen boton"><select name="curso" required><option value="1">Elija un curso</option>';
+                            $sql = "SELECT * FROM cursos";
+                            $result = mysqli_query($conn, $sql);
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    echo '<option value="'.$row["id"].'">'.$row["curso"].'</option>';
                                 }
-                                echo'</select></div>';
-                                echo '<div class="mapa imagen boton"><select name="aula"><option value="nada">Elija un aula</option>';
-                                $sql = "SELECT * FROM aulas";
-                                $result = mysqli_query($conn, $sql);
-                                if ($result->num_rows > 0) {
-                                    while($row = $result->fetch_assoc()) {
-                                        echo '<option value="'.$row["id_aulas"].'">'.$row["nombre"].'</option>';
-                                    }
+                            }
+                            echo'</select></div>';
+                            echo '<div class="mapa imagen boton"><select name="aula" required><option value="1">Elija un aula</option>';
+                            $sql = "SELECT * FROM aulas";
+                            $result = mysqli_query($conn, $sql);
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    echo '<option value="'.$row["id_aulas"].'">'.$row["nombre"].'</option>';
                                 }
-                                echo'</select></div>';
-                                echo '<div class="signomas imagen boton"><input type="text" name="horario" value="' . $fechaHoraActual . '" readonly></div>';
-                                
+                            }
+                            echo'</select></div>';
+                            echo '<div class="signomas imagen boton"><input type="text" name="horario" value="' . $fechaHoraActual . '" readonly></div>';
+                            
                             
                             if($_SESSION['pedido'] == null){
                                 echo "<h1>NO HAY HERRAMIENTAS AUN</h1>";
@@ -103,7 +124,7 @@ include "./codigophp/conexionbs.php";
         <div id="footer">
             <a href="notificaciones.php" class="basura imagen izquierda ">Eliminar pedido</a>
             <a onclick="goBack()" class="flecha imagen centro">Volver al inicio</a>
-            <a href="reportes.php" class="avion imagen derecha borde2">Enviar pedido</a>
+            <a onclick="document.getElementById('formulario').submit()" class="avion imagen derecha borde2">Enviar pedido</a>
         </div>
     </div>
     <div id="sombra" class="sombra">

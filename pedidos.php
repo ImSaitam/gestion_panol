@@ -30,6 +30,7 @@ include "codigophp/conexionbs.php";
                         <div>Crear nuevo pedido</div>
                         <div></div>
                         <input type="text" value="nuevopedido" name="estado" style="display:none;">
+                        <input type="text" style="display:none;" name="codigo" value="0">
                         <input type="text" value="" name="pedido" style="display:none;">
                 </button>
             </form>
@@ -48,7 +49,7 @@ include "codigophp/conexionbs.php";
                     
                     if ($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
-                            echo '<div class="rectangulo2"><h1>'.$row["fecha_pedido"].'</h1> <p>'.$row["id_aula"].' '.$row["estado"].'</p> <form action="./codigophp/borrarpedido.php" method="post"><input type="hidden" name="pedido" value="'.$row["id_pedido"].'"><input type="submit" class="imagen opciones" value="Eliminar"></form></div>';
+                            echo '<div class="rectangulo2"><h1>'.$row["fecha_pedido"].'</h1> <p>'.$row["id_aula"].' '.$row["estado"].'</p> <input type="hidden" name="id" id="id" value="'.$row["id_pedido"].'"><input type="hidden" name="pedido" id="pedido" value="'.htmlspecialchars($row["pedido"],ENT_QUOTES, 'UTF-8').'"> <button class="imagen opciones tocar"></button></div>';
                         }
                     } else {
                         echo "<h1>NO HAY PEDIDOS AUN</h1>";
@@ -56,8 +57,7 @@ include "codigophp/conexionbs.php";
                     
                     $stmt->close();
                     $conn->close();
-                    ?>         
-                    <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>NOTIFICACION</p> <button class="imagen opciones"></button></div>     
+                    ?>            
                         </div>
                     </div>
                 </div>
@@ -81,21 +81,22 @@ include "codigophp/conexionbs.php";
                     <div class="scroll-y" style="height: 100%; padding-top:2vh;">
                         <div class="conscroll-y">
                             <form action = "./codigophp/borrarpedido.php" method = "post">
-                                <input type="text" style="display:none;" name="pedido" value="2">
+                                <input type="hidden"  name="pedido" id="elim" value="2">
                                 <input type = "submit" class="basura imagen boton" style=" padding-left: 5vh;" value="Eliminar pedido">
                             </form>
                             <form action = "./pedido.php" method = "post">
-                                <input type="text" style="display:none;" name="estado" value="2">
-                                <input type="text" style="display:none;" name="pedido" value='{"herramientas": [1,2],"cantidad": [10,2]}'>
+                                <input type="hidden"  name="estado" value="2">
+                                <input type="hidden"  name="codigo" value="0">
+                                <input type="hidden" name="pedido" id="ver" value="">
                                 <input type = "submit" class="ojo imagen boton" style=" padding-left: 5vh;" value="Ver pedido">
                             </form>
-                    
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <div id="sombra2" class="sombra">
         <div class="contenidosombra">
         <button class="barra" id="opcionequis2">
@@ -112,8 +113,53 @@ include "codigophp/conexionbs.php";
                     </div>
                 </div>
             </div>
-
-<script src="codigojs/sombra2.js"></script>
-<script src="codigojs/sombra.js"></script>
+        </div>
+    </div>
 </body>
 </html>
+<script> 
+opciones = document.querySelectorAll('.tocar');
+opcionequis = document.getElementById("opcionequis");
+sombra = document.getElementById("sombra");
+
+click = true;
+som = false;
+
+function aplicarBlur() {
+    if (click == true) {
+        sombra.style.display = "grid";
+        sombra.style.animation = "sombra both 0.5s";
+    }
+}
+
+function sacarBlur() {
+    if (click == true) {
+        click = false;
+        sombra.style.animation = "sacarsombra both 0.5s";
+    }
+}
+
+sombra.addEventListener('animationend', function handleAnimationEnd() {
+    if (som == true) {
+        som = false;
+        sombra.style.display = "none";
+    } else {
+        som = true;
+    }
+    click = true;
+});
+
+opciones.forEach(element => {
+    element.addEventListener('click', () => {
+        let parentNode = element.parentNode;
+        let pedido = parentNode.querySelector("#pedido").value;
+        let id = parentNode.querySelector("#id").value;
+        document.getElementById("elim").value = id;
+        document.getElementById("ver").value = pedido;
+        aplicarBlur();
+    });
+});
+
+opcionequis.addEventListener('click', sacarBlur);
+</script>
+<script src="codigojs/sombra2.js"></script>
