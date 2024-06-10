@@ -65,6 +65,9 @@
 .pañolero{
     background-image: URL(imagenes/panolero.jpg);
 }
+.sinimagen{
+    background-image: URL(imagenes/sin-imagen.png);
+}
 .imagen{
     background-size: contain;
     background-repeat:no-repeat;

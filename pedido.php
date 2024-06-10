@@ -21,7 +21,7 @@ include "./codigophp/conexionbs.php";
         </div>
         
         <div id="contenidob">
-            <form action="buscarherramienta.php" method="post">
+            <form action="buscarherramienta2.php" method="post">
                 <button class="barra" type="submit">
                     <div class="mas"></div>
                         <div>AÑADIR HERRAMIENTA</div>
@@ -79,9 +79,9 @@ include "./codigophp/conexionbs.php";
                                     $cont = 0;
                                     while($row = $result->fetch_assoc()) {
                                         if($_SESSION['pedido']['cantidad'][$cont] >= $row["cantidad"]){
-                                            echo '<div class="rectangulo2"><h1>'.$row["nombre"].'</h1> <p style="color:red;">Cantidad: '.$_SESSION['pedido']['cantidad'][$cont].'/'.$row["cantidad"].'</p> <input type="number" style="display:none;" value="'.$_SESSION['pedido']['cantidad'][$cont].'"><a class="imagen opciones"></a></div>';
+                                            echo '<div class="rectangulo2"><h1>'.$row["nombre"].'</h1> <p style="color:red;">Stock: '.$_SESSION['pedido']['cantidad'][$cont].'/'.$row["cantidad"].'</p> <input type="number" style="display:none;" value="'.$_SESSION['pedido']['cantidad'][$cont].'"><a class="imagen opciones"></a></div>';
                                         }else{
-                                            echo '<div class="rectangulo2"><h1>'.$row["nombre"].'</h1> <p>Cantidad: '.$_SESSION['pedido']['cantidad'][$cont].'/'.$row["cantidad"].'</p> <input type="number" style="display:none;" value="'.$_SESSION['pedido']['cantidad'][$cont].'"> <a onclick="console.log("a")" class="imagen opciones"></a></div>';
+                                            echo '<div class="rectangulo2"><h1>'.$row["nombre"].'</h1> <p>Stock: '.$_SESSION['pedido']['cantidad'][$cont].'/'.$row["cantidad"].'</p> <input type="number" style="display:none;" value="'.$_SESSION['pedido']['cantidad'][$cont].'"> <a onclick="console.log("a")" class="imagen opciones"></a></div>';
                                         }
                                         
                                         $cont++;

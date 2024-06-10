@@ -388,25 +388,7 @@ option{
     box-shadow: 0.1vh 0.5vh 1vh 0.2vh rgba(208, 207, 238, 1);
     border: rgba(208, 207, 238, 1) solid 0.1vh;
 }
-.rectangulo3{
-    background-color:white;
-    height: 12vh;
-    width: 39vh;
-    border-radius: 2vh;
-    display: grid;
-    grid-template:
-    ". . . . ."1vh
-    ". TITULO . BOTON ."auto
-    ". TEXTO . BOTON . " auto
-    ". . . . ."1vh/
-    2vh auto auto 8vh 2vh;
-    box-shadow: 0.1vh 0.5vh 1vh 0.2vh rgba(208, 207, 238, 1);
-    border: rgba(208, 207, 238, 1) solid 0.1vh;
-}
 .rectangulo2 h1{
-    grid-area: TITULO;
-}
-.rectangulo3 h1{
     grid-area: TITULO;
 }
 .rectangulo2 p{
@@ -416,20 +398,49 @@ option{
     
 
 }
-.rectangulo3 input{
-    color: white;
-    grid-area: TEXTO;
-    font-weight: 400;
-    background-color: #4139E6;
-    width: 20vh;
-}
-.rectangulo3 input::placeholder {
-    color: red;
-}
 .rectangulo2 button{
     grid-area: BOTON;
 }
 .rectangulo2 a{
+    grid-area: BOTON;
+}
+.rectangulo3{
+    background-color:white;
+    height: 12vh;
+    width: 39vh;
+    border-radius: 2vh;
+    display: grid;
+    grid-template:
+    ". . . . . . ."1vh
+    ". IMG . TITULO . BOTON ."2vh
+    ". IMG . TEXTO . BOTON . " auto
+    ". . . . . . ."1vh/
+    1vh 9vh 2vh auto auto 8vh 2vh;
+    box-shadow: 0.1vh 0.5vh 1vh 0.2vh rgba(208, 207, 238, 1);
+    border: rgba(208, 207, 238, 1) solid 0.1vh;
+}
+.verde{
+    background-color:#caee52;
+}
+.rectangulo3 h1{
+    grid-area: TITULO;
+}
+.rectangulo3 p{
+    color: #202427;
+    grid-area: TEXTO;
+    font-weight: 400;
+    
+
+}
+.rectangulo3 img{
+    color: #202427;
+    grid-area: IMG;
+    font-weight: 400;
+    background-color: #4139E6;
+    border-radius: 1vh;
+    background-size: 4vh;
+}
+.rectangulo3 button{
     grid-area: BOTON;
 }
 .rectangulo3 a{
