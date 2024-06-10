@@ -497,3 +497,7 @@ option{
     ". CON2 ."auto/
     auto 90% auto;
 }
+
+img.boton-search {
+    height: 50%;
+}
