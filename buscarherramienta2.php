@@ -21,7 +21,7 @@ include "codigophp/conexionbs.php";
         </div>
         
         <div id="contenido">
-            <form class="barra" method="post"  action="./buscarherramienta.php">
+            <form class="barra" method="post"  action="./buscarherramienta2.php">
                 <input type="submit" class="equis" value=""></button>
                 <input type="text" name="busqueda" placeholder="Buscar..">
                 <div></div>
@@ -34,20 +34,20 @@ include "codigophp/conexionbs.php";
                         if($_POST['busqueda'] == null){
                             $sql = "SELECT * FROM categoria";
                         }else{
-                            $sql = "SELECT * FROM categoria WHERE categoria.nombre = ".$_POST['busqueda'];
+                            $sql = "SELECT * FROM categoria WHERE categoria.nombre = '".$_POST['busqueda']."'";
                         }
                         $result = mysqli_query($conn, $sql);
                         if ($result->num_rows > 0) {
                             if($_POST['busqueda']== null){
                                 echo '<h1>HERRAMIENTAS</h1>';
                             }else{
-                                echo '<h1>'.$_POST['busqueda'].'</h1>';
+                                echo '<h1>RESULTADOS DE: '.$_POST['busqueda'].'</h1>';
                             }
                             while($row = $result->fetch_assoc()) {
                                 if($row["cantidad"] == 0){
                                     echo '<div class="rectangulo3 verde"><h1>'.$row["nombre"].'</h1> <img src="" alt="" class="sinimagen imagen" ><p style="color:red;">SIN UNIDADES</p> <input type="number" name="id" style="display:none;" value="'.$row["id"].'"><a class="imagen alertablanca"></a></div>';
                                 }else{
-                                    echo '<div class="rectangulo3"><h1>'.$row["nombre"].'</h1> <img src="" alt="" class="sinimagen imagen" ><p>Stock: '.$row["cantidad"].'</p> <input type="number" name="id" style="display:none;" value="'.$row["id"].'"><a class="imagen opciones"></a></div>';
+                                    echo '<div class="rectangulo3"><h1>'.$row["nombre"].'</h1> <img src="" alt="" class="sinimagen imagen" ><p>Stock: '.$row["cantidad"].'</p> <input type="number" name="id" style="display:none;" value="'.$row["id"].'"><a class="imagen signomas tocar"></a></div>';
                                 }
                             } 
                         }else{
@@ -73,9 +73,29 @@ include "codigophp/conexionbs.php";
             <a href="reportes.php" class="alerta imagen derecha">Reportes</a>
         </div>
     </div>
-    
+    <div id="sombra" class="sombra">
+        <div class="contenidosombra">
+            <button class="barra" id="opcionequis">
+                    <div class="equis" ></div>
+                        <div>Volver</div>
+                        <div></div>
+            </button>
+            <div class="contenido2">
+                <div class="con3" id="inicio" >
+                <h1 style="color:white;">AAAAAA</h1>
+
+                    <div class="scroll-y" style="height: 100%; padding-top:2vh; width: 40vh;">
+                        <form class="conscroll-y" action = "./pedido.php" method = "post">
+                        <div class="signomas imagen boton"><input type="number" name="pedido" value='' placeHolder="Elegir cantidad"></div>
+                                <input type = "submit" class="avion imagen boton borde" style=" padding-left: 5vh;" value="Agregar herramienta">
+                        </form>             
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
 
-<script src="codigojs/sombra.js"></script>
+<script src="codigojs/sombra3.js"></script>
 <script src="codigojs/volveratras.js"></script>

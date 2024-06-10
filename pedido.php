@@ -21,7 +21,7 @@ include "./codigophp/conexionbs.php";
         </div>
         
         <div id="contenidob">
-            <form action="buscarherramienta.php" method="post">
+            <form action="buscarherramienta2.php" method="post">
                 <button class="barra" type="submit">
                     <div class="mas"></div>
                         <div>AÑADIR HERRAMIENTA</div>
@@ -43,7 +43,7 @@ include "./codigophp/conexionbs.php";
                                 "cantidad" => array(1, 2, 3)
                             );*/
 
-                            if($estado == "nuevopedido"){
+    
                                 $fechaHoraActual = date('Y-m-d H:i:s');
                                 echo '<div class="signomas imagen boton"><select name="curso"><option value="nada">Elija un curso</option>';
                                 $sql = "SELECT * FROM cursos";
@@ -65,7 +65,7 @@ include "./codigophp/conexionbs.php";
                                 echo'</select></div>';
                                 echo '<div class="signomas imagen boton"><input type="text" name="horario" value="' . $fechaHoraActual . '" readonly></div>';
                                 
-                            }
+                            
                             if($_SESSION['pedido'] == null){
                                 echo "<h1>NO HAY HERRAMIENTAS AUN</h1>";
                             }else{
@@ -79,9 +79,9 @@ include "./codigophp/conexionbs.php";
                                     $cont = 0;
                                     while($row = $result->fetch_assoc()) {
                                         if($_SESSION['pedido']['cantidad'][$cont] >= $row["cantidad"]){
-                                            echo '<div class="rectangulo3"><h1>'.$row["nombre"].'</h1> <input type="number" value="" placeHolder="Cantidad: '.$_SESSION['pedido']['cantidad'][$cont].'/'.$row["cantidad"].'"> <a class="imagen basura"></a></div>';
+                                            echo '<div class="rectangulo2"><h1>'.$row["nombre"].'</h1> <p style="color:red;">Stock: '.$_SESSION['pedido']['cantidad'][$cont].'/'.$row["cantidad"].'</p> <input type="number" style="display:none;" value="'.$_SESSION['pedido']['cantidad'][$cont].'"><a class="imagen opciones"></a></div>';
                                         }else{
-                                            echo '<div class="rectangulo3"><h1>'.$row["nombre"].'</h1> <input type="number" value="'.$_SESSION['pedido']['cantidad'][$cont].'" placeHolder="Cantidad: '.$_SESSION['pedido']['cantidad'][$cont].'/'.$row["cantidad"].'"> <a onclick="console.log("a")" class="imagen basura"></a></div>';
+                                            echo '<div class="rectangulo2"><h1>'.$row["nombre"].'</h1> <p>Stock: '.$_SESSION['pedido']['cantidad'][$cont].'/'.$row["cantidad"].'</p> <input type="number" style="display:none;" value="'.$_SESSION['pedido']['cantidad'][$cont].'"> <a onclick="console.log("a")" class="imagen opciones"></a></div>';
                                         }
                                         
                                         $cont++;
@@ -101,12 +101,43 @@ include "./codigophp/conexionbs.php";
             </div>
         </div>
         <div id="footer">
-            <a href="notificaciones.php" class="campana imagen izquierda">Notificaciones</a>
+            <a href="notificaciones.php" class="basura imagen izquierda ">Eliminar pedido</a>
             <a onclick="goBack()" class="flecha imagen centro">Volver al inicio</a>
-            <a href="reportes.php" class="alerta imagen derecha">Reportes</a>
+            <a href="reportes.php" class="avion imagen derecha borde2">Enviar pedido</a>
         </div>
     </div>
-
+    <div id="sombra" class="sombra">
+        <div class="contenidosombra">
+            <button class="barra" id="opcionequis">
+                    <div class="equis" ></div>
+                        <div>Volver</div>
+                        <div></div>
+            </button>
+            <div class="contenido2">
+                <div class="con3" id="inicio">
+                    <div class="scroll-y" style="height: 100%; padding-top:2vh;">
+                        <div class="conscroll-y">
+                        <form action = "./pedido.php" method = "post">
+                                <input type="text" style="display:none;" name="estado" value="2">
+                                <input type="text" style="display:none;" name="pedido" value='{"herramientas": [1,2],"cantidad": [10,2]}'>
+                                <input type = "submit" class="basura imagen boton" style=" padding-left: 5vh;" value="Eliminar herramienta">
+                            </form>       
+                            <form action = "./pedido.php" method = "post">
+                                <input type="text" style="display:none;" name="estado" value="2">
+                                <input type="text" style="display:none;" name="pedido" value='{"herramientas": [1,2],"cantidad": [10,2]}'>
+                                <input type = "submit" class="signomas imagen boton" style=" padding-left: 5vh;" value="Editar cantidad">
+                            </form>    
+                            <form action = "./pedido.php" method = "post">
+                                <input type="text" style="display:none;" name="estado" value="2">
+                                <input type="text" style="display:none;" name="pedido" value='{"herramientas": [1,2],"cantidad": [10,2]}'>
+                                <input type = "submit" class="intercambio imagen boton" style=" padding-left: 5vh;" value="Reemplazar">
+                            </form>      
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="sombra2" class="sombra">
         <div class="contenidosombra">
             <button class="barra" id="opcionequis2">
@@ -130,4 +161,5 @@ include "./codigophp/conexionbs.php";
 
 
 <script src="codigojs/sombra2.js"></script>
+<script src="codigojs/sombra.js"></script>
 <script src="codigojs/volveratras.js"></script>
