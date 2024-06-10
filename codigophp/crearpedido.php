@@ -25,6 +25,7 @@ if ($result) {
 
 // Cerrar la conexión
 $conn->close();
+$_SESSION['id_usuario'] = null;
 header("Location: ../pedidos.php");
 exit;
 ?>

@@ -34,10 +34,10 @@ include './codigophp/conexionbs.php';
                 adipisicing elit.</p>
         </div>
         <div id="contenido">
-            <form class="barra" method="get" id="search-form">
-                <input type="submit" class="equis" value="">
-                <input type="text" id="search-input" name="search" placeholder="Buscar..">
-                <button type="submit"><img src="./estiloscss/imagenes/lupa.png" class="boton-search"></button>
+            <form class="barra" method="post" action="./buscarherramienta2.php">
+                <input type="submit" class="lupa" value="">
+                <input type="text" id="search-input" name="busqueda" placeholder="Buscar..">
+                <script></script>
                 <div></div>
             </form>
             <div class="contenido2">
@@ -45,31 +45,15 @@ include './codigophp/conexionbs.php';
                     <h1>HERRAMIENTAS</h1>
                     <div class="scroll-x">
                         <div class="conscroll-x">
-                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="get">
-                                <input type="search" name="search" placeholder="Buscar herramienta" autocomplete="off">
-                            </form>
                             <?php
-                            if (isset($_GET['search'])) {
-                                $search = $_GET['search'];
-                                $sql = "SELECT nombre, descripcion FROM categoria WHERE nombre LIKE '%$search%'";
-                                $result = $conn->query($sql);
-                                if ($result->num_rows > 0) {
-                                    while ($row = $result->fetch_assoc()) {
-                                        echo '<button class="cubo"> <h1>' . $row["nombre"] . '</h1> <p>Descripción: ' . $row["descripcion"] . '</p></button>';
-                                    }
-                                } else {
-                                    echo '<p>No se encontraron resultados</p>';
+                            $sql = "SELECT nombre, descripcion FROM categoria";
+                            $result = $conn->query($sql);
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    echo '<button class="cubo"> <h1>' . $row["nombre"] . '</h1> <p>Descripción: ' . $row["descripcion"] . '</p></button>';
                                 }
                             } else {
-                                $sql = "SELECT nombre, descripcion FROM categoria";
-                                $result = $conn->query($sql);
-                                if ($result->num_rows > 0) {
-                                    while ($row = $result->fetch_assoc()) {
-                                        echo '<button class="cubo"> <h1>' . $row["nombre"] . '</h1> <p>Descripción: ' . $row["descripcion"] . '</p></button>';
-                                    }
-                                } else {
-                                    echo '<p>No se encontraron resultados</p>';
-                                }
+                                echo '<p>No se encontraron resultados</p>';
                             }
                             ?>
                         </div>
