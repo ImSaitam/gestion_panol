@@ -30,8 +30,7 @@ include './codigophp/conexionbs.php';
         </div>
         <div id="subheader">
             <h1>Bienvenido <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit Lorem, ipsum dolor sit amet consectetur
-                adipisicing elit.</p>
+            <p></p>
         </div>
         <div id="contenido">
             <form class="barra" method="post" action="./buscarherramienta2.php">

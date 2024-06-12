@@ -18,7 +18,7 @@ include "./codigophp/sesion.php";
         </div>
         <div id="subheader">
             <h1>Notificaciones de <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p></p>
         </div>
         <div id="contenido">
             <div class="barra">
