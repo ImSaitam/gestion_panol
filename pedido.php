@@ -21,7 +21,7 @@ include "./codigophp/conexionbs.php";
         </div>
         
         <div id="contenidob">
-            <form action="buscarherramienta2.php" method="post">
+            <form action="buscarherramienta.php" method="post">
                 <button class="barra" type="submit">
                     <div class="mas"></div>
                         <div>AÑADIR HERRAMIENTA</div>

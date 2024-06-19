@@ -33,7 +33,7 @@ include './codigophp/conexionbs.php';
             <p></p>
         </div>
         <div id="contenido">
-            <form class="barra" method="post" action="./buscarherramienta2.php">
+            <form class="barra" method="post" action="./buscarherramienta.php">
                 <input type="submit" class="lupa" value="">
                 <input type="text" id="search-input" name="busqueda" placeholder="Buscar..">
                 <script></script>
