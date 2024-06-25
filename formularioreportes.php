@@ -38,7 +38,7 @@ include "./codigophp/conexionbs.php";
                             <label for="observaciones"></label>
                             <div class = "signomas imagen boton"> <input type="text" placeHolder="observaciones" id="observaciones" name="observaciones" maxlength="200" required><br></div>
 
-                            <div class = "signomas imagen boton"> <input type="submit" value="Crear Reporte"></div>
+                            <div class = "avion imagen boton"> <input type="submit" value="Crear Reporte"></div>
                         </form>
 
                         <script>
@@ -49,6 +49,8 @@ include "./codigophp/conexionbs.php";
                             // Asignar el valor al input escondido
                             if (herramientas) {
                                 document.getElementById('herramientas').value = herramientas;
+                            }
+                            if (pedidos) {
                                 document.getElementById('pedidos').value = pedidos;
                             }
                         </script>
