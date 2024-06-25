@@ -133,6 +133,7 @@ opcionequis.addEventListener('click', sacarBlur);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtener el ID del pedido a eliminar
     $pedido_id = $_POST['reportes'];
+    include "./codigophp/conexionbs.php";
 
     // Preparar la consulta SQL para eliminar el pedido
     $sql = "DELETE FROM reportes WHERE id = ?";
