@@ -32,7 +32,6 @@ if ($stmt->num_rows > 0) {
             $_SESSION['username'] = $username;
             $_SESSION['nombrecompleto'] = $nombrecompleto;
             $_SESSION['pedido'] = null;
-         
             $_SESSION['id_usuario'] = $id;
             $login_successful = true;
             header("Location: ../inicio.php");
