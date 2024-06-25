@@ -48,7 +48,7 @@ include "codigophp/conexionbs.php";
                             }
                             while($row = $result->fetch_assoc()) {
                                 if($row["cantidad"] == 0){
-                                    echo '<div class="rectangulo3 verde"><h1>'.$row["nombre"].'</h1> <img src="" alt="" class="sinimagen imagen" ><p id="can" style="color:red;">SIN UNIDADES</p> <input type="number" name="id" id="id" style="display:none;" value="'.$row["id"].'"><input type="number" name="id" id="can2" style="display:none;" value="'.$row["cantidad"].'"><a class="imagen alertablanca"></a></div>';
+                                    echo '<div class="rectangulo3 verde"><h1>'.$row["nombre"].'</h1> <img src="" alt="" class="sinimagen imagen" ><p id="can" style="color:red;">SIN UNIDADES</p> <input type="number" name="id" id="id" style="display:none;" value="'.$row["id"].'"><input type="number" name="id" id="can2" style="display:none;" value="'.$row["cantidad"].'"><a class="imagen alertablanca" href="formularioreportes.php?herramienta='.$row["id"].'"></a></div>';
                                 }else{
                                     echo '<div class="rectangulo3"><h1>'.$row["nombre"].'</h1> <img src="" alt="" class="sinimagen imagen" ><p id="can">Stock: '.$row["cantidad"].'</p> <input type="number" name="id" id="id"  style="display:none;" value="'.$row["id"].'"><input type="number" name="id" id="can2" style="display:none;" value="'.$row["cantidad"].'"><a class="imagen signomas tocar"></a></div>';
                                 }

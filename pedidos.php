@@ -49,7 +49,7 @@ include "codigophp/conexionbs.php";
                     
                     if ($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
-                            echo '<div class="rectangulo2"><h1>'.$row["fecha_pedido"].'</h1> <p>'.$row["id_aula"].' '.$row["estado"].'</p> <input type="hidden" name="id" id="id" value="'.$row["id_pedido"].'"><input type="hidden" name="pedido" id="pedido" value="'.htmlspecialchars($row["pedido"],ENT_QUOTES, 'UTF-8').'"> <button class="imagen opciones tocar"></button></div>';
+                            echo '<div class="rectangulo2"><h1>'.$row["fecha_pedido"].'</h1> <p>'.$row["id_aula"].' '.$row["estado"].'</p> <input type="hidden" name="id" id="id" value="'.$row["id_pedido"].'"><input type="hidden" name="estado" id="estado" value="'.$row["estado"].'"><input type="hidden" name="pedido" id="pedido" value="'.htmlspecialchars($row["pedido"],ENT_QUOTES, 'UTF-8').'"> <button class="imagen opciones tocar"></button></div>';
                         }
                     } else {
                         echo "<h1>NO HAY PEDIDOS AUN</h1>";
@@ -82,6 +82,7 @@ include "codigophp/conexionbs.php";
                         <div class="conscroll-y">
                             <form action = "./codigophp/borrarpedido.php" method = "post">
                                 <input type="hidden"  name="pedido" id="elim" value="2">
+                                <input type="hidden"  name="pedido" id="estadop" value="pendiente">
                                 <input type = "submit" class="basura imagen boton" style=" padding-left: 5vh;" value="Eliminar pedido">
                             </form>
                             <form action = "./pedido.php" method = "post">
@@ -153,9 +154,11 @@ opciones.forEach(element => {
     element.addEventListener('click', () => {
         let parentNode = element.parentNode;
         let pedido = parentNode.querySelector("#pedido").value;
+        let estado = parentNode.querySelector("#estado").value;
         let id = parentNode.querySelector("#id").value;
         document.getElementById("elim").value = id;
         document.getElementById("ver").value = pedido;
+        document.getElementById("estadop").value = pedido;
         aplicarBlur();
     });
 });
