@@ -35,8 +35,8 @@ include "./codigophp/conexionbs.php";
                         <form action="./formularioreportes.php" method="post">
                             <input type="hidden" id="herramientas" name="herramientas" value="1">
                             <input type="hidden" id="pedidos" name="pedidos" value="1">
-                            <label for="observaciones">Observaciones:</label>
-                            <div class = "signomas imagen boton"> <input type="text" id="observaciones" name="observaciones" maxlength="200" required><br></div>
+                            <label for="observaciones"></label>
+                            <div class = "signomas imagen boton"> <input type="text" placeHolder="observaciones" id="observaciones" name="observaciones" maxlength="200" required><br></div>
 
                             <div class = "signomas imagen boton"> <input type="submit" value="Crear Reporte"></div>
                         </form>
