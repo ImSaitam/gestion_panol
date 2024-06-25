@@ -60,54 +60,53 @@ session_start();
                             } else {
                                 $_SESSION['pedido'] = isset($_POST['pedido']) ? json_decode($_POST['pedido'], true) : null;
                             }
-
-                            $fechaHoraActual = date('Y-m-d H:i:s');
-                            echo '<div class="signomas imagen boton"><select name="curso" required><option value="1">Elija un curso</option>';
-                            $sql = "SELECT * FROM cursos";
-                            $result = mysqli_query($conn, $sql);
-                            if ($result->num_rows > 0) {
-                                while ($row = $result->fetch_assoc()) {
-                                    echo '<option value="'.$row["id"].'">'.$row["curso"].'</option>';
-                                }
+                        }
+                        $fechaHoraActual = date('Y-m-d H:i:s');
+                        echo '<div class="signomas imagen boton"><select name="curso" required><option value="1">Elija un curso</option>';
+                        $sql = "SELECT * FROM cursos";
+                        $result = mysqli_query($conn, $sql);
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo '<option value="'.$row["id"].'">'.$row["curso"].'</option>';
                             }
-                            echo '</select></div>';
-                            echo '<div class="mapa imagen boton"><select name="aula" required><option value="1">Elija un aula</option>';
-                            $sql = "SELECT * FROM aulas";
-                            $result = mysqli_query($conn, $sql);
-                            if ($result->num_rows > 0) {
-                                while ($row = $result->fetch_assoc()) {
-                                    echo '<option value="'.$row["id_aulas"].'">'.$row["nombre"].'</option>';
-                                }
+                        }
+                        echo '</select></div>';
+                        echo '<div class="mapa imagen boton"><select name="aula" required><option value="1">Elija un aula</option>';
+                        $sql = "SELECT * FROM aulas";
+                        $result = mysqli_query($conn, $sql);
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo '<option value="'.$row["id_aulas"].'">'.$row["nombre"].'</option>';
                             }
-                            echo '</select></div>';
-                            echo '<div class="signomas imagen boton"><input type="text" name="horario" value="' . $fechaHoraActual . '" readonly></div>';
+                        }
+                        echo '</select></div>';
+                        echo '<div class="signomas imagen boton"><input type="text" name="horario" value="' . $fechaHoraActual . '" readonly></div>';
 
-                            if (empty($_SESSION['pedido'])) {
-                                echo "<h1>NO HAY HERRAMIENTAS AUN</h1>";
-                            } else {
-                                $herramientas_ids = $_SESSION['pedido']['herramientas'];
-                                $cantidad_pedido = $_SESSION['pedido']['cantidad'];
-                                if (!empty($herramientas_ids)) {
-                                    $sql = "SELECT * FROM categoria WHERE categoria.id IN (" . implode(",", array_map('intval', $herramientas_ids)) . ")";
-                                    $result = mysqli_query($conn, $sql);
-                                    if ($result->num_rows > 0) {
-                                        echo '<h1>HERRAMIENTAS</h1>';
-                                        foreach ($result as $index => $row) {
-                                            $cantidad = isset($cantidad_pedido[$index]) ? $cantidad_pedido[$index] : 0;
-                                            if ($cantidad >= $row["cantidad"]) {
-                                                echo '<div class="rectangulo2"><h1>'.$row["nombre"].'</h1> <p style="color:red;">Stock: '.$cantidad.'/'.$row["cantidad"].'</p> <input type="number" style="display:none;" value="'.$cantidad.'"><a class="imagen opciones"></a></div>';
-                                            } else {
-                                                echo '<div class="rectangulo2"><h1>'.$row["nombre"].'</h1> <p>Stock: '.$cantidad.'/'.$row["cantidad"].'</p> <input type="number" style="display:none;" value="'.$cantidad.'"> <a onclick="console.log(\'a\')" class="imagen opciones"></a></div>';
-                                            }
+                        if (empty($_SESSION['pedido'])) {
+                            echo "<h1>NO HAY HERRAMIENTAS AUN</h1>";
+                        } else {
+                            $herramientas_ids = $_SESSION['pedido']['herramientas'];
+                            $cantidad_pedido = $_SESSION['pedido']['cantidad'];
+                            if (!empty($herramientas_ids)) {
+                                $sql = "SELECT * FROM categoria WHERE categoria.id IN (" . implode(",", array_map('intval', $herramientas_ids)) . ")";
+                                $result = mysqli_query($conn, $sql);
+                                if ($result->num_rows > 0) {
+                                    echo '<h1>HERRAMIENTAS</h1>';
+                                    foreach ($result as $index => $row) {
+                                        $cantidad = isset($cantidad_pedido[$index]) ? $cantidad_pedido[$index] : 0;
+                                        if ($cantidad >= $row["cantidad"]) {
+                                            echo '<div class="rectangulo2"><h1>'.$row["nombre"].'</h1> <p style="color:red;">Stock: '.$cantidad.'/'.$row["cantidad"].'</p> <input type="hidden" value="'.$cantidad.'" min="1" max="'.$row["cantidad"].'" required><a class="imagen opciones"></a></div>';
+                                        } else {
+                                            echo '<div class="rectangulo2"><h1>'.$row["nombre"].'</h1> <p>Stock: '.$cantidad.'/'.$row["cantidad"].'</p> <input type="hidden"  value="'.$cantidad.'" min="1" max="'.$row["cantidad"].'" required> <a onclick="console.log(\'a\')" class="imagen opciones"></a></div>';
                                         }
-                                    } else {
-                                        echo "<h1>NO HAY HERRAMIENTAS AUN</h1>";
                                     }
                                 } else {
-                                    echo "<h1>NO HAY HERRAMIENTAS AUN</h1>";
+                                    echo "<h1>NO HAY HERRAMIENTAS AUN</h1> <input required type='hidden'>";
                                 }
-                                $conn->close();
+                            } else {
+                                echo "<h1>NO HAY HERRAMIENTAS AUN</h1>";
                             }
+                            $conn->close();
                         }
                         ?>
                         </form>
@@ -115,9 +114,8 @@ session_start();
                 </div>
             </div>
         </div>
-        <div id="footer">
-            <a href="notificaciones.php" class="basura imagen izquierda">Eliminar pedido</a>
-            <a onclick="goBack()" class="flecha imagen centro">Volver al inicio</a>
+        <div id="footer2">
+            <a href="pedidos.php" class="flecha imagen izquierda">Volver al inicio</a>
             <a onclick="document.getElementById('formulario').submit()" class="avion imagen derecha borde2">Enviar pedido</a>
         </div>
     </div>
