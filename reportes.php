@@ -129,8 +129,6 @@ opciones.forEach(element => {
 opcionequis.addEventListener('click', sacarBlur);
 </script>
 <?php
-include "./codigophp/sesion.php";
-include "./codigophp/conexionbs.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtener el ID del pedido a eliminar
