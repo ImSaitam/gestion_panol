@@ -189,7 +189,30 @@ button{
     auto 30vh auto 30vh auto 30vh auto;
   
 }
-
+#footer2{
+    grid-area: FOO;
+    background-color:white;
+    box-shadow: 1vh -0.5vh 3vh 0vh rgba(208, 207, 238, 1);
+    display: grid;
+    grid-template:
+    ". . . . ." auto
+    ". IZ . DE ."7vh
+    ". . . . ." auto/
+    auto 30vh 10% 30vh auto;
+  
+}
+#footer2 a{
+    font-family: "Days One", sans-serif;
+    font-size: 2vh;
+    font-weight: 200;
+    color:white;
+    padding-top: 2vh;
+    padding-left:5vh;
+    text-align: center;
+    background-color:#4139E6;
+    border-radius:25vh;
+    background-position: left;
+}
 #footer a{
     font-family: "Days One", sans-serif;
     font-size: 2vh;
