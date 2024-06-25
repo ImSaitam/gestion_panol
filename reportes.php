@@ -1,5 +1,6 @@
 <?php
 include "./codigophp/sesion.php";
+include "./codigophp/conexionbs.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -30,11 +31,26 @@ include "./codigophp/sesion.php";
                 <div class="con3" id="inicio">
                 <h1>TUS REPORTES</h1>
                     <div class="scroll-y" style="height: 100%;">
-                        <div class="conscroll-y">
-                            <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>REPORTE</p> <button class="imagen opciones"></button></div>     
-                            <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>REPORTE</p> <button class="imagen opciones"></button></div>     
-                            <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>REPORTE</p> <button class="imagen opciones"></button></div>     
-                                           
+                        <div class="conscroll-y">  
+                            <?php
+                                $sql = "SELECT * FROM reportes WHERE reportes.id_usuario = ?";
+                    
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("s", $_SESSION['id_usuario']); 
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            echo '<div class="rectangulo2"><h1>'.$row["id_usuario"].'</h1> <p>'.$row["observaciones"].' </p> <input type="hidden" name="id" id="id" value="'.$row["id_pedido"].'"><input type="hidden" name="pedido" id="pedido" value="'.htmlspecialchars($row["id"],ENT_QUOTES, 'UTF-8').'"> <button class="imagen opciones tocar"></button></div>';
+                        }
+                    } else {
+                        echo "<h1>NO HAY REPORTES AUN</h1>";
+                    }
+                    
+                    $stmt->close();
+                    $conn->close();
+                    ?>                             
                         </div>
                     </div>
                 </div>
@@ -46,6 +62,5 @@ include "./codigophp/sesion.php";
             <a href="inicio.php" class="flecha imagen derecha">Volver al inicio</a>
         </div>
     </div>
-    
 </body>
 </html>
