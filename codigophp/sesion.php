@@ -6,7 +6,7 @@ if (!isset($_SESSION['id_usuario'])) {
 
 function panol($contenido){
     if ($_SESSION['cargo'] == "panolero") {
-        return $contenido;
+        echo $contenido;
     }
 }
 ?>

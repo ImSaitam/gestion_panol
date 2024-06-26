@@ -76,9 +76,8 @@ include './codigophp/conexionbs.php';
         </div>
         <div id="footer">
             <?php
-include "./codigophp/sesion.php";
-
-            echo panol('<a href="notificaciones.php" class="campana imagen izquierda">Notificaciones</a>'); ?>
+             panol('<a href="notificaciones.php" class="campana imagen izquierda">Notificaciones</a>'); 
+            ?>
             <a href="pedidos.php" class="logoboton imagen centro">Pedidos</a>
             <a href="reportes.php" class="alerta imagen derecha">Reportes</a>
         </div>
