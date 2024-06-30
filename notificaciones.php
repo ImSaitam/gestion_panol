@@ -31,8 +31,25 @@ include "./codigophp/sesion.php";
                 <h1>NOTIFICACIONES</h1>
                     <div class="scroll-y" style="height: 100%;">
                         <div class="conscroll-y">
-                            <div class="rectangulo2"><h1>DIA Y HORA</h1> <p>NOTIFICACION</p> <button class="imagen opciones"></button></div>         
-                                           
+                        <?php
+                            $sql = "SELECT * FROM pedidos ORDER BY fecha_pedido DESC";
+                            
+                            $stmt = $conn->prepare($sql);
+                            $stmt->bind_param("s", $_SESSION['id_usuario']); 
+                            $stmt->execute();
+                            $result = $stmt->get_result();
+                            
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    echo '<div class="rectangulo2"><h1>'.$row["fecha_pedido"].'</h1> <p>'.$row["id_aula"].' '.$row["estado"].'</p> <input type="hidden" name="id" id="id" value="'.$row["id_pedido"].'"><input type="hidden" name="estado" id="estado" value="'.$row["estado"].'"><input type="hidden" name="pedido" id="pedido" value="'.htmlspecialchars($row["pedido"],ENT_QUOTES, 'UTF-8').'"> <button class="imagen opciones tocar"></button></div>';
+                                }
+                            } else {
+                                echo "<h1>NO HAY PEDIDOS AUN</h1>";
+                            }
+                            
+                            $stmt->close();
+                            $conn->close();
+                        ?>          
                         </div>
                     </div>
                 </div>

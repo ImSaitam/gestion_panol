@@ -102,7 +102,22 @@ include './codigophp/conexionbs.php';
     </div>
 
 </body>
-
+<style>
+    #footer{
+    grid-area: FOO;
+    background-color:white;
+    box-shadow: 1vh -0.5vh 3vh 0vh rgba(208, 207, 238, 1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    gap:10%;
+    align-items: center;
+}
+#footer a{
+    height: 5vh;
+    width: 12vw;
+}
+</style>
 </html>
 <?php $conn->close(); ?>
 <script src="./codigojs/sombra2.js"></script>
