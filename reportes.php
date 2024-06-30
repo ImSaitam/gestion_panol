@@ -33,24 +33,38 @@ include "./codigophp/conexionbs.php";
                     <div class="scroll-y" style="height: 100%;">
                         <div class="conscroll-y">  
                             <?php
-                                $sql = "SELECT * FROM reportes WHERE reportes.id_usuario = ?";
-                    
-                    $stmt = $conn->prepare($sql);
-                    $stmt->bind_param("s", $_SESSION['id_usuario']); 
-                    $stmt->execute();
-                    $result = $stmt->get_result();
-                    
-                    if ($result->num_rows > 0) {
-                        while($row = $result->fetch_assoc()) {
-                            echo '<div class="rectangulo2"><h1>'.$row["id_usuario"].'</h1> <p>'.$row["observaciones"].' </p> <input type="hidden" name="id" id="id" value="'.$row["id"].'"> <button class="imagen opciones tocar"></button></div>';
-                        }
-                    } else {
-                        echo "<h1>NO HAY REPORTES AUN</h1>";
-                    }
-                    
-                    $stmt->close();
-                    $conn->close();
-                    ?>                             
+                                $sql = "";
+                                if ($_SESSION['cargo'] == "panolero" || $_SESSION['cargo'] == "admin") {
+                                    $sql = "SELECT reportes.*, usuarios.nombre_completo
+                                    FROM reportes
+                                    JOIN usuarios ON reportes.id_usuario = usuarios.id_usuario";
+                                    $stmt = $conn->prepare($sql);
+                                } else {
+                                    $sql = "SELECT * FROM reportes WHERE reportes.id_usuario = ?";
+                                    $stmt = $conn->prepare($sql);
+                                    $stmt->bind_param("s", $_SESSION['id_usuario']); 
+                                }
+
+                                $stmt->execute();
+                                $result = $stmt->get_result();
+
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo '<div class="rectangulo2">';
+                                        echo '<h1>' . $row["nombre_completo"] . '</h1>';
+                                        echo '<p>' . $row["observaciones"] . '</p>';
+                                        echo '<input type="hidden" name="id" id="id" value="' . $row["id"] . '">';
+                                        echo '<button class="imagen ojo tocar"></button>';
+                                        echo '</div>';
+                                    }
+                                } else {
+                                    echo "<h1>NO HAY REPORTES AUN</h1>";
+                                }
+
+                                $stmt->close();
+                                $conn->close();
+                            ?>
+                           
                         </div>
                     </div>
                 </div>
@@ -58,7 +72,7 @@ include "./codigophp/conexionbs.php";
         </div>
         <div id="footer">
             <a href="notificaciones.php" class="campana imagen izquierda">Ver pedidos</a>
-            <a href="pedidos.php" class="logoboton imagen centro">Pedir herramientas</a>
+            <a href="pedidos.php" class="logoboton imagen centro">Herramientas</a>
             <a href="inicio.php" class="flecha imagen derecha">Volver al inicio</a>
         </div>
     </div>

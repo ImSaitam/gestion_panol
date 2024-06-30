@@ -33,7 +33,7 @@ include './codigophp/conexionbs.php';
             <p></p>
         </div>
         <div id="contenido">
-            <form class="barra" method="post" action="./buscarherramienta.php">
+            <form class="barra" method="get" action="./buscarherramienta.php">
                 <input type="submit" class="lupa" value="">
                 <input type="text" id="search-input" name="busqueda" placeholder="Buscar..">
                 <script></script>
@@ -49,7 +49,7 @@ include './codigophp/conexionbs.php';
                             $result = $conn->query($sql);
                             if ($result->num_rows > 0) {
                                 while ($row = $result->fetch_assoc()) {
-                                    echo '<button class="cubo"> <h1>' . $row["nombre"] . '</h1> <p>Descripción: ' . $row["descripcion"] . '</p></button>';
+                                    echo '<a class="cubo" href="./buscarherramienta.php?busqueda='. $row["nombre"] .'"> <h1>' . $row["nombre"] . '</h1> <p>Descripción: ' . $row["descripcion"] . '</p></a>';
                                 }
                             } else {
                                 echo '<p>No se encontraron resultados</p>';
@@ -78,7 +78,7 @@ include './codigophp/conexionbs.php';
             <?php
              panol('<a href="notificaciones.php" class="campana imagen izquierda">Ver pedidos</a>'); 
             ?>
-            <a href="pedidos.php" class="logoboton imagen centro">Pedir herramientas</a>
+            <a href="pedidos.php" class="logoboton imagen centro">Herramientas</a>
             <a href="reportes.php" class="alerta imagen derecha">Reportes</a>
         </div>
         <div id="sombra2" class="sombra">

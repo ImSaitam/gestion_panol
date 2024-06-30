@@ -21,7 +21,7 @@ include "codigophp/conexionbs.php";
         </div>
         
         <div id="contenido">
-            <form class="barra" method="post"  action="./buscarherramienta.php">
+            <form class="barra" method="get"  action="./buscarherramienta.php">
                 <input type="submit" class="equis" value=""></button>
                 <input type="text" name="busqueda" placeholder="Buscar..">
                 <div></div>
@@ -32,34 +32,34 @@ include "codigophp/conexionbs.php";
                         
                     
                     <?php
-                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    if ($_SERVER["REQUEST_METHOD"] == "GET") {
                         $sql="";
-                        if($_POST['busqueda'] == null){
+                        if($_GET['busqueda'] == null){
                             $sql = "SELECT * FROM categoria";
                         }else{
-                            $sql = "SELECT * FROM categoria WHERE categoria.nombre = '".$_POST['busqueda']."'";
+                            $sql = "SELECT * FROM categoria WHERE categoria.nombre = '".$_GET['busqueda']."'";
                         }
                         $result = mysqli_query($conn, $sql);
                         if ($result->num_rows > 0) {
-                            if($_POST['busqueda']== null){
+                            if($_GET['busqueda']== null){
                                 echo '<h1>HERRAMIENTAS</h1>';
                             }else{
-                                echo '<h1>RESULTADOS DE: '.$_POST['busqueda'].'</h1>';
+                                echo '<h1>RESULTADOS DE: '.$_GET['busqueda'].'</h1>';
                             }
                             echo'<div class="scroll-y" style="height:100%;"><div class="conscroll-y">';
                             while($row = $result->fetch_assoc()) {
                                 if($row["cantidad"] == 0){
-                                    echo '<div class="rectangulo3 verde"><h1>'.$row["nombre"].'</h1> <img src="" alt="" class="sinimagen imagen" ><p id="can" style="color:red;">SIN UNIDADES</p> <input type="number" name="id" id="id" style="display:none;" value="'.$row["id"].'"><input type="number" name="id" id="can2" style="display:none;" value="'.$row["cantidad"].'"><a class="imagen alertablanca" href="formularioreportes.php?herramienta='.$row["id"].'"></a></div>';
+                                    echo '<div class="rectangulo3 verde"><h1>'.$row["nombre"].'</h1> <img src="" alt="" class="sinimagen imagen" ><p id="can" style="color:red;">SIN UNIDADES</p> <input type="number" name="id" id="id" style="display:none;" value="'.$row["id"].'"><input type="number" name="id" id="can2" style="display:none;" value="'.$row["cantidad"].'"><a class="imagen alertablanca" href="formularioreportes.php"></a></div>';
                                 }else{
                                     echo '<div class="rectangulo3"><h1>'.$row["nombre"].'</h1> <img src="" alt="" class="sinimagen imagen" ><p id="can">Stock: '.$row["cantidad"].'</p> <input type="number" name="id" id="id"  style="display:none;" value="'.$row["id"].'"><input type="number" name="id" id="can2" style="display:none;" value="'.$row["cantidad"].'"><a class="imagen signomas tocar"></a></div>';
                                 }
                             } 
                             echo'</div></div>';
                         }else{
-                            if($_POST['busqueda']== null){
+                            if($_GET['busqueda']== null){
                                 echo "<h1>NO SE ENCONTRARON HERRAMIENTAS</h1>";
                             }else{
-                                echo '<h1>NO SE ENCONTRO: '.$_POST['busqueda'].'</h1>';
+                                echo '<h1>NO SE ENCONTRO: '.$_GET['busqueda'].'</h1>';
                             }
                         }
                     }else{

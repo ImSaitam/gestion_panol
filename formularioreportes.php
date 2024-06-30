@@ -34,7 +34,7 @@ include "./codigophp/conexionbs.php";
                         <form class="conscroll-y" action="./formularioreportes.php" method="post">
                             <input type="hidden" id="herramientas" name="herramientas" value="1">
                             <input type="hidden" id="pedidos" name="pedidos" value="1">
-                            <label for="observaciones"></label>
+                           
                             <div class = "signomas imagen boton"> <input type="text" placeHolder="observaciones" id="observaciones" name="observaciones" maxlength="200" required><br></div>
 
                             <div class = "avion imagen boton"> <input type="submit" value="Crear Reporte"></div>
@@ -60,39 +60,46 @@ include "./codigophp/conexionbs.php";
         </div>
         <div id="footer">
             <a href="notificaciones.php" class="campana imagen izquierda">Ver pedidos</a>
-            <a href="pedidos.php" class="logoboton imagen centro">Pedir herramientas</a>
+            <a href="pedidos.php" class="logoboton imagen centro">Herramientas</a>
             <a href="inicio.php" class="flecha imagen derecha">Volver al inicio</a>
         </div>
     </div>
 </body>
 </html>
 <?php
-include "./codigophp/sesion.php";
-include "./codigophp/conexionbs.php";
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $observaciones = trim($_POST['observaciones']);
-    $id_herramienta = trim($_POST['herramientas']);
-    $id_pedidos = trim($_POST['pedidos']);
-
-// Obtener datos del formulario
-$id_usuario = $_SESSION['id_usuario'];
-
-// Crear la consulta SQL para insertar el nuevo pedido en la base de datos
-$sql = "INSERT INTO `reportes`(`id_usuario`, `id_pedido`, `id_herramienta`, `observaciones`) VALUES 
-('$id_usuario', '$id_pedido', '$id_herramienta', '$observaciones')";
-
-$result = mysqli_query($conn, $sql);
-if ($result) {
-    echo "Nuevo pedido creado correctamente.";
-} else {
-    echo "Error al crear el pedido: " . mysqli_error($conn);
-}
-
-
-// Cerrar la conexión
-$conn->close();
-header("Location: ./reportes.php");
-exit;
+    // Validar y limpiar los datos del formulario
+    $observaciones = $_POST['observaciones'];
+    $id_herramienta = $_POST['herramientas'];
+    $id_pedido = $_POST['pedidos'];
+    
+    // Obtener el id_usuario de la sesión
+    $id_usuario = $_SESSION['id_usuario'];
+    
+    // Crear la consulta SQL usando un prepared statement
+    $sql = "INSERT INTO reportes (id_usuario, id_pedido, id_herramienta, observaciones) VALUES (?, ?, ?, ?)";
+    
+    // Preparar la consulta
+    $stmt = $conn->prepare($sql);
+    
+    // Vincular parámetros
+    $stmt->bind_param("ssss", $id_usuario, $id_pedido, $id_herramienta, $observaciones);
+    
+    // Ejecutar la consulta
+    if ($stmt->execute()) {
+        echo "Nuevo reporte creado correctamente.";
+    } else {
+        echo "Error al crear el reporte: " . $stmt->error;
+    }
+    
+    // Cerrar el statement
+    $stmt->close();
+    
+    // Cerrar la conexión
+    $conn->close();
+    
+    // Redirigir al usuario después de procesar el formulario
+    header("Location: ./reportes.php");
+    exit;
 }
 ?>
