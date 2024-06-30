@@ -44,6 +44,11 @@ input::placeholder {
 button{
     background-color: transparent;
     border: none;
+    
+}
+
+button, a, input[type="submit"]{
+    cursor: pointer;
 }
 
 /*ESTRUCTURA*/
