@@ -57,8 +57,8 @@ include "./codigophp/conexionbs.php";
             </div>
         </div>
         <div id="footer">
-            <a href="notificaciones.php" class="campana imagen izquierda">Notificaciones</a>
-            <a href="pedidos.php" class="logoboton imagen centro">Pedidos</a>
+            <a href="notificaciones.php" class="campana imagen izquierda">Ver pedidos</a>
+            <a href="pedidos.php" class="logoboton imagen centro">Pedir herramientas</a>
             <a href="inicio.php" class="flecha imagen derecha">Volver al inicio</a>
         </div>
     </div>

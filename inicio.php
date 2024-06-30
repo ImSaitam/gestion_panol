@@ -58,7 +58,7 @@ include './codigophp/conexionbs.php';
                         </div>
                     </div>
                     <h1>PAÑOLEROS</h1>
-                    <div class="scroll-x" style="height: 28vh;">
+                    <div class="scroll-x" style="height: 33vh;">
                         <div class="conscroll-x">
                             <?php
                             $sql = "SELECT nombre_completo, horario FROM usuarios WHERE cargo = 'panolero' ";
@@ -76,9 +76,9 @@ include './codigophp/conexionbs.php';
         </div>
         <div id="footer">
             <?php
-             panol('<a href="notificaciones.php" class="campana imagen izquierda">Notificaciones</a>'); 
+             panol('<a href="notificaciones.php" class="campana imagen izquierda">Ver pedidos</a>'); 
             ?>
-            <a href="pedidos.php" class="logoboton imagen centro">Pedidos</a>
+            <a href="pedidos.php" class="logoboton imagen centro">Pedir herramientas</a>
             <a href="reportes.php" class="alerta imagen derecha">Reportes</a>
         </div>
         <div id="sombra2" class="sombra">
@@ -102,22 +102,6 @@ include './codigophp/conexionbs.php';
     </div>
 
 </body>
-<style>
-    #footer{
-    grid-area: FOO;
-    background-color:white;
-    box-shadow: 1vh -0.5vh 3vh 0vh rgba(208, 207, 238, 1);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content:center;
-    gap:10%;
-    align-items: center;
-}
-#footer a{
-    height: 5vh;
-    width: 12vw;
-}
-</style>
 </html>
 <?php $conn->close(); ?>
 <script src="./codigojs/sombra2.js"></script>

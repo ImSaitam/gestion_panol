@@ -2,7 +2,6 @@
 include "./codigophp/sesion.php";
 include "./codigophp/conexionbs.php";
 
-session_start();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -27,14 +26,17 @@ session_start();
                     <div class="mas"></div>
                     <div>AÑADIR HERRAMIENTA</div>
                     <div></div>
-                    <input type="text" value="" name="busqueda" style="display:none;">
+                    <input type="hidden" value="" name="busqueda">
+                    <input type="hidden" value="" name="aula">
+                    <input type="hidden" value="" name="curso">
                 </button>
             </form>
             <div class="contenido2">
                 <div class="con3" id="inicio">
                     <h1>INFORMACIÓN DEL PEDIDO</h1>
-                    <div class="scroll-y" style="height: 100%; width:40vh;">
-                        <form class="conscroll-y" method="post" action="./codigophp/crearpedido.php" id="formulario">
+                    <div class="scroll-y" style="height: 100%; ">
+                        <form action="" method="post" action="./codigophp/crearpedido.php" id="formulario">
+                        
                         <?php
                         if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $estado = isset($_POST['estado']) ? trim($_POST['estado']) : '';
@@ -62,7 +64,7 @@ session_start();
                             }
                         }
                         $fechaHoraActual = date('Y-m-d H:i:s');
-                        echo '<div class="signomas imagen boton"><select name="curso" required><option value="1">Elija un curso</option>';
+                        echo '<div class="conscroll-y" ><div class="signomas imagen boton"><select name="curso" required><option value="1">Elija un curso</option>';
                         $sql = "SELECT * FROM cursos";
                         $result = mysqli_query($conn, $sql);
                         if ($result->num_rows > 0) {
@@ -80,7 +82,7 @@ session_start();
                             }
                         }
                         echo '</select></div>';
-                        echo '<div class="signomas imagen boton"><input type="text" name="horario" value="' . $fechaHoraActual . '" readonly></div>';
+                        echo '<div class="signomas imagen boton"><input type="text" name="horario" value="' . $fechaHoraActual . '" readonly></div></div>';
 
                         if (empty($_SESSION['pedido'])) {
                             echo "<h1>NO HAY HERRAMIENTAS AUN</h1>";
@@ -91,7 +93,7 @@ session_start();
                                 $sql = "SELECT * FROM categoria WHERE categoria.id IN (" . implode(",", array_map('intval', $herramientas_ids)) . ")";
                                 $result = mysqli_query($conn, $sql);
                                 if ($result->num_rows > 0) {
-                                    echo '<h1>HERRAMIENTAS</h1>';
+                                    echo '<h1>HERRAMIENTAS</h1><div class="conscroll-y" >';
                                     foreach ($result as $index => $row) {
                                         $cantidad = isset($cantidad_pedido[$index]) ? $cantidad_pedido[$index] : 0;
                                         if ($cantidad >= $row["cantidad"]) {
@@ -100,6 +102,7 @@ session_start();
                                             echo '<div class="rectangulo2"><h1>'.$row["nombre"].'</h1> <p>Stock: '.$cantidad.'/'.$row["cantidad"].'</p> <input type="hidden"  value="'.$cantidad.'" min="1" max="'.$row["cantidad"].'" required> <a onclick="console.log(\'a\')" class="imagen opciones"></a></div>';
                                         }
                                     }
+                                    echo'</div>';
                                 } else {
                                     echo "<h1>NO HAY HERRAMIENTAS AUN</h1> <input required type='hidden'>";
                                 }
@@ -109,13 +112,14 @@ session_start();
                             $conn->close();
                         }
                         ?>
+                       
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="footer2">
-            <a href="pedidos.php" class="flecha imagen izquierda">Volver al inicio</a>
+        <div id="footer">
+            <a href="pedidos.php" class="flecha imagen izquierda">Volver</a>
             <a onclick="document.getElementById('formulario').submit()" class="avion imagen derecha borde2">Enviar pedido</a>
         </div>
     </div>

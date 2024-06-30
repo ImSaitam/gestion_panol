@@ -62,6 +62,9 @@
 .opciones{
     background-image: URL(imagenes/opciones.png);
 }
+.opcionesblanco{
+    background-image: URL(imagenes/opcionesb.png);
+}
 .pañolero{
     background-image: URL(imagenes/panolero.jpg);
 }

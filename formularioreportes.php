@@ -31,15 +31,14 @@ include "./codigophp/conexionbs.php";
                 <div class="con3" id="inicio">
                 <h1>TUS REPORTES</h1>
                     <div class="scroll-y" style="height: 100%;">
-                        <div class="conscroll-y">
-                        <form action="./formularioreportes.php" method="post">
+                        <form class="conscroll-y" action="./formularioreportes.php" method="post">
                             <input type="hidden" id="herramientas" name="herramientas" value="1">
                             <input type="hidden" id="pedidos" name="pedidos" value="1">
                             <label for="observaciones"></label>
                             <div class = "signomas imagen boton"> <input type="text" placeHolder="observaciones" id="observaciones" name="observaciones" maxlength="200" required><br></div>
 
                             <div class = "avion imagen boton"> <input type="submit" value="Crear Reporte"></div>
-                        </form>
+                        
 
                         <script>
                             // Obtener la variable 'herramientas' de la barra de búsqueda
@@ -54,14 +53,14 @@ include "./codigophp/conexionbs.php";
                                 document.getElementById('pedidos').value = pedidos;
                             }
                         </script>
-                        </div> 
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
         <div id="footer">
-            <a href="notificaciones.php" class="campana imagen izquierda">Notificaciones</a>
-            <a href="pedidos.php" class="logoboton imagen centro">Pedidos</a>
+            <a href="notificaciones.php" class="campana imagen izquierda">Ver pedidos</a>
+            <a href="pedidos.php" class="logoboton imagen centro">Pedir herramientas</a>
             <a href="inicio.php" class="flecha imagen derecha">Volver al inicio</a>
         </div>
     </div>
