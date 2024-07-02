@@ -35,36 +35,37 @@ include "./codigophp/conexionbs.php";
                 <div class="con3" id="inicio">
                     <h1>INFORMACIÓN DEL PEDIDO</h1>
                     <div class="scroll-y" style="height: 100%; ">
-                        <form action="" method="post" action="./codigophp/crearpedido.php" id="formulario">
-                        
+                        <form method="post" action="./codigophp/crearpedido.php" id="formulario">
                         <?php
                         if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $estado = isset($_POST['estado']) ? trim($_POST['estado']) : '';
-                            if ($_POST["codigo"] == 1) {
-                                $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
-                                $cantidad = isset($_POST['cantidad']) ? intval($_POST['cantidad']) : 0;
-                                if (isset($_SESSION['pedido'])) {
-                                    $pedido = $_SESSION['pedido'];
-                                    $index = array_search($id, $pedido['herramientas']);
-                                    if ($index !== false) {
-                                        $pedido['cantidad'][$index] = $cantidad;
+                            if (isset($_POST["codigo"])) {
+                                if ($_POST["codigo"] == 1) {
+                                    $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
+                                    $cantidad = isset($_POST['cantidad']) ? intval($_POST['cantidad']) : 0;
+                                    if (isset($_SESSION['pedido'])) {
+                                        $pedido = $_SESSION['pedido'];
+                                        $index = array_search($id, $pedido['herramientas']);
+                                        if ($index !== false) {
+                                            $pedido['cantidad'][$index] = $cantidad;
+                                        } else {
+                                            $pedido['herramientas'][] = $id;
+                                            $pedido['cantidad'][] = $cantidad;
+                                        }
                                     } else {
-                                        $pedido['herramientas'][] = $id;
-                                        $pedido['cantidad'][] = $cantidad;
+                                        $pedido = array(
+                                            'herramientas' => array($id),
+                                            'cantidad' => array($cantidad)
+                                        );
                                     }
+                                    $_SESSION['pedido'] = $pedido;
                                 } else {
-                                    $pedido = array(
-                                        'herramientas' => array($id),
-                                        'cantidad' => array($cantidad)
-                                    );
+                                    $_SESSION['pedido'] = isset($_POST['pedido']) ? json_decode($_POST['pedido'], true) : null;
                                 }
-                                $_SESSION['pedido'] = $pedido;
-                            } else {
-                                $_SESSION['pedido'] = isset($_POST['pedido']) ? json_decode($_POST['pedido'], true) : null;
                             }
                         }
                         $fechaHoraActual = date('Y-m-d H:i:s');
-                        echo '<div class="conscroll-y" ><div class="signomas imagen boton"><select name="curso" required><option value="">Elija un curso</option>';
+                        echo '<div class="conscroll-y" ><div class="signomas imagen boton"><select name="curso" ><option value="">Elija un curso</option>';
                         $sql = "SELECT * FROM cursos";
                         $result = mysqli_query($conn, $sql);
                         if ($result->num_rows > 0) {
@@ -73,7 +74,7 @@ include "./codigophp/conexionbs.php";
                             }
                         }
                         echo '</select></div>';
-                        echo '<div class="mapa imagen boton"><select name="aula" required><option value="">Elija un aula</option>';
+                        echo '<div class="mapa imagen boton"><select name="aula" ><option value="">Elija un aula</option>';
                         $sql = "SELECT * FROM aulas";
                         $result = mysqli_query($conn, $sql);
                         if ($result->num_rows > 0) {
@@ -104,7 +105,7 @@ include "./codigophp/conexionbs.php";
                                     }
                                     echo'</div>';
                                 } else {
-                                    echo "<h1>NO HAY HERRAMIENTAS AUN</h1> <input required type='hidden'>";
+                                    echo "<h1>NO HAY HERRAMIENTAS AUN</h1> <input type='hidden'>";
                                 }
                             } else {
                                 echo "<h1>NO HAY HERRAMIENTAS AUN</h1>";

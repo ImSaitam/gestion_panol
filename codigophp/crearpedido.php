@@ -32,9 +32,6 @@ if ($result) {
 
 // Crear la consulta SQL para insertar el nuevo pedido en la base de datos
 
-
-
-
 // Cerrar la conexión
 $conn->close();
 $_SESSION['pedido'] = null;

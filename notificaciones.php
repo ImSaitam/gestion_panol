@@ -37,7 +37,7 @@ include "./codigophp/conexionbs.php";
                             FROM pedidos
                             JOIN aulas ON pedidos.id_aula = aulas.id_aulas
                             JOIN cursos ON pedidos.fk_curso = cursos.id
-                            WHERE DATE(pedidos.fecha_pedido) = CURDATE()
+                           
                             ORDER BY pedidos.fecha_pedido DESC;
                             ";  
                             $result = $conn->query($sql);
