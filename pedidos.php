@@ -82,7 +82,7 @@ include "codigophp/conexionbs.php";
                         <div class="conscroll-y">
                             <form action = "./codigophp/borrarpedido.php" method = "post">
                                 <input type="hidden"  name="pedido" id="elim" value="2">
-                                <input type="hidden"  name="pedido" id="estadop" value="pendiente">
+                                <input type="hidden"  name="estado" id="estadop" value="pendiente">
                                 <input type = "submit" class="basura imagen boton" style=" padding-left: 5vh;" value="Eliminar pedido">
                             </form>
                             <form action = "./pedido.php" method = "post">
