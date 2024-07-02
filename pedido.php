@@ -64,7 +64,7 @@ include "./codigophp/conexionbs.php";
                             }
                         }
                         $fechaHoraActual = date('Y-m-d H:i:s');
-                        echo '<div class="conscroll-y" ><div class="signomas imagen boton"><select name="curso" required><option value="1">Elija un curso</option>';
+                        echo '<div class="conscroll-y" ><div class="signomas imagen boton"><select name="curso" required><option value="">Elija un curso</option>';
                         $sql = "SELECT * FROM cursos";
                         $result = mysqli_query($conn, $sql);
                         if ($result->num_rows > 0) {
@@ -73,7 +73,7 @@ include "./codigophp/conexionbs.php";
                             }
                         }
                         echo '</select></div>';
-                        echo '<div class="mapa imagen boton"><select name="aula" required><option value="1">Elija un aula</option>';
+                        echo '<div class="mapa imagen boton"><select name="aula" required><option value="">Elija un aula</option>';
                         $sql = "SELECT * FROM aulas";
                         $result = mysqli_query($conn, $sql);
                         if ($result->num_rows > 0) {
