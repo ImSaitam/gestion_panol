@@ -354,19 +354,19 @@ option{
 }
 .rectangulo{
     background-color:white;
-    height: 28vh;
+    height: max-content;
     width: 20vh;
     border-radius: 2vh;
     grid-template:
-    ". . ."1vh
-    ". BOTON ."18vh
-    ". TITULO . " 2vh
-    ". TEXTO . " auto
+    "BOTON BOTON BOTON"20vh
+    ". TITULO . " max-content
+    ". TEXTO . " max-content
     ". . ."1vh/
     1vh auto 1vh;
     box-shadow: 0.1vh 0.5vh 1vh 0.2vh rgba(208, 207, 238, 1);
     border: rgba(208, 207, 238, 1) solid 0.1vh;
     display: grid;
+    overflow: hidden;
 }
 .rectangulo h1{
     grid-area: TITULO;
@@ -378,8 +378,14 @@ option{
 
 }
 .rectangulo button{
-    background-size: cover;
+    background-size: 40vh;
+    background-position: center;
     grid-area: BOTON;
+    background-repeat: no-repeat;
+    transition: background-size 0.5s;
+}
+.rectangulo button:hover{
+    background-size: 20vh;
 }
 .rectangulo2{
     background-color:white;
