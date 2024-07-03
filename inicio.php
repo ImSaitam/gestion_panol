@@ -15,7 +15,6 @@ include './codigophp/conexionbs.php';
     <link rel="stylesheet" href="estiloscss/styles.css">
     <link rel="stylesheet" href="estiloscss/imagenes.css">
     <link rel="stylesheet" href="estiloscss/animaciones.css">
-
 </head>
 
 <body>
@@ -61,11 +60,11 @@ include './codigophp/conexionbs.php';
                     <div class="scroll-x" style="height: 33vh;">
                         <div class="conscroll-x">
                             <?php
-                            $sql = "SELECT nombre_completo, horario FROM usuarios WHERE cargo = 'panolero' ";
+                            $sql = "SELECT nombre_completo, horario, fotoperfil FROM usuarios WHERE cargo = 'panolero' ";
                             $result = $conn->query($sql);
                             if ($result->num_rows > 0) {
                                 while ($row = $result->fetch_assoc()) {
-                                    echo "<div class='rectangulo'><h1>" . $row["nombre_completo"] . "<p>" . $row["horario"] . "</p></div>";
+                                    echo "<div class='rectangulo'><button style='background-image:url(". $row["fotoperfil"] .");'></button><h1>" . $row["nombre_completo"] . "<p>" . $row["horario"] . "</p></div>";
                                 }
                             }
                             ?>
