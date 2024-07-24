@@ -10,6 +10,7 @@ include "./codigophp/conexionbs.php";
     <title>Página de Inicio</title>
     <link rel="stylesheet" href="estiloscss/styles.css">
     <link rel="stylesheet" href="estiloscss/imagenes.css">
+    <link rel="stylesheet" href="estiloscss/animaciones.css">
 </head>
 <body>
     <div id="pagina">
