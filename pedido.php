@@ -34,7 +34,7 @@ include "./codigophp/conexionbs.php";
             <div class="contenido2">
                 <div class="con3" id="inicio">
                     <h1>INFORMACIÓN DEL PEDIDO</h1>
-                    <div class="scroll-y" style="height: 100%; ">
+                    <div class="scroll-y" id="scroll" style="height: 100%; ">
                         <form method="post" action="./codigophp/crearpedido.php" id="formulario">
                         <?php
                         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -133,7 +133,7 @@ include "./codigophp/conexionbs.php";
             </button>
             <div class="contenido2">
                 <div class="con3" id="inicio">
-                    <div class="scroll-y" style="height: 100%; padding-top:2vh;">
+                    <div class="scroll-y" id="scroll" style="height: 100%; padding-top:2vh;">
                         <div class="conscroll-y">
                             <form action="./pedido.php" method="post">
                                 <input type="text" style="display:none;" name="codigo" value="2">
@@ -168,7 +168,7 @@ include "./codigophp/conexionbs.php";
             </button>
             <div class="contenido2">
                 <div class="con3" id="inicio">
-                    <div class="scroll-y" style="height: 100%; padding-top:2vh;">
+                    <div class="scroll-y" id="scroll" style="height: 100%; padding-top:2vh;">
                         <div class="conscroll-y">
                             <a href="codigophp/cerrarsesion.php" class="flecha imagen boton">Cerrar sesión</a>
                         </div>

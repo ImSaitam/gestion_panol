@@ -41,7 +41,7 @@ include './codigophp/conexionbs.php';
             <div class="contenido2">
                 <div class="con3" id="inicio">
                     <h1>HERRAMIENTAS</h1>
-                    <div class="scroll-x">
+                    <div class="scroll-x" id="scroll">
                         <div class="conscroll-x">
                             <?php
                             $sql = "SELECT nombre, descripcion FROM categoria";
@@ -57,7 +57,7 @@ include './codigophp/conexionbs.php';
                         </div>
                     </div>
                     <h1>PAÑOLEROS</h1>
-                    <div class="scroll-x" style="height: 33vh;">
+                    <div class="scroll-x" id="scroll" style="height: 33vh;">
                         <div class="conscroll-x">
                             <?php
                             $sql = "SELECT nombre_completo, horario, fotoperfil FROM usuarios WHERE cargo = 'panolero' ";
@@ -89,7 +89,7 @@ include './codigophp/conexionbs.php';
                 </button>
                 <div class="contenido2">
                     <div class="con3" id="inicio">
-                        <div class="scroll-y" style="height: 100%; padding-top:2vh;">
+                        <div class="scroll-y" id="scroll" style="height: 100%; padding-top:2vh;">
                             <div class="conscroll-y">
                                 <a href="codigophp/cerrarsesion.php" class="flecha imagen boton">Cerrar sesión</a>
                             </div>

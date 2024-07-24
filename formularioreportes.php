@@ -31,7 +31,7 @@ include "./codigophp/conexionbs.php";
             <div class="contenido2">
                 <div class="con3" id="inicio">
                 <h1>TUS REPORTES</h1>
-                    <div class="scroll-y" style="height: 100%;">
+                    <div class="scroll-y" id="scroll" style="height: 100%;">
                         <form class="conscroll-y" action="./formularioreportes.php" method="post">
                             <input type="hidden" id="herramientas" name="herramientas" value="1">
                             <input type="hidden" id="pedidos" name="pedidos" value="1">

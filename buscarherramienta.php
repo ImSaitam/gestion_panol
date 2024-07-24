@@ -46,7 +46,7 @@ include "codigophp/conexionbs.php";
                             }else{
                                 echo '<h1>RESULTADOS DE: '.$_GET['busqueda'].'</h1>';
                             }
-                            echo'<div class="scroll-y" style="height:100%;"><div class="conscroll-y">';
+                            echo'<div class="scroll-y" id="scroll" style="height:100%;"><div class="conscroll-y">';
                             while($row = $result->fetch_assoc()) {
                                 if($row["cantidad"] == 0){
                                     echo '<div class="rectangulo3 verde"><h1>'.$row["nombre"].'</h1> <img src="" alt="" class="sinimagen imagen" ><p id="can" style="color:red;">SIN UNIDADES</p> <input type="number" name="id" id="id" style="display:none;" value="'.$row["id"].'"><input type="number" name="id" id="can2" style="display:none;" value="'.$row["cantidad"].'"><a class="imagen alertablanca" href="formularioreportes.php"></a></div>';
@@ -69,7 +69,7 @@ include "codigophp/conexionbs.php";
                             
                             echo '<h1>HERRAMIENTAS</h1>';
                             
-                            echo'<div class="scroll-y"style="height:100%;" ><div class="conscroll-y">';
+                            echo'<div class="scroll-y" id="scroll" style="height:100%;" ><div class="conscroll-y">';
                             while($row = $result->fetch_assoc()) {
                                 if($row["cantidad"] == 0){
                                     echo '<div class="rectangulo3 verde"><h1>'.$row["nombre"].'</h1> <img src="" alt="" class="sinimagen imagen" ><p id="can" style="color:red;">SIN UNIDADES</p> <input type="number" name="id" id="id" style="display:none;" value="'.$row["id"].'"><input type="number" name="id" id="can2" style="display:none;" value="'.$row["cantidad"].'"><a class="imagen alertablanca" href="formularioreportes.php?herramienta='.$row["id"].'"></a></div>';
@@ -105,7 +105,7 @@ include "codigophp/conexionbs.php";
                 <div class="con3" id="inicio" >
                 <h1 style="color:white;" id="cantidad"></h1>
 
-                    <div class="scroll-y" style="height: 100%; padding-top:2vh; width: 40vh;">
+                    <div class="scroll-y" id="scroll" style="height: 100%; padding-top:2vh; width: 40vh;">
                         <form class="conscroll-y" action = "./pedido.php" method = "post">
                         <div class="signomas imagen boton"><input type="number" id="can3" name="cantidad" value='' placeHolder="Elegir cantidad" min="1" max=""></div>
                                 <input type = "text" id="input" name="id"  style=" display:none;" value="" >

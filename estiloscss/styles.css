@@ -275,8 +275,8 @@ option{
     overflow-y: none;
     height: 25vh;
     display: flex;
-    justify-content: center;
     width: 100%;
+    justify-content: start;
 }
 
 .conscroll-y{
@@ -290,6 +290,7 @@ option{
     gap: 2vh;
 }
 .conscroll-x{
+    justify-content: center; 
     overflow: hidden;
     position: absolute;
     width: max-content;

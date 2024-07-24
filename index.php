@@ -30,7 +30,7 @@ session_start();
         <div class="contenido2">
                 <div class="con3" id="inicio">
                     <h1 style="color:white;">Iniciar sesión</h1>
-                    <div class="scroll-y" style="height: 100%; width:40vh; padding-top: 2vh;">
+                    <div class="scroll-y" id="scroll" style="height: 100%; width:40vh; padding-top: 2vh;">
                         <form class="conscroll-y" method="post"  action="codigophp/iniciosesion.php" method="post">
                             <input type="text" class="signomas boton imagen" name="username" id="username" required placeHolder="Nombre">
                             <input type="password" class="signomas boton imagen" name="password" id="password" required  placeHolder="Contraseña">

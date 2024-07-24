@@ -37,7 +37,7 @@ include "codigophp/conexionbs.php";
             <div class="contenido2">
                 <div class="con3" id="inicio">
                     <h1>HISTORIAL DE PEDIDOS</h1>
-                    <div class="scroll-y" style="height: 100%;">
+                    <div class="scroll-y"  id="scroll" style="height: 100%;">
                         <div class="conscroll-y">
                             <?php
                                 $sql = "SELECT * FROM pedidos WHERE pedidos.usuario_solicitante = ?";
@@ -78,7 +78,7 @@ include "codigophp/conexionbs.php";
             </button>
             <div class="contenido2">
                 <div class="con3" id="inicio">
-                    <div class="scroll-y" style="height: 100%; padding-top:2vh;">
+                    <div class="scroll-y"  id="scroll" style="height: 100%; padding-top:2vh;">
                         <div class="conscroll-y">
                             <form action = "./codigophp/borrarpedido.php" method = "post">
                                 <input type="hidden"  name="pedido" id="elim" value="2">
@@ -107,7 +107,7 @@ include "codigophp/conexionbs.php";
             </button>
             <div class="contenido2">
                 <div class="con3" id="inicio">
-                    <div class="scroll-y" style="height: 100%; padding-top:2vh;">
+                    <div class="scroll-y" id="scroll" style="height: 100%; padding-top:2vh;">
                         <div class="conscroll-y">
                                 <a href="codigophp/cerrarsesion.php" class="flecha imagen boton">Cerrar sesión</a>
                         </div>

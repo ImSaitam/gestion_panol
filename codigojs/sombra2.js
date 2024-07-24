@@ -33,3 +33,25 @@ function sacarblur2() {
 user.addEventListener('click', blur2);
 
 opcionequis2.addEventListener('click', sacarblur2);
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const scrollContainer = document.querySelectorAll('#scroll');
+
+    function updateJustifyContent() {
+        scrollContainer.forEach(element => {
+            if (element.scrollWidth > element.clientWidth) {
+                element.style.justifyContent = 'flex-start';
+            } else {
+                element.style.justifyContent = 'center';
+            }
+        });
+    }
+
+    // Actualiza el justify-content al cargar la página
+    updateJustifyContent();
+
+    // Actualiza el justify-content al redimensionar la ventana
+    window.addEventListener('resize', updateJustifyContent);
+});

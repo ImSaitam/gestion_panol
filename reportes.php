@@ -31,7 +31,7 @@ include "./codigophp/conexionbs.php";
             <div class="contenido2">
                 <div class="con3" id="inicio">
                 <h1>TUS REPORTES</h1>
-                    <div class="scroll-y" style="height: 100%;">
+                    <div class="scroll-y" id="scroll" style="height: 100%;">
                         <div class="conscroll-y">  
                             <?php
                                 $sql = "";
@@ -86,7 +86,7 @@ include "./codigophp/conexionbs.php";
             </button>
             <div class="contenido2">
                 <div class="con3" id="inicio">
-                    <div class="scroll-y" style="height: 100%; padding-top:2vh;">
+                    <div class="scroll-y" id="scroll" style="height: 100%; padding-top:2vh;">
                         <div class="conscroll-y">
                             <form action = "./reportes.php" method = "post">
                                 <input type="hidden"  name="reportes" id="elim" value="2">
