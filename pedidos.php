@@ -30,12 +30,15 @@ include "codigophp/conexionbs.php";
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
         <div id="contenido">
-            <form action="pedido.php" method="post">
+            <form action="prepararpedido.php" method="post">
                 <button class="barra" type="submit">
                     <div class="mas"></div>
                         <div>Crear nuevo pedido</div>
                         <div></div>
-                        <input type="text" value="nuevopedido" name="estado" style="display:none;">
+                        <input type="hidden" value="nuevopedido" name="estado">
+                        <input type="hidden" value="" name="horario">
+                        <input type="hidden" value="" name="aula">
+                        <input type="hidden" value="" name="profesor">
                 </button>
             </form>
             <div class="contenido2">
