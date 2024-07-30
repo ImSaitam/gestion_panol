@@ -1,10 +1,11 @@
 <?php
-session_start(); // Asegúrate de iniciar la sesión
+include "./sesion.php";
 include "./conexionbs.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtener el ID del pedido a eliminar
     $pedido_id = $_POST['pedido'];
+   // $estado = $_POST['estadop'];
 
     // Preparar la consulta SQL para eliminar el pedido
     $sql = "DELETE FROM pedidos WHERE id_pedido = ? AND usuario_solicitante = ?";
@@ -23,4 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $conn->close();
+header("Location: ../pedidos.php");
+exit;
 ?>

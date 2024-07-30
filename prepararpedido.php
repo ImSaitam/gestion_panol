@@ -30,7 +30,10 @@ if (!isset($_SESSION['id_usuario'])) {
                     <div class="mas"></div>
                         <div>AÑADIR HERRAMIENTA</div>
                         <div></div>
-                        <input type="text" value="" name="busqueda" style="display:none;">
+                        <input type="hidden" value="nuevopedido" name="estado">
+                        <input type="hidden" value="" name="horario">
+                        <input type="hidden" value="" name="aula">
+                        <input type="hidden" value="" name="profesor">
                 </button>
             </form>
             <div class="contenido2">

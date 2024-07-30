@@ -41,6 +41,9 @@
 .usuario{
     background-image: URL(imagenes/user.png);
 }
+.usuariohd{
+    background-image: URL(imagenes/userhd.png);
+}
 .logoboton{
     background-image: URL(imagenes/botonlogo.png);
 }
@@ -59,11 +62,23 @@
 .opciones{
     background-image: URL(imagenes/opciones.png);
 }
+.opcionesblanco{
+    background-image: URL(imagenes/opcionesb.png);
+}
 .pañolero{
     background-image: URL(imagenes/panolero.jpg);
+}
+.sinimagen{
+    background-image: URL(imagenes/sin-imagen.png);
 }
 .imagen{
     background-size: contain;
     background-repeat:no-repeat;
     background-position: center;
+}
+.botonimagen{
+    background-size: contain;
+    background-repeat:no-repeat;
+    background-position: left;
+    padding-left: 2vh;
 }

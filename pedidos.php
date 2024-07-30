@@ -1,11 +1,5 @@
 <?php
-// dashboard.php
-session_start();
-
-if (!isset($_SESSION['id_usuario'])) {
-    header("Location: ./index.php");
-    exit;
-}
+include "./codigophp/sesion.php";
 include "codigophp/conexionbs.php";
 
 ?>
@@ -15,19 +9,19 @@ include "codigophp/conexionbs.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Inicio</title>
-    <link rel="stylesheet" href="animaciones.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="imagenes.css">
+    <link rel="stylesheet" href="estiloscss/animaciones.css">
+    <link rel="stylesheet" href="estiloscss/styles.css">
+    <link rel="stylesheet" href="estiloscss/imagenes.css">
 </head>
 <body>
     <div id="pagina">
         <div id="header">
             <a href="inicio.php" class="logo imagen"></a>
-            <button class="usuario imagen"></button>
+            <button  class="usuario imagen" id="user"></button>
         </div>
         <div id="subheader">
             <h1>Historial de pedidos de <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p></p>
         </div>
         <div id="contenido">
             <form action="prepararpedido.php" method="post">
@@ -35,24 +29,22 @@ include "codigophp/conexionbs.php";
                     <div class="mas"></div>
                         <div>Crear nuevo pedido</div>
                         <div></div>
-                        <input type="hidden" value="nuevopedido" name="estado">
-                        <input type="hidden" value="" name="horario">
-                        <input type="hidden" value="" name="aula">
-                        <input type="hidden" value="" name="profesor">
+<<<<<<< HEAD
+                       
+=======
+                        <input type="text" value="nuevopedido" name="estado" style="display:none;">
+                        <input type="text" style="display:none;" name="codigo" value="0">
+                        <input type="text" value="" name="pedido" style="display:none;">
+>>>>>>> be8646eecd3c19faba4ccff331fbc7688265757a
                 </button>
             </form>
             <div class="contenido2">
                 <div class="con3" id="inicio">
                     <h1>HISTORIAL DE PEDIDOS</h1>
-                    <div class="scroll-y" style="height: 100%;">
+                    <div class="scroll-y"  id="scroll" style="height: 100%;">
                         <div class="conscroll-y">
                             <?php
-                                $sql = "SELECT 
-                                *
-                            FROM 
-                                pedidos WHERE 
-                                pedidos.usuario_solicitante = ?
-                            ";
+                                $sql = "SELECT * FROM pedidos WHERE pedidos.usuario_solicitante = ?";
                     
                     $stmt = $conn->prepare($sql);
                     $stmt->bind_param("s", $_SESSION['id_usuario']); 
@@ -61,7 +53,7 @@ include "codigophp/conexionbs.php";
                     
                     if ($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
-                            echo '<div class="rectangulo2"><h1>'.$row["fecha_pedido"].'</h1> <p>'.$row["id_aula"].' '.$row["curso"].'</p> <button class="imagen opciones"></button></div>';
+                            echo '<div class="rectangulo2"><h1>'.$row["fecha_pedido"].'</h1> <p>'.$row["id_aula"].' '.$row["estado"].'</p> <input type="hidden" name="id" id="id" value="'.$row["id_pedido"].'"><input type="hidden" name="estado" id="estado" value="'.$row["estado"].'"><input type="hidden" name="pedido" id="pedido" value="'.htmlspecialchars($row["pedido"],ENT_QUOTES, 'UTF-8').'"> <button class="imagen opciones tocar"></button></div>';
                         }
                     } else {
                         echo "<h1>NO HAY PEDIDOS AUN</h1>";
@@ -81,33 +73,100 @@ include "codigophp/conexionbs.php";
             <a href="reportes.php" class="alerta imagen derecha">Reportes</a>
         </div>
     </div>
-    <div id="sombra">
+    <div id="sombra" class="sombra">
         <div class="contenidosombra">
-        <button class="barra">
+        <button class="barra" id="opcionequis">
                 <div class="equis"></div>
                     <div>Volver</div>
                     <div></div>
             </button>
             <div class="contenido2">
                 <div class="con3" id="inicio">
-                    <div class="scroll-y" style="height: 100%; padding-top:2vh;">
+                    <div class="scroll-y"  id="scroll" style="height: 100%; padding-top:2vh;">
                         <div class="conscroll-y">
                             <form action = "./codigophp/borrarpedido.php" method = "post">
-                            <input type="text" style="display:none;" name="pedido" value="2">
-                                <input type = "submit" class="basura imagen boton">
-                </form>
-                                <a onclick="console.log('hola')" class="flecha imagen boton">Eliminar pedido</a>
-                                <a onclick="console.log('hola')" class="flecha imagen boton">Volver al inicio</a>                  
+                                <input type="hidden"  name="pedido" id="elim" value="2">
+                                <input type="hidden"  name="estado" id="estadop" value="pendiente">
+                                <input type = "submit" class="basura imagen boton" style=" padding-left: 5vh;" value="Eliminar pedido">
+                            </form>
+                            <form action = "./pedido.php" method = "post">
+                                <input type="hidden"  name="estado" value="2">
+                                <input type="hidden"  name="codigo" value="0">
+                                <input type="hidden" name="pedido" id="ver" value="">
+                                <input type = "submit" class="ojo imagen boton" style=" padding-left: 5vh;" value="Ver pedido">
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <style>
-      
-    </style>
+
+    <div id="sombra2" class="sombra">
+        <div class="contenidosombra">
+        <button class="barra" id="opcionequis2">
+                <div class="equis" ></div>
+                    <div>Volver</div>
+                    <div></div>
+            </button>
+            <div class="contenido2">
+                <div class="con3" id="inicio">
+                    <div class="scroll-y" id="scroll" style="height: 100%; padding-top:2vh;">
+                        <div class="conscroll-y">
+                                <a href="codigophp/cerrarsesion.php" class="flecha imagen boton">Cerrar sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+<script> 
+opciones = document.querySelectorAll('.tocar');
+opcionequis = document.getElementById("opcionequis");
+sombra = document.getElementById("sombra");
 
-<script src="codigojs/sombra.js"></script>
+click = true;
+som = false;
+
+function aplicarBlur() {
+    if (click == true) {
+        sombra.style.display = "grid";
+        sombra.style.animation = "sombra both 0.5s";
+    }
+}
+
+function sacarBlur() {
+    if (click == true) {
+        click = false;
+        sombra.style.animation = "sacarsombra both 0.5s";
+    }
+}
+
+sombra.addEventListener('animationend', function handleAnimationEnd() {
+    if (som == true) {
+        som = false;
+        sombra.style.display = "none";
+    } else {
+        som = true;
+    }
+    click = true;
+});
+
+opciones.forEach(element => {
+    element.addEventListener('click', () => {
+        let parentNode = element.parentNode;
+        let pedido = parentNode.querySelector("#pedido").value;
+        let estado = parentNode.querySelector("#estado").value;
+        let id = parentNode.querySelector("#id").value;
+        document.getElementById("elim").value = id;
+        document.getElementById("ver").value = pedido;
+        document.getElementById("estadop").value = pedido;
+        aplicarBlur();
+    });
+});
+
+opcionequis.addEventListener('click', sacarBlur);
+</script>
+<script src="codigojs/sombra2.js"></script>
