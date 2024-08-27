@@ -24,14 +24,18 @@ include "codigophp/conexionbs.php";
             <p></p>
         </div>
         <div id="contenido">
-            <form action="pedido.php" method="post">
+            <form action="prepararpedido.php" method="post">
                 <button class="barra" type="submit">
                     <div class="mas"></div>
                         <div>Crear nuevo pedido</div>
                         <div></div>
+<<<<<<< HEAD
+                       
+=======
                         <input type="text" value="nuevopedido" name="estado" style="display:none;">
                         <input type="text" style="display:none;" name="codigo" value="0">
                         <input type="text" value="" name="pedido" style="display:none;">
+>>>>>>> be8646eecd3c19faba4ccff331fbc7688265757a
                 </button>
             </form>
             <div class="contenido2">
